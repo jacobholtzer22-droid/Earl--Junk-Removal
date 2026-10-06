@@ -61,6 +61,23 @@ export async function loadContent(
     options: {
       parseFrontmatter: true,
       scope: { config, ...scope },
+      /**
+       * LOAD-BEARING. next-mdx-remote 6 turns MDX {expressions} OFF by
+       * default, so without this every {config.displayName} in content/
+       * renders as an EMPTY STRING. The build succeeds and all 17 verify
+       * checks pass while the prose reads "... is a junk removal company in
+       * , ." The gate does not catch this; only reading the rendered text
+       * does.
+       *
+       * blockJS: false restores expressions. blockDangerousJS stays at its
+       * default true, so eval, Function, process and require remain blocked.
+       * That is the v6 README's recommended mode for trusted, repo-authored
+       * content, which is exactly what content/ is.
+       *
+       * Do not "clean this up". Confirmed to blank the copy in two prior
+       * client repos before it was understood.
+       */
+      blockJS: false,
     },
   })
   return { content, frontmatter: frontmatter ?? {} }
