@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
-import Credentials from '@/components/Credentials'
-import CtaBand from '@/components/CtaBand'
+import AboutTeaser from '@/components/AboutTeaser'
 import FaqAccordion from '@/components/FaqAccordion'
-import Gallery from '@/components/Gallery'
 import Hero from '@/components/Hero'
+import HoursPanel from '@/components/HoursPanel'
+import HowItWorks from '@/components/HowItWorks'
 import JsonLd from '@/components/JsonLd'
-import Reviews from '@/components/Reviews'
+import OffersBand from '@/components/OffersBand'
+import QuoteSection from '@/components/QuoteSection'
+import ServiceArea from '@/components/ServiceArea'
 import ServiceGrid from '@/components/ServiceGrid'
+import WhoWeServe from '@/components/WhoWeServe'
 import { config } from '@/lib/config'
 import { loadContent, readFrontmatter } from '@/lib/content'
 import { faqPage, localBusiness, organization, website } from '@/lib/schema'
@@ -16,7 +19,15 @@ const CONTENT = 'home.mdx'
 
 export function generateMetadata(): Metadata {
   const fm = readFrontmatter(CONTENT)
-  return buildMetadata({ kind: 'home', path: '/', description: fm.description, image: fm.image }).metadata
+  return buildMetadata({
+    kind: 'home',
+    path: '/',
+    // Explicit, because the derived home title would be 49 characters and would
+    // also collide with the junk removal service page's title.
+    title: 'Houston Junk Removal and Cleanouts',
+    description: fm.description,
+    image: fm.image,
+  }).metadata
 }
 
 export default async function HomePage() {
@@ -29,15 +40,16 @@ export default async function HomePage() {
       <JsonLd data={faqPage(config.faqs)} />
 
       <Hero />
-      <div className="mx-auto max-w-page px-4 sm:px-6">
-        <Credentials className="mt-8" />
-      </div>
-      <article className="mx-auto max-w-3xl px-4 pt-6 sm:px-6">{content}</article>
-      <ServiceGrid />
-      <Gallery />
-      <Reviews />
+      <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-20">{content}</article>
+      <HowItWorks />
+      <ServiceGrid heading="What we haul" />
+      <WhoWeServe />
+      <OffersBand />
+      <AboutTeaser />
+      <HoursPanel />
+      <ServiceArea />
       <FaqAccordion faqs={config.faqs} />
-      <CtaBand />
+      <QuoteSection />
     </>
   )
 }

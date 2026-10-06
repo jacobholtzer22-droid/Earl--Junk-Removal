@@ -8,11 +8,11 @@ import type { Faq } from '@/lib/config-schema'
 export default function FaqAccordion({ faqs, heading = 'Frequently Asked Questions' }: { faqs: readonly Faq[]; heading?: string }) {
   if (faqs.length === 0) return null
   return (
-    <section className="mx-auto max-w-page px-4 py-16 md:py-24 sm:px-6">
-      <h2 className="font-heading text-3xl font-bold text-primary-dark">{heading}</h2>
-      <div className="mt-6 divide-y divide-line rounded-site border border-line bg-surface">
+    <section className="border-t-2 border-primary-dark mx-auto max-w-page px-4 py-16 md:py-24 sm:px-6">
+      <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-primary-dark md:text-4xl">{heading}</h2>
+      <div className="mt-8 divide-y divide-line border-y-2 border-primary-dark bg-surface">
         {faqs.map((f) => (
-          <details key={f.q} className="group px-5 py-4">
+          <details key={f.q} className="group px-5 py-5">
             <summary className="cursor-pointer list-none font-semibold text-ink marker:content-none">
               <span className="flex items-center justify-between gap-4">
                 {f.q}
@@ -21,7 +21,7 @@ export default function FaqAccordion({ faqs, heading = 'Frequently Asked Questio
                 </span>
               </span>
             </summary>
-            <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted">{f.a}</p>
           </details>
         ))}
       </div>

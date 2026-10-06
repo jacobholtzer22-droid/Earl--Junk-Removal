@@ -10,7 +10,8 @@ import { LOGO, STOCK } from './lib/stock-images'
  * percentages, no reviews. Unknown is `null`, and a null field renders nothing.
  * An empty slot on the page is correct. A plausible guess is a defect.
  *
- * Open questions are tracked in CLIENT-TODO.md, not guessed at here.
+ * Open questions live in the client question list at the repo root, not in
+ * here as a half-filled value.
  */
 const siteConfig = {
   /**
@@ -410,7 +411,8 @@ const siteConfig = {
     gbp: null,
     // Both built from client-supplied handles. UNVERIFIED: Facebook returns
     // 400 to non-browser requests and Instagram serves a login wall, so
-    // neither could be confirmed to resolve. See CLIENT-TODO.md item 1.
+    // neither could be confirmed to resolve. Item 16 on the client question
+    // list at the repo root.
     facebook: 'https://www.facebook.com/ejcdjh75',
     instagram: 'https://www.instagram.com/ejcdjh75',
     yelp: null,

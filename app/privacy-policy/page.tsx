@@ -15,7 +15,15 @@ const CRUMBS = [
 
 export function generateMetadata(): Metadata {
   const fm = readFrontmatter(CONTENT)
-  return buildMetadata({ kind: 'privacy', path: '/privacy-policy', description: fm.description }).metadata
+  return buildMetadata({
+    kind: 'privacy',
+    path: '/privacy-policy',
+    // Explicit: the config-derived default runs to 164 characters for a
+    // display name this long.
+    description:
+      fm.description ??
+      'How EJC Demo Junk & Haul handles the details you send through this website, including contact form information, text message consent, and how to reach us.',
+  }).metadata
 }
 
 /**

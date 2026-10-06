@@ -16,7 +16,13 @@ const CRUMBS = [
 
 export function generateMetadata(): Metadata {
   const fm = readFrontmatter(CONTENT)
-  return buildMetadata({ kind: 'services', path: '/services', description: fm.description, image: fm.image }).metadata
+  return buildMetadata({
+    kind: 'services',
+    title: 'Junk Removal Services in Houston, TX',
+    path: '/services',
+    description: fm.description,
+    image: fm.image,
+  }).metadata
 }
 
 export default async function ServicesIndexPage() {
@@ -24,9 +30,13 @@ export default async function ServicesIndexPage() {
   return (
     <>
       <JsonLd data={breadcrumbList(CRUMBS)} />
-      <PageHeader title={`Services in ${config.primaryCity}, ${config.primaryState}`} crumbs={CRUMBS} />
+      <PageHeader
+        title={`Services in ${config.primaryCity}, ${config.primaryState}`}
+        intro="Thirteen services, one phone number. Residential, commercial, construction and storm work."
+        crumbs={CRUMBS}
+      />
       <article className="mx-auto max-w-3xl px-4 pt-6 sm:px-6">{content}</article>
-      <ServiceGrid heading="Everything We Offer" />
+      <ServiceGrid heading="Everything we offer" />
       <CtaBand />
     </>
   )

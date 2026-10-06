@@ -14,10 +14,10 @@ export default function Footer() {
   const profiles = Object.entries(config.profiles).filter((e): e is [string, string] => typeof e[1] === 'string')
 
   return (
-    <footer className="mt-16 border-t border-line bg-primary-dark text-on-primary">
+    <footer className="border-t-4 border-accent bg-primary-dark text-on-primary">
       <div className="mx-auto grid max-w-page gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div>
-          <p className="font-heading text-lg font-bold">{config.displayName}</p>
+          <p className="font-heading text-xl font-bold uppercase tracking-tight">{config.displayName}</p>
           <p className="mt-2 text-sm opacity-80">{config.tagline}</p>
           <p className="mt-4 text-sm">
             <Phone className="text-on-primary" />
@@ -39,7 +39,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide opacity-70">Services</p>
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.14em] opacity-70">Services</p>
           <ul className="mt-3 space-y-2 text-sm">
             {config.services.map((s) => (
               <li key={s.slug}>
@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide opacity-70">Service Area</p>
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.14em] opacity-70">Service Area</p>
           {/* Plain text, not links: there are no /areas routes in this build. */}
           <ul className="mt-3 space-y-2 text-sm">
             {config.serviceAreas.map((a) => (
@@ -66,7 +66,7 @@ export default function Footer() {
         <div>
           {config.hours && (
             <>
-              <p className="text-sm font-semibold uppercase tracking-wide opacity-70">Hours</p>
+              <p className="font-heading text-sm font-semibold uppercase tracking-[0.14em] opacity-70">Hours</p>
               <ul className="mt-3 space-y-1 text-sm">
                 {config.hours.map((h) => (
                   <li key={h.day} className="flex justify-between gap-4">
@@ -97,9 +97,15 @@ export default function Footer() {
           <p>
             &copy; {year} {config.legalName}. All rights reserved.
           </p>
-          <p className="flex gap-4">
+          <p className="flex flex-wrap gap-4">
             <Link href="/privacy-policy" className="hover:underline">
               Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:underline">
+              Terms
+            </Link>
+            <Link href="/referral-program" className="hover:underline">
+              Referral Program
             </Link>
             <a href="https://www.alignandacquire.com" rel="noopener" target="_blank" className="hover:underline">
               Site by Align and Acquire

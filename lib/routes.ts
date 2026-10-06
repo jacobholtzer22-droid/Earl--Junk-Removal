@@ -11,7 +11,15 @@ import { config } from './config'
  * feeds areaServed in lib/schema.ts. Restore /areas by reverting this commit
  * once a real city list arrives.
  */
-export const STATIC_ROUTES = ['/', '/services', '/about', '/contact', '/privacy-policy'] as const
+export const STATIC_ROUTES = [
+  '/',
+  '/services',
+  '/about',
+  '/referral-program',
+  '/contact',
+  '/privacy-policy',
+  '/terms',
+] as const
 
 export function serviceRoutes(): string[] {
   return config.services.map((s) => `/services/${s.slug}`)

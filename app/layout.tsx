@@ -3,6 +3,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import MobileCallBar from '@/components/MobileCallBar'
+import PromoBar from '@/components/PromoBar'
 import { config } from '@/lib/config'
 import { buildTitle, renderTitle, TITLE_TEMPLATE } from '@/lib/seo'
 import theme from '@/theme'
@@ -16,7 +17,10 @@ export const metadata: Metadata = {
     template: TITLE_TEMPLATE,
   },
   applicationName: config.displayName,
-  robots: { index: true, follow: true },
+  // Mirrors config.indexable, like every page's own metadata. A hardcoded
+  // index:true here would be the default for anything that ever forgets to
+  // call buildMetadata.
+  robots: config.indexable ? { index: true, follow: true } : { index: false, follow: false },
 }
 
 const cssVars = {
@@ -46,6 +50,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
+        <PromoBar />
         <Header />
         <main id="main" className="flex-1">
           {children}

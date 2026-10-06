@@ -15,8 +15,9 @@ export default function ServiceGrid({ heading = 'Our Services', exclude }: Props
   const services = config.services.filter((s) => s.slug !== exclude)
   if (services.length === 0) return null
   return (
-    <section className="mx-auto max-w-page px-4 py-16 sm:px-6 md:py-24">
-      <h2 className="font-heading text-3xl font-bold text-primary-dark md:text-4xl">{heading}</h2>
+    <section className="border-t-2 border-primary-dark bg-bg">
+      <div className="mx-auto max-w-page px-4 py-16 sm:px-6 md:py-24">
+      <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-primary-dark md:text-4xl">{heading}</h2>
       <ol className="mt-10 border-t-2 border-primary-dark">
         {services.map((s, i) => (
           <li key={s.slug} className="border-b border-line">
@@ -24,15 +25,16 @@ export default function ServiceGrid({ heading = 'Our Services', exclude }: Props
               <span className="font-heading text-sm font-semibold tabular-nums text-accent md:col-span-1">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3 className="font-heading text-2xl font-semibold text-primary-dark group-hover:text-accent md:col-span-4">{s.name}</h3>
+              <h3 className="font-heading text-2xl font-semibold uppercase tracking-tight text-primary-dark group-hover:text-accent md:col-span-4">{s.name}</h3>
               <p className="text-base leading-relaxed text-muted md:col-span-5">{s.shortDescription}</p>
               <span className="text-sm font-semibold text-ink md:col-span-2 md:text-right">
-                {s.priceFrom !== null ? `From $${s.priceFrom}` : 'Quoted on site'}
+                {s.priceFrom !== null ? `From $${s.priceFrom}` : 'Free estimate'}
               </span>
             </Link>
           </li>
         ))}
       </ol>
+      </div>
     </section>
   )
 }
