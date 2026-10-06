@@ -27,4 +27,25 @@
   summary::-webkit-details-marker {
     display: none;
   }
+
+  /*
+   * Light label on the accent HOVER fill.
+   *
+   * `accent-dark` has to serve two incompatible jobs in this template: it is
+   * the button hover fill (which pairs with `on-accent`, a near-black) and it
+   * is also the colour of the contact form's validation text on an off-white
+   * surface. No single colour can be 4.5:1 from both near-black and near-white
+   * at once, so one of the two was always going to fail.
+   *
+   * The validation message wins: it is small persistent text on an error path
+   * that a visitor has to read. That forces `accent-dark` dark, which leaves a
+   * near-black button label on it at 3.06:1.
+   *
+   * This rule fixes the hover state without touching the sealed ContactForm:
+   * the label goes light on hover, which measures 5.39:1. Checked by
+   * scripts/proof/contrast.mjs.
+   */
+  .hover\:bg-accent-dark:hover {
+    color: var(--c-on-primary);
+  }
 }

@@ -1,4 +1,5 @@
 import type { SiteConfigInput } from './lib/config-schema'
+import { LOGO, STOCK } from './lib/stock-images'
 
 /**
  * Every business fact for EJC Demo Junk & Haul lives here and nowhere else.
@@ -57,7 +58,7 @@ const siteConfig = {
         'Household junk hauled away in one visit: boxes, bags, old furniture, electronics, and whatever else has stacked up.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'curbside-junk-pile.jpg',
+      image: STOCK.junkRemoval,
       titleOverride: null,
       faqs: [
         {
@@ -85,7 +86,7 @@ const siteConfig = {
         'Couches, sectionals, mattresses, dressers, and desks carried out and hauled off, including from upstairs and tight stairwells.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'old-sofa-curbside.jpg',
+      image: STOCK.furnitureRemoval,
       titleOverride: null,
       faqs: [
         {
@@ -109,7 +110,7 @@ const siteConfig = {
         'Refrigerators, washers, dryers, ranges, water heaters, and freezers disconnected from their spot and hauled out.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'old-appliance-garage.jpg',
+      image: STOCK.applianceRemoval,
       titleOverride: null,
       faqs: [
         {
@@ -133,7 +134,7 @@ const siteConfig = {
         'Mattresses and box springs of any size taken out of the bedroom and hauled away, so you are not driving one to a dump yourself.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'mattress-against-wall.jpg',
+      image: STOCK.mattressDisposal,
       titleOverride: null,
       faqs: [
         {
@@ -157,7 +158,7 @@ const siteConfig = {
         'Garages, attics, basements, and storage units cleared from front to back, including the things stacked behind everything else.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'cluttered-garage.jpg',
+      image: STOCK.garageCleanouts,
       titleOverride: null,
       faqs: [
         {
@@ -185,7 +186,7 @@ const siteConfig = {
         'Whole-property clearing for executors and families settling an estate, worked at the pace the family sets rather than a rushed schedule.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'stacked-moving-boxes.jpg',
+      image: STOCK.estateCleanouts,
       titleOverride: null,
       faqs: [
         {
@@ -209,7 +210,7 @@ const siteConfig = {
         'Heavily filled homes cleared discreetly and without judgment, at whatever pace the household is comfortable with.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: null,
+      image: STOCK.hoarderCleanouts,
       titleOverride: null,
       faqs: [
         {
@@ -237,7 +238,7 @@ const siteConfig = {
         'Lumber, drywall, roofing tear-off, concrete, brick, and scrap metal cleared off the site so the next trade can get to work.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'construction-debris-pile.jpg',
+      image: STOCK.constructionDebris,
       titleOverride: 'Construction Debris Removal Houston',
       faqs: [
         {
@@ -261,7 +262,7 @@ const siteConfig = {
         'Sheds, decks, fences, playground sets, and similar structures taken apart and hauled off in the same visit.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'dismantled-wooden-deck.jpg',
+      image: STOCK.lightDemolition,
       titleOverride: null,
       faqs: [
         {
@@ -285,7 +286,7 @@ const siteConfig = {
         'Old hot tubs and spas broken down where they sit and carried out piece by piece, including from decks and back yards.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'old-outdoor-hot-tub.jpg',
+      image: STOCK.hotTubRemoval,
       titleOverride: null,
       faqs: [
         {
@@ -309,7 +310,7 @@ const siteConfig = {
         'Offices, retail spaces, warehouses, restaurants, and hotels cleared out, including furniture, appliances, and kitchen equipment.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'empty-office-stacked-chairs.jpg',
+      image: STOCK.commercialCleanouts,
       titleOverride: null,
       faqs: [
         {
@@ -333,7 +334,7 @@ const siteConfig = {
         'Evictions, foreclosures, move-outs, and listing preparation cleared on a turnover schedule so the unit is ready to show.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'empty-room-after-moveout.jpg',
+      image: STOCK.propertyCleanouts,
       titleOverride: 'Property Cleanouts in Houston, TX',
       faqs: [
         {
@@ -361,7 +362,7 @@ const siteConfig = {
         'Brush, limbs, leaves, and storm debris cleared from the yard, plus old fencing, decking, and outdoor furniture.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate before any work starts',
-      image: 'fallen-branches-brush-pile.jpg',
+      image: STOCK.yardWasteRemoval,
       titleOverride: 'Yard Waste Removal in Houston, TX',
       faqs: [
         {
@@ -451,15 +452,15 @@ const siteConfig = {
   ],
 
   images: {
-    hero: 'curbside-junk-pile.jpg',
-    about: 'cluttered-garage.jpg',
+    hero: STOCK.hero,
+    about: STOCK.about,
     // Empty on purpose. There are no client photographs yet, and a gallery of
     // licensed stock would imply these are EJC's own jobs. The Gallery section
     // does not render while this is empty.
     gallery: [],
     // The real logo. Keeps stock photography out of schema.org `logo` and the
     // social card. See lib/schema.ts logoUrl().
-    logo: 'ejc-logo.png',
+    logo: LOGO,
   },
 
   // No contactForm block: the baseline four fields only. Every extra field is

@@ -23,7 +23,7 @@ const config: Config = {
         'on-accent': 'var(--c-on-accent)',
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'Georgia', 'serif'],
+        heading: ['var(--font-heading)', 'Oswald', 'Arial Narrow', 'sans-serif'],
         body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       borderRadius: {

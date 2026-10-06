@@ -1,53 +1,108 @@
 {
-  "sample-cleanup.jpg": {
-    "width": 1600,
-    "height": 1200,
-    "alt": "Sample placeholder graphic in autumn brown and gold tones standing in for a seasonal cleanup photo",
-    "base": "sample-cleanup",
-    "sizes": [
-      640,
-      1024
-    ]
-  },
-  "sample-crew.jpg": {
-    "width": 1200,
-    "height": 1500,
-    "alt": "Sample placeholder graphic in slate blue tones, portrait orientation, standing in for a crew photo",
-    "base": "sample-crew",
-    "sizes": [
-      640,
-      1024
-    ]
-  },
-  "sample-hero.jpg": {
-    "width": 2000,
-    "height": 1333,
-    "alt": "Sample placeholder graphic in green tones with diagonal stripes standing in for a hero lawn photo",
-    "base": "sample-hero",
+  "attic-with-stored-paintings-and-furniture.jpg": {
+    "width": 2400,
+    "height": 3200,
+    "alt": "An attic room stacked with framed paintings, ceramics, an old cabinet and decades of stored household belongings",
+    "base": "attic-with-stored-paintings-and-furniture",
     "sizes": [
       640,
       1024,
       1920
     ]
   },
-  "sample-mowing.jpg": {
-    "width": 1600,
-    "height": 1200,
-    "alt": "Sample placeholder graphic in bright green tones standing in for a freshly mowed lawn photo",
-    "base": "sample-mowing",
+  "basement-with-old-furniture.jpg": {
+    "width": 1880,
+    "height": 1602,
+    "alt": "A finished basement holding a dated wooden dresser, a curio cabinet, a side table and shelved storage bins",
+    "base": "basement-with-old-furniture",
     "sizes": [
       640,
       1024
     ]
   },
-  "sample-mulch.jpg": {
-    "width": 1600,
-    "height": 1200,
-    "alt": "Sample placeholder graphic in brown tones standing in for a mulched landscape bed photo",
-    "base": "sample-mulch",
+  "broken-concrete-and-brick-pile.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "alt": "A large pile of broken paving bricks, concrete and rubble heaped against a corrugated steel wall",
+    "base": "broken-concrete-and-brick-pile",
+    "sizes": [
+      640,
+      1024,
+      1920
+    ]
+  },
+  "discarded-sofa-at-kerb.jpg": {
+    "width": 2400,
+    "height": 3600,
+    "alt": "A worn pink buttoned sofa with torn upholstery left at the kerb beside a weathered concrete wall",
+    "base": "discarded-sofa-at-kerb",
+    "sizes": [
+      640,
+      1024,
+      1920
+    ]
+  },
+  "ejc-logo.png": {
+    "width": 222,
+    "height": 215,
+    "alt": "EJC Demo Junk & Haul logo: a dump truck above the letters EJC on a black circular badge",
+    "base": "ejc-logo",
+    "sizes": [
+      222
+    ]
+  },
+  "emptied-hall-with-stacked-chairs.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "alt": "A cleared commercial hall with wooden chairs and stools stacked against one wall beside an open doorway",
+    "base": "emptied-hall-with-stacked-chairs",
+    "sizes": [
+      640,
+      1024,
+      1920
+    ]
+  },
+  "moving-boxes-in-empty-room.jpg": {
+    "width": 2400,
+    "height": 3600,
+    "alt": "Open and sealed cardboard moving boxes grouped on the bare concrete floor of an otherwise empty white room",
+    "base": "moving-boxes-in-empty-room",
+    "sizes": [
+      640,
+      1024,
+      1920
+    ]
+  },
+  "residential-garage-with-shelving.jpg": {
+    "width": 1750,
+    "height": 1600,
+    "alt": "An attached residential garage with timber storage shelving, a step ladder, cabinets and a concrete floor",
+    "base": "residential-garage-with-shelving",
     "sizes": [
       640,
       1024
+    ]
+  },
+  "stacked-cardboard-boxes.jpg": {
+    "width": 2333,
+    "height": 3500,
+    "alt": "Cardboard packing boxes of several sizes stacked in front of a panelled white interior door",
+    "base": "stacked-cardboard-boxes",
+    "sizes": [
+      640,
+      1024,
+      1920
+    ]
+  },
+  "uprooted-tree-on-lawn.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "alt": "A large tree uprooted by a storm lying across a residential front lawn and kerb beside a white house",
+    "base": "uprooted-tree-on-lawn",
+    "sizes": [
+      640,
+      1024,
+      1920
     ]
   }
 }

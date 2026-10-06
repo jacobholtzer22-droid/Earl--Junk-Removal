@@ -1,14 +1,21 @@
 /**
- * Visual theme. This is the one file (with app/fonts.ts) where the agent has
- * real freedom: pick a direction, a palette, and a hero layout so two client
- * sites do not look like the same site with different words. No business facts
- * belong here.
+ * Visual theme for EJC Demo Junk & Haul.
  *
- * Rules the palette must satisfy (AGENT.md Phase 2c): one dark neutral, one
- * warm or cool off-white, exactly one accent used on under 5% of any page. No
- * pure #000000 or #FFFFFF. `onPrimary` sits on `primary`, `onAccent` on
- * `accent`, `ink` on `bg` and `surface`. One radius and one shadow for the
- * whole site; components read them as CSS variables and nothing else.
+ * Direction: HEAVY IRON (AGENT.md Phase 2b lists junk removal and demolition
+ * under it by name). The logo is already speaking this language: a hard black
+ * circular badge, a dump truck, and distressed condensed white lettering that
+ * breaks the badge edge.
+ *
+ * The logo is monochrome, so it contributes no hue at all and the accent is an
+ * additive decision rather than a derived one. It is hazard AMBER, not orange,
+ * deliberately: the nearest Houston competitor is orange, the national
+ * franchise is green and orange, and the whole category is saturated with
+ * orange. Amber reads as caution stripe, matches the dump truck, and is
+ * distinguishable at thumbnail size on a search results page.
+ *
+ * Every photograph on this site is licensed stock, so the layout is built to
+ * hold on type, rule weight and color alone. A rejected photo degrades to a
+ * flat charcoal field and the page still looks finished.
  */
 export type HeroVariant = 'full-bleed' | 'split'
 
@@ -43,26 +50,42 @@ export interface Theme {
   shadow: string
 }
 
-// Shipped default follows the "Cultivated" direction for the lawn-care sample:
-// deep green, warm off-white, one muted cedar accent, serif display (app/fonts.ts).
 const theme: Theme = {
   palette: {
-    primary: '#1E3D2C',
-    primaryDark: '#152B1F',
-    primarySoft: '#E9EFE8',
-    accent: '#A8623A',
-    accentDark: '#8B4E2C',
-    bg: '#F6F3EC',
-    surface: '#FDFBF7',
-    ink: '#1A1F1B',
-    muted: '#5C6660',
-    line: '#DCD8CE',
-    onPrimary: '#F6F3EC',
-    onAccent: '#F6F3EC',
+    // Cool near-black. Not #000: pure black on a screen reads as a hole rather
+    // than as material, and it kills the distressed texture in the logo.
+    primary: '#15171A',
+    primaryDark: '#0B0D0F',
+    // Light cool gray for interior page headers. Cool, because the logo and
+    // every photograph here are neutral; a warm tint would fight both.
+    primarySoft: '#E5E8EB',
+    // Hazard amber. Dark text sits on it; white on amber fails AA and is used
+    // nowhere. See scripts/proof/contrast.mjs.
+    accent: '#F5A524',
+    // Darkened enough to carry small text on the off-white ground, which is
+    // what the form's validation messages need.
+    accentDark: '#8A5A00',
+    bg: '#F3F4F6',
+    surface: '#FCFCFD',
+    ink: '#16191D',
+    muted: '#53585F',
+    // Dark enough to clear 3:1 against the surface, because this token is the
+    // BORDER ON EVERY FORM INPUT and WCAG 1.4.11 treats that as a UI component
+    // boundary. A prettier hairline would make the fields invisible to anyone
+    // with low vision. Heavier rules suit this direction anyway.
+    line: '#848B94',
+    onPrimary: '#F3F4F6',
+    onAccent: '#14161A',
   },
+  // The hero photo is a curbside pile: the customer's problem, shot wide, with
+  // enough dead sky to carry a scrim and lower-third type.
   heroVariant: 'full-bleed',
-  radius: 0.375,
-  shadow: '0 1px 2px rgb(20 30 24 / 0.08)',
+  // Hard edges throughout. Zero radius is the whole point of this direction;
+  // a 4px radius here would read as a softened default rather than a decision.
+  radius: 0,
+  // No shadow anywhere on the site. Depth comes from flat color blocks and
+  // heavy rules between sections, not from floating cards.
+  shadow: 'none',
 }
 
 export default theme
