@@ -22,7 +22,7 @@ const siteConfig = {
    *
    * verify.ts check 2 stays red until this is filled in. That is intentional.
    */
-  businessSlug: '',
+  businessSlug: 'houston-waste-removal-1791303748120',
 
   legalName: 'Mustang Logistix LLC',
   displayName: 'EJC Demo Junk & Haul',
