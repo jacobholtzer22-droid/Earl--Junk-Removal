@@ -8,27 +8,34 @@ into `site.config.ts`. Nothing gets written straight into page copy.
 
 ---
 
+## DONE
+
+
+### 1. Business slug. DONE, 2026-10-06
+`businessSlug` is `houston-waste-removal-1791303748120`. The contact form is
+live: `components/PendingFormGate.tsx` is now a pure pass-through, the "not
+connected yet" notice is gone from the built HTML, and the form posts to
+`https://www.alignandacquire.com/api/contact` with that slug.
+
+Verify check 2 is green. **Check 3 is still red**, and it is the one item from
+this list that nobody here can close: the platform has not shipped
+`/api/verify-slug`, so the check cannot confirm the slug against the database
+no matter what it is set to. Until that endpoint exists, the slug is confirmed
+by a live form submission and nothing else.
+
+### 2. Domain. DONE, 2026-10-06
+`houstonwasteremoval.com`, canonical host `www`. `domain` is
+`https://www.houstonwasteremoval.com` and `indexable` is `true`, set in one
+commit, which is the only way the config will accept them.
+
+Verified live: the apex returns a 308 to www; canonicals, the sitemap, the
+og:image and every `@id` and `url` in the JSON-LD are on the www host; no
+`vercel.app` string and no bare-apex URL survives anywhere in the build;
+`robots.txt` allows crawling and names the 12 AI crawlers.
+
+---
+
 ## BLOCKING LAUNCH
-
-### 1. Business slug (blocks every lead from the site)
-The platform `Business` row does not exist yet, so `businessSlug` is `''` and
-**the contact form does not submit.** It renders normally and shows a notice
-telling the visitor to call instead. No lead is silently lost, but no lead is
-captured online either.
-
-Create the Business row, then set the slug in `site.config.ts`. Verify checks 2
-and 3 go green on their own. **A wrong slug is worse than an empty one**: the
-form would appear to work and every submission would be dropped.
-
-### 2. Domain
-Not purchased. The site ships on a Vercel URL with `indexable: false`, which
-means `noindex` on every page and a blanket `Disallow` in robots.txt. That is
-correct for a temporary host. Indexing a throwaway hostname and then moving is
-how a new domain inherits duplicate-content problems on day one.
-
-Buy the domain, point it at Vercel, set `domain` in `site.config.ts`, and flip
-`indexable: true` in the same commit. The config refuses to build if you set
-`indexable: true` while the slug is still empty.
 
 ### 3. Service city list
 Houston only, provisionally. **No suburb, neighborhood or county is named
