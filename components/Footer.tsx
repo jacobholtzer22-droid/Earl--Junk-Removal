@@ -52,13 +52,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide opacity-70">Service Areas</p>
+          <p className="text-sm font-semibold uppercase tracking-wide opacity-70">Service Area</p>
+          {/* Plain text, not links: there are no /areas routes in this build. */}
           <ul className="mt-3 space-y-2 text-sm">
             {config.serviceAreas.map((a) => (
               <li key={a.slug}>
-                <Link href={`/areas/${a.slug}`} className="hover:underline">
-                  {a.name}, {config.primaryState}
-                </Link>
+                {a.name}, {config.primaryState}
               </li>
             ))}
           </ul>

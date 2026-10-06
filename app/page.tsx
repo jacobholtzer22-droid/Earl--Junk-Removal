@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import AreaList from '@/components/AreaList'
 import Credentials from '@/components/Credentials'
 import CtaBand from '@/components/CtaBand'
 import FaqAccordion from '@/components/FaqAccordion'
@@ -37,7 +36,6 @@ export default async function HomePage() {
       <ServiceGrid />
       <Gallery />
       <Reviews />
-      <AreaList />
       <FaqAccordion faqs={config.faqs} />
       <CtaBand />
     </>

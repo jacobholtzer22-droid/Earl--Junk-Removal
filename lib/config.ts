@@ -23,10 +23,6 @@ export function getService(slug: string) {
   return config.services.find((s) => s.slug === slug) ?? null
 }
 
-export function getArea(slug: string) {
-  return config.serviceAreas.find((a) => a.slug === slug) ?? null
-}
-
 /** Minutes-since-midnight "HH:MM" -> "8:00 AM". */
 export function formatTime(hhmm: string): string {
   const [h = 0, m = 0] = hhmm.split(':').map(Number)
