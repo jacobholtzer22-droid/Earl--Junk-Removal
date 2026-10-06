@@ -10,7 +10,8 @@
     "images": "tsx scripts/process-images.ts",
     "verify": "next build && tsx scripts/verify.ts",
     "typecheck": "tsc --noEmit",
-    "seal-contact-form": "tsx scripts/seal-contact-form.ts"
+    "seal-contact-form": "tsx scripts/seal-contact-form.ts",
+    "proof:form": "node scripts/proof/run.mjs"
   },
   "dependencies": {
     "next": "14.2.21",
@@ -20,11 +21,13 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^20.14.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
     "cheerio": "^1.0.0",
+    "jsdom": "^29.1.1",
     "postcss": "^8.4.38",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.4",

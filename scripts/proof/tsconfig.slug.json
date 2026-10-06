@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.proof.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "paths": {
+      "@/site.config": ["./scripts/proof/fixtures/config-with-slug.ts"],
+      "@/*": ["./*"]
+    }
+  }
+}
