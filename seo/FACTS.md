@@ -1,4 +1,4 @@
-# FACTS — EJC Demo Junk & Haul
+# FACTS: EJC Demo Junk & Haul
 
 **This file is the only source of business claims on this site.** If a statement
 about this company is not traceable to something below, it does not belong in
@@ -56,33 +56,33 @@ municipalities, senior citizens, estate executors, storage facility operators.
 
 ## Services
 
-**Residential** — household junk removal, furniture removal, appliance removal,
+**Residential.** Household junk removal, furniture removal, appliance removal,
 mattress disposal, electronics (e-waste) recycling, garage / attic / basement /
 storage unit cleanouts, hoarder cleanouts, estate cleanouts, foreclosure
 cleanouts, moving cleanouts, yard waste removal, hot tub removal, shed
 demolition and removal, carpet removal, construction debris removal.
 
-**Commercial** — office, retail store, warehouse, property management, and
+**Commercial.** Office, retail store, warehouse, property management, and
 hotel and hospitality cleanouts; restaurant equipment removal; real estate
 listing preparation; tenant eviction cleanouts; commercial furniture and
 appliance removal.
 
-**Construction and renovation** — construction debris hauling, demolition
+**Construction and renovation.** Construction debris hauling, demolition
 cleanup, renovation waste removal, roofing debris removal, concrete and brick
 removal, scrap metal hauling, lumber disposal.
 
-**Outdoor** — yard cleanup, brush and tree debris removal, storm debris
+**Outdoor.** Yard cleanup, brush and tree debris removal, storm debris
 cleanup, fence removal, deck removal, playground equipment removal, outdoor
 furniture removal.
 
-**Recycling and donation** — recycling pickup, donation drop-off, scrap metal
+**Recycling and donation.** Recycling pickup, donation drop-off, scrap metal
 recycling, electronics recycling, appliance recycling, paper and cardboard
 recycling.
 
-**Specialty** — piano, safe, exercise equipment and pool table removal; boat
+**Specialty.** Piano, safe, exercise equipment and pool table removal; boat
 removal assistance; RV cleanup.
 
-**Additional** — labor-only moving help, packing and unpacking assistance,
+**Additional.** Labor-only moving help, packing and unpacking assistance,
 property cleanup for realtors, pressure washing, light demolition, dumpster
 rental coordination, recycling consulting, subscription-based junk pickup,
 event cleanup.
@@ -101,7 +101,7 @@ Facts the client mentioned that are **deliberately not published**, and why.
 
 ---
 
-## BANNED — never write these without a new, sourced fact
+## BANNED: never write these without a new, sourced fact
 
 Licensed · insured · bonded · background-checked · family owned · locally owned ·
 years of experience · number of jobs done · star ratings · review counts ·
@@ -110,9 +110,10 @@ diversion percentages · named charities · crew size · any price or price rang
 military branch · "top-rated" · "#1" · "best".
 
 Describing what a service *is* in general terms is fine. Any promise about how
-**this** company does it — cleanup afterwards, arrival windows, disposal
-destination, items refused — must come from this file or go to `CLIENT-TODO.md`.
+**this** company does it (cleanup afterwards, arrival windows, disposal
+destination, items refused) must come from this file or go to `CLIENT-TODO.md`.
 
-Also never published: internal data of any kind. Average job values, ad budget,
-the client's business goals, and the planning labels "Add-On Revenue Services"
-and "Target Customer Segments" are internal and appear nowhere on the site.
+Also never published: internal data of any kind. Typical job values, advertising
+spend, the client's business goals, and the internal planning category labels
+from the intake notes all stay internal. None of them is reproduced on the site,
+and none is repeated verbatim in this file either.

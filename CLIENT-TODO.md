@@ -1,4 +1,4 @@
-# CLIENT-TODO — EJC Demo Junk & Haul
+# CLIENT-TODO: EJC Demo Junk & Haul
 
 Open questions for Earl, and the launch steps that depend on them. Ordered by
 what blocks the most.
@@ -23,7 +23,7 @@ form would appear to work and every submission would be dropped.
 ### 2. Domain
 Not purchased. The site ships on a Vercel URL with `indexable: false`, which
 means `noindex` on every page and a blanket `Disallow` in robots.txt. That is
-correct for a temporary host — indexing a throwaway hostname and then moving is
+correct for a temporary host. Indexing a throwaway hostname and then moving is
 how a new domain inherits duplicate-content problems on day one.
 
 Buy the domain, point it at Vercel, set `domain` in `site.config.ts`, and flip
@@ -70,7 +70,7 @@ because neither is confirmed.
 - Does it start at midnight, or whenever the 8:00am to 5:00pm window closes?
 - Is it in addition to the job price, or does it include some work?
 
-### 8. $50 off first service — terms
+### 8. $50 off first service, terms
 Published exactly as stated, with no fine print, because none was supplied.
 - Any minimum job size?
 - Expiry date?
@@ -114,7 +114,7 @@ What is he comfortable sharing?
 
 ## ASSETS
 
-### 14. Real photographs — the single biggest quality win available
+### 14. Real photographs, the single biggest quality win available
 Every photograph on this site is **licensed stock** from Unsplash and Pexels.
 Full inventory in `seo/STOCK-PHOTOS.md`.
 
@@ -145,13 +145,13 @@ Ask the designer for the original vector (`.svg`, `.ai` or `.eps`) or a
 high-resolution PNG with a transparent background. Everything then gets sharper
 for free.
 
-### 16. Social profile URLs — UNVERIFIED
+### 16. Social profile URLs, UNVERIFIED
 `https://www.facebook.com/ejcdjh75` and `https://www.instagram.com/ejcdjh75`
 were built from the handles Earl gave and are live on the site in the footer
 and in `sameAs` schema. **Neither could be confirmed to resolve**: Facebook
 returns 400 to non-browser requests and Instagram serves a login wall.
 
-Open both in a browser. If either 404s, fix or remove it — a schema `sameAs`
+Open both in a browser. If either 404s, fix or remove it, because a `sameAs`
 pointing at a dead profile is worse than no `sameAs` at all.
 
 ### 17. Google Business Profile

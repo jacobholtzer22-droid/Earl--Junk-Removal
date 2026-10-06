@@ -48,13 +48,29 @@ function articleText(html) {
     .trim()
 }
 
+/** Whole visible page, used for strings that live in the footer or shell. */
+function pageText(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/g, ' ')
+    .replace(/<style[\s\S]*?<\/style>/g, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&#x27;|&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 const rows = []
 for (const file of walk(OUT)) {
   if (path.basename(file) === '404.html') continue
-  const text = articleText(fs.readFileSync(file, 'utf8'))
+  const html = fs.readFileSync(file, 'utf8')
+  const text = articleText(html)
   if (text === null) continue // page renders no MDX article
   const route = '/' + path.relative(OUT, file).replace(/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
-  rows.push({ route: route === '/' ? '/' : route, text })
+  rows.push({ route: route === '/' ? '/' : route, text, page: pageText(html) })
 }
 
 let failed = 0
@@ -79,7 +95,20 @@ if (suspicious.length) {
 } else {
   console.log('No blank-interpolation punctuation ("in ,", "in .", doubled spaces) on any MDX page.')
 }
-console.log(`${rows.length} MDX-rendering pages checked.`)
+console.log(`${rows.length} MDX-rendering pages checked (the table above is <article> text only).`)
+
+/**
+ * The legal name is deliberately not in service-page prose. It belongs in the
+ * footer, the privacy policy and the terms, and the footer renders on every
+ * page, so it is checked against whole-page text rather than article text.
+ */
+const LEGAL = process.env.LEGAL_NAME
+if (LEGAL) {
+  const missing = rows.filter((r) => !r.page.includes(LEGAL)).map((r) => r.route)
+  console.log('')
+  console.log(`legal name ${JSON.stringify(LEGAL)} in whole-page text: ${missing.length === 0 ? `yes, all ${rows.length}` : 'MISSING on ' + missing.join(', ')}`)
+  if (missing.length) failed += missing.length
+}
 if (failed) {
   console.log(`FAILED: ${failed} missing string(s).`)
   process.exit(1)

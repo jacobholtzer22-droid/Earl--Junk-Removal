@@ -100,8 +100,8 @@ export default function TermsPage() {
           Content on this site
         </h2>
         <p className="mt-4">
-          The {config.displayName} name and logo belong to {config.legalName}. Photographs on this site are licensed stock
-          images used to illustrate the kinds of work described; they do not depict particular jobs carried out by{' '}
+          The {config.displayName} name and logo belong to {config.legalName}. Photographs on this site are stock
+          images used to illustrate the kinds of work described. They do not depict particular jobs carried out by{' '}
           {config.displayName}.
         </p>
 

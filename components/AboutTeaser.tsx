@@ -16,7 +16,7 @@ export default function AboutTeaser() {
     <section className="border-t-2 border-primary-dark bg-bg">
       <div className="mx-auto grid max-w-page items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-5 md:py-24">
         <div className="md:col-span-3">
-          <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-accent">Veteran owned</p>
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-accent-dark">Veteran owned</p>
           <h2 className="mt-4 font-heading text-3xl font-bold uppercase leading-tight tracking-tight text-primary-dark md:text-5xl">
             Run by Earl, out of Houston
           </h2>

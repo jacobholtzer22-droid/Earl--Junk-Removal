@@ -1,4 +1,4 @@
-# STOCK-PHOTOS — every photograph on this site
+# STOCK-PHOTOS: every photograph on this site
 
 **Every photograph on this site is licensed stock. Not one of them shows EJC
 Demo Junk & Haul, its truck, its crew, or any job it has done.** No alt text,
@@ -85,7 +85,7 @@ Recorded so nobody re-finds and re-uses them.
 
 Applies to real client photos as much as to stock.
 
-1. **No trucks, trailers, dumpsters or crews, even unbranded** — until the
+1. **No trucks, trailers, dumpsters or crews, even unbranded.** Not until the
    vehicle and the crew genuinely are Earl's. Next to the EJC name, anything
    else reads as his equipment, which makes it a claim about the business.
 2. No company branding, logos, readable lettering or licence plates.

@@ -39,6 +39,8 @@ const PAIRS = [
   ['accent rule / mark on dark (non-text)', 'accent', 'primary', 3],
   ['form input border on surface (UI boundary)', 'line', 'surface', 3],
   ['section rule on page ground (UI boundary)', 'line', 'bg', 3],
+  ['amber-family text on the page ground', 'accentDark', 'bg', 4.5],
+  ['amber-family text on the interior page header', 'accentDark', 'primarySoft', 4.5],
 ]
 
 /**
@@ -47,7 +49,7 @@ const PAIRS = [
  */
 const AVOIDED = [
   ['white on the amber accent', '#FFFFFF', null, 'accent', 'on-accent is near-black everywhere instead'],
-  ['amber as a standalone mark on the light ground', null, 'accent', 'bg', 'amber appears on light sections only as a fill behind dark text; buttons on light sections use the dark primary fill'],
+  ['the bright accent as TEXT on the light ground', null, 'accent', 'bg', 'use accent-dark instead. This file previously asserted the combination was never rendered; it was, in four places (service numerals, step numerals, the about eyebrow and a hover state), and Lighthouse caught it, not this script. The assertion below is a note, not a guarantee: run Lighthouse too'],
 ]
 
 let fails = 0
