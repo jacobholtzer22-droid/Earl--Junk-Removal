@@ -11,8 +11,13 @@ import { config } from '@/lib/config'
 export default function PromoBar() {
   return (
     <div className="bg-accent text-on-accent">
+      {/*
+        Short on phones. The full sentence wrapped to two lines at 390px and ate
+        roughly an eighth of the first screen before the visitor saw anything.
+      */}
       <p className="mx-auto max-w-page px-4 py-2 text-center font-heading text-sm font-semibold uppercase tracking-[0.12em] sm:px-6">
-        $50 off your first service with {config.displayName}
+        <span className="sm:hidden">$50 off your first service</span>
+        <span className="hidden sm:inline">$50 off your first service with {config.displayName}</span>
       </p>
     </div>
   )

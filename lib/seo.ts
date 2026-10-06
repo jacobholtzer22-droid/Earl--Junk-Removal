@@ -31,6 +31,13 @@ export interface BuildMetadataArgs {
   image?: string | null
 }
 
+/**
+ * The branded social card. A real file in public/, not a manifest entry; see
+ * buildMetadata. Dimensions are declared here because they are what the file
+ * actually is, and a wrong og:image:width is worse than none.
+ */
+const OG_CARD = { path: '/og-card.png', width: 1200, height: 630 } as const
+
 export function canonicalUrl(path: string): string {
   return new URL(path, config.domain).toString()
 }
@@ -117,11 +124,25 @@ export function buildMetadata(args: BuildMetadataArgs): BuiltMetadata {
   const description = args.description ?? defaultDescription(args)
   const url = canonicalUrl(args.path)
 
-  // Falls back to the logo, never the hero. On a site whose hero is licensed
-  // stock, a hero fallback would publish a stock photograph as this business's
-  // social card. The logo is always honestly ours to show.
-  const imageName = args.image ?? config.images.logo ?? config.images.hero
-  const ogImage = imageName && hasImage(imageName) ? getImage(imageName) : null
+  /**
+   * The social card is the branded 1200x630 PNG at public/og-card.png, built
+   * from the logo and type. It is NOT a stock photograph and not the hero.
+   *
+   * Two reasons it bypasses the image manifest. The manifest only emits WebP,
+   * and several social scrapers still render WebP og:images poorly or not at
+   * all. And the manifest's widths cap at 1024, so a card published through it
+   * would declare 1200x630 while serving 1024 wide.
+   *
+   * A page may still override with `args.image` (a manifest filename) when a
+   * specific photograph genuinely suits it better.
+   */
+  const override = args.image && hasImage(args.image) ? getImage(args.image) : null
+  const ogImage = override ?? {
+    src: OG_CARD.path,
+    width: OG_CARD.width,
+    height: OG_CARD.height,
+    alt: `${config.displayName}, ${config.primaryService.name.toLowerCase()} in ${config.primaryCity}, ${config.primaryState}`,
+  }
 
   const metadata: Metadata = {
     title: { absolute: renderedTitle },

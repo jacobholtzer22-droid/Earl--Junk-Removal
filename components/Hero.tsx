@@ -15,7 +15,12 @@ import TrustChips from './TrustChips'
  * would duplicate every id and break every label binding. See QuoteSection.
  */
 export default function Hero() {
-  const h1 = `${config.primaryService.name} in ${config.primaryCity}, ${config.primaryState}`
+  /**
+   * "Houston, TX" is held together with a non-breaking space so the state can
+   * never be orphaned onto its own line, which is exactly what happened at
+   * 1440: "JUNK REMOVAL IN HOUSTON," / "TX".
+   */
+  const h1 = `${config.primaryService.name} in ${config.primaryCity},\u00A0${config.primaryState}`
   const hero = config.images.hero
 
   const actions = (
@@ -39,18 +44,35 @@ export default function Hero() {
   if (theme.heroVariant === 'full-bleed' && hero) {
     return (
       <section className="relative isolate flex min-h-[82vh] items-end overflow-hidden bg-primary-dark text-on-primary">
-        <Img name={hero} priority sizes="100vw" className="absolute inset-0 z-0 h-full w-full object-cover" />
+        {/*
+          object-position favours the upper third. At desktop the hero box is
+          about 1.9:1 against a 3:2 photograph, so a centred cover crop throws
+          away the bright sky and leaves only the dark tree mass, which is why
+          the hero read as a black field at 1440 while looking fine at 390.
+        */}
+        <Img
+          name={hero}
+          priority
+          sizes="100vw"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_28%]"
+        />
         {/*
           Heavy scrim. The headline has to clear AA against the brightest part
           of the photograph, not the average, so this is darker than it looks
           like it needs to be.
+        */}
+        {/*
+          Scrim weights: light at the top so the photograph is actually
+          readable, heavy from 45% down where the headline, body copy and chips
+          sit. At 0.55 across the top the picture read as a flat black field,
+          which wasted the one image on the page that explains the service.
         */}
         <div
           aria-hidden="true"
           className="absolute inset-0 z-[1]"
           style={{
             background:
-              'linear-gradient(180deg, rgb(10 11 13 / 0.55) 0%, rgb(10 11 13 / 0.62) 40%, rgb(10 11 13 / 0.90) 100%)',
+              'linear-gradient(180deg, rgb(10 11 13 / 0.30) 0%, rgb(10 11 13 / 0.52) 45%, rgb(10 11 13 / 0.90) 100%)',
           }}
         />
         <div className="relative z-10 mx-auto w-full max-w-page px-4 pb-14 pt-36 sm:px-6 md:pb-20">
