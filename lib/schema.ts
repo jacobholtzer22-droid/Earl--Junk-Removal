@@ -37,6 +37,18 @@ function heroImageUrl(c: SiteConfig): string | null {
   return c.images.hero && hasImage(c.images.hero) ? absolute(getImage(c.images.hero).src) : null
 }
 
+/**
+ * The business's logo for schema.org `logo`.
+ *
+ * Deliberately NOT the hero. Both `logo` and `image` used to read the hero
+ * photograph, which on a stock-photo site declares a stock image as the
+ * company's logo to every consumer of this markup. Falls back to null rather
+ * than to the hero: no logo property at all is correct, a wrong one is not.
+ */
+function logoUrl(c: SiteConfig): string | null {
+  return c.images.logo && hasImage(c.images.logo) ? absolute(getImage(c.images.logo).src) : null
+}
+
 function areaServed(areas: readonly ServiceArea[]): Json[] {
   return areas.map((a) => ({ '@type': 'City', name: a.name }))
 }
@@ -71,6 +83,7 @@ function aggregateRating(c: SiteConfig): Json {
 export function localBusiness(areas: readonly ServiceArea[] = config.serviceAreas): Json {
   const c = config
   const image = heroImageUrl(c)
+  const logo = logoUrl(c)
   return {
     '@context': 'https://schema.org',
     '@type': c.schemaType,
@@ -81,7 +94,8 @@ export function localBusiness(areas: readonly ServiceArea[] = config.serviceArea
     url: site(),
     telephone: c.phone,
     ...when(c.email, (email) => ({ email })),
-    ...when(image, (img) => ({ image: img, logo: img })),
+    ...when(image, (img) => ({ image: img })),
+    ...when(logo, (l) => ({ logo: l })),
     ...when(c.address, (a) => ({
       address: {
         '@type': 'PostalAddress',
@@ -120,7 +134,7 @@ export function localBusiness(areas: readonly ServiceArea[] = config.serviceArea
 
 export function organization(): Json {
   const c = config
-  const image = heroImageUrl(c)
+  const logo = logoUrl(c)
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -130,7 +144,7 @@ export function organization(): Json {
     url: site(),
     telephone: c.phone,
     ...when(c.email, (email) => ({ email })),
-    ...when(image, (img) => ({ logo: img })),
+    ...when(logo, (l) => ({ logo: l })),
     ...whenNonEmpty(sameAs(c), (urls) => ({ sameAs: urls })),
   }
 }

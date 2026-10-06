@@ -58,8 +58,23 @@ export const siteConfigSchema = z
      * row in the platform database, or every lead from this site is lost.
      * verify.ts confirms it against the platform (check 3) and rejects the
      * shipped sample identity (check 2).
+     *
+     * THE EMPTY STRING IS A LEGAL PRE-LAUNCH VALUE and means exactly one
+     * thing: the Business row does not exist yet. The site builds, every page
+     * renders, and components/PendingFormGate.tsx stops the contact form from
+     * posting anywhere, showing a call-us notice instead. A form that posted a
+     * blank slug would 404 on the platform and lose the lead silently, which
+     * is the failure this whole file exists to prevent.
+     *
+     * verify.ts check 2 is deliberately NOT relaxed to match: it tests
+     * SLUG_REGEX directly, so it stays red for the whole pre-launch window and
+     * nobody can mistake this site for finished. Fill the slug in, and check 2
+     * goes green with no other change.
+     *
+     * The `indexable` guard at the bottom of this schema makes the pairing
+     * safe: '' plus indexable: true refuses to build.
      */
-    businessSlug: slug,
+    businessSlug: z.union([z.literal(''), slug]),
 
     legalName: z.string().min(2),
     displayName: z.string().min(2),
@@ -110,6 +125,19 @@ export const siteConfigSchema = z
           priceNote: z.string().nullable(),
           /** Filename in public/images/originals to use as the page image, or null. */
           image: z.string().nullable(),
+          /**
+           * Replaces "<name> in <primaryCity>, <primaryState>" as the HEAD of
+           * the <title>. The " | <displayName>" suffix is still appended, so
+           * this is the part you are budgeting characters for.
+           *
+           * Exists because the title is capped at 60 rendered characters while
+           * the H1 is not. A service whose honest name runs long should keep
+           * that name in the H1, the nav and the cards, and shorten only the
+           * title. Truncating the name itself to fit a <title> is the wrong
+           * trade: it degrades the page for every human to satisfy a crawler.
+           * null means the title is derived from the name as usual.
+           */
+          titleOverride: z.string().min(10).nullable().default(null),
           faqs: z.array(faq).min(3).max(6),
         }),
       )
@@ -164,6 +192,18 @@ export const siteConfigSchema = z
       hero: z.string().nullable(),
       about: z.string().nullable(),
       gallery: z.array(z.string()).default([]),
+      /**
+       * The business's actual logo. Separate from `hero` on purpose: before
+       * this existed, lib/schema.ts set the LocalBusiness `logo` property and
+       * the og:image to the hero photograph. On a site whose hero is stock
+       * photography that publishes a stock photo as the company's logo.
+       *
+       * NOTE FOR ANYONE ADDING A FIELD HERE: this inner object is not
+       * .strict(). Zod's default is to STRIP unknown keys, so an unrecognised
+       * key parses "successfully" and then reads back undefined at runtime. It
+       * has to be declared here to exist at all.
+       */
+      logo: z.string().nullable().default(null),
     }),
 
     /**
@@ -229,6 +269,20 @@ export const siteConfigSchema = z
       })
       .optional(),
 
+    /**
+     * Whether search engines and AI crawlers may index this site.
+     *
+     * false emits `noindex, nofollow` on every page and a blanket Disallow in
+     * robots.txt. It is the correct state while the site is on a temporary
+     * Vercel URL: indexing a throwaway hostname and then moving the site is
+     * how a brand new domain inherits duplicate-content problems on day one.
+     *
+     * Flip to true in the same commit that sets `domain` to the real purchased
+     * host. See the guard below: this can never be true while businessSlug is
+     * empty.
+     */
+    indexable: z.boolean(),
+
     /** Full origin including https:// and www. when www is the primary host. No trailing slash. */
     domain: z
       .string()
@@ -236,6 +290,22 @@ export const siteConfigSchema = z
       .regex(/^https:\/\/[^/]+$/, 'origin only: https://www.example-host.com with no path or trailing slash'),
   })
   .strict()
+  /**
+   * An indexable site with a dead contact form is the single worst state this
+   * repo can ship. Every visitor search sends to it finds a form that cannot
+   * submit, and nobody finds out until the client asks why the phone never
+   * rang. Refusing to build is the only honest response.
+   */
+  .superRefine((cfg, ctx) => {
+    if (cfg.indexable && cfg.businessSlug === '') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['indexable'],
+        message:
+          'indexable cannot be true while businessSlug is empty: the contact form is inert, so an indexed page would collect nothing. Set the real businessSlug first.',
+      })
+    }
+  })
 
 export type SiteConfigInput = z.input<typeof siteConfigSchema>
 export type SiteConfigParsed = z.output<typeof siteConfigSchema>

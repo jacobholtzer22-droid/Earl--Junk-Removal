@@ -157,6 +157,8 @@ const siteConfig = {
     gallery: ['sample-mowing.jpg', 'sample-mulch.jpg', 'sample-cleanup.jpg', 'sample-crew.jpg'],
   },
 
+  indexable: false,
+
   domain: 'https://www.sample-lawn-care.com',
 } satisfies SiteConfigInput
 

@@ -37,12 +37,27 @@ export function canonicalUrl(path: string): string {
 
 export function buildTitle(args: Pick<BuildMetadataArgs, 'kind' | 'service' | 'area' | 'title'>): string {
   const { displayName, primaryCity, primaryState, primaryService } = config
+
+  /**
+   * An explicit `title` now wins for EVERY kind, not just 'other'. The derived
+   * forms below are a sane default, not a cage: several of them land outside
+   * the 50 to 60 character band for a given client's name length, and the page
+   * that knows it is the page that should say so.
+   */
+  if (args.title) return `${args.title} | ${displayName}`
+
   switch (args.kind) {
     case 'home':
       return `${displayName} | ${primaryService.name} in ${primaryCity}, ${primaryState}`
-    case 'service':
+    case 'service': {
       if (!args.service) throw new Error('buildTitle: kind "service" needs a service')
-      return `${args.service.name} in ${primaryCity} | ${displayName}`
+      // The state is included so the title answers "where" without the reader
+      // having to know which Houston. titleOverride replaces the whole head
+      // when the service's real name is too long to fit under 60 characters;
+      // the name itself is never truncated, because the H1 and nav use it.
+      const head = args.service.titleOverride ?? `${args.service.name} in ${primaryCity}, ${primaryState}`
+      return `${head} | ${displayName}`
+    }
     case 'area':
       if (!args.area) throw new Error('buildTitle: kind "area" needs an area')
       return `${primaryService.name} in ${args.area.name}, ${primaryState} | ${displayName}`
@@ -55,8 +70,8 @@ export function buildTitle(args: Pick<BuildMetadataArgs, 'kind' | 'service' | 'a
     case 'privacy':
       return `Privacy Policy and Data Use | ${displayName}`
     case 'other':
-      if (!args.title) throw new Error('buildTitle: kind "other" needs a title')
-      return `${args.title} | ${displayName}`
+      // Unreachable in practice: the early return above handles any args.title.
+      throw new Error('buildTitle: kind "other" needs a title')
   }
 }
 
@@ -102,12 +117,20 @@ export function buildMetadata(args: BuildMetadataArgs): BuiltMetadata {
   const description = args.description ?? defaultDescription(args)
   const url = canonicalUrl(args.path)
 
-  const imageName = args.image ?? config.images.hero
+  // Falls back to the logo, never the hero. On a site whose hero is licensed
+  // stock, a hero fallback would publish a stock photograph as this business's
+  // social card. The logo is always honestly ours to show.
+  const imageName = args.image ?? config.images.logo ?? config.images.hero
   const ogImage = imageName && hasImage(imageName) ? getImage(imageName) : null
 
   const metadata: Metadata = {
     title: { absolute: renderedTitle },
     description,
+    // Per-page meta robots as well as robots.txt. robots.txt alone is not
+    // enough: a disallowed URL can still be indexed from inbound links, and a
+    // crawler that is blocked from fetching the page never reads a noindex it
+    // cannot see. Belt and braces until the real domain is live.
+    robots: config.indexable ? undefined : { index: false, follow: false },
     alternates: { canonical: url },
     openGraph: {
       type: 'website',
