@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Credentials from '@/components/Credentials'
 import CtaBand from '@/components/CtaBand'
-import Img from '@/components/Img'
+import LogoMark from '@/components/LogoMark'
 import JsonLd from '@/components/JsonLd'
 import PageHeader from '@/components/PageHeader'
 import { config } from '@/lib/config'
@@ -38,13 +38,14 @@ export default async function AboutPage() {
           <Credentials />
           {content}
         </article>
-        {config.images.about && (
-          <aside>
-            <div className="overflow-hidden rounded-site">
-              <Img name={config.images.about} sizes="(min-width: 1024px) 33vw, 100vw" className="h-auto w-full" />
-            </div>
-          </aside>
-        )}
+        {/*
+          Logo and type, never a photograph. This page is about Earl and his
+          company rather than about a service, so an image here is read as his
+          premises or his crew. See lib/stock-images.ts.
+        */}
+        <aside>
+          <LogoMark />
+        </aside>
       </div>
       <CtaBand />
     </>

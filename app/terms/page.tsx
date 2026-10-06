@@ -56,9 +56,9 @@ export default function TermsPage() {
           Quotes and estimates
         </h2>
         <p className="mt-4">
-          No price appears anywhere on this website. Every job is quoted individually, and a free virtual estimate is
-          offered before work begins. A quote covers the work described when it was given. If what is actually on site
-          differs, in volume, in weight, or in how hard it is to reach, we will tell you before we carry on, not after.
+          No price appears anywhere on this website. Prices are quoted per job, and a free virtual estimate is offered.
+          A quote covers the work described when it was given. If what is actually on site differs, in volume, in weight,
+          or in how hard it is to reach, the quote may change, so ask before work continues.
         </p>
 
         <h2 className="mt-10 font-heading text-2xl font-bold uppercase tracking-tight text-primary-dark">

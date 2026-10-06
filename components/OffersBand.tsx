@@ -10,8 +10,8 @@ import { config } from '@/lib/config'
  * around any of them.
  */
 const OFFERS = [
-  { headline: '$50 off', body: 'your first service with us. Mention it when you call so it is on the quote, not an argument afterwards.' },
-  { headline: 'Free virtual estimates', body: 'You get a price before anyone drives out. No charge whether you book or not.' },
+  { headline: '$50 off', body: 'your first service with us. Mention it when you call so it is applied to the quote.' },
+  { headline: 'Free virtual estimates', body: 'A price before you commit, at no charge whether you book or not.' },
   { headline: 'Same-day service', body: 'Available. Call and ask what is still open today rather than assuming it is too late.' },
 ] as const
 

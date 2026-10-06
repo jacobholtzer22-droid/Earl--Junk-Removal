@@ -11,7 +11,7 @@ export default function CtaBand({ heading }: { heading?: string }) {
             {heading ?? `Ready to get started in ${config.primaryCity}?`}
           </h2>
           <p className="mt-3 text-base text-muted md:text-lg">
-            Call <Phone className="text-primary-dark" /> or send a message and we will get back to you with a quote.
+            Call <Phone className="text-primary-dark" /> or send a message to start a free estimate.
           </p>
         </div>
         <Link href="/contact" className="shrink-0 bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-on-accent hover:bg-accent-dark">

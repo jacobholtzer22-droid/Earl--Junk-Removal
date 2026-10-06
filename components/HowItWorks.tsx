@@ -11,15 +11,15 @@ import Phone from './Phone'
 const STEPS = [
   {
     title: 'Call and describe it',
-    body: 'Tell us what you have and where it is sitting. Upstairs, out back, behind a shed: say so now and the quote will match the real job.',
+    body: 'Tell us what you have and where it is sitting. Upstairs, out back, behind a shed: say so on the call so it is part of the quote.',
   },
   {
     title: 'Get a free virtual estimate',
-    body: 'You get a price before anyone comes out and before you have agreed to anything. The estimate costs nothing either way.',
+    body: 'You get a price before you commit to anything, and the estimate costs nothing whether or not you book.',
   },
   {
     title: 'We haul it off',
-    body: 'Same-day service is available, and we work seven days a week from 8:00am to 5:00pm. You point, we load, it goes.',
+    body: 'Same-day service is available, and scheduling runs seven days a week from 8:00am to 5:00pm.',
   },
 ] as const
 

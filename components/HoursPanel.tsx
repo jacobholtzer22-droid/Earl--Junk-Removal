@@ -40,8 +40,7 @@ export default function HoursPanel() {
             After-hours calls are answered. Emergency after-hours service is available and a trip charge applies.
           </p>
           <p className="mt-4 text-base leading-relaxed text-muted">
-            Call <Phone className="text-primary-dark" /> and we will tell you the charge before anyone is dispatched,
-            not after.
+            Call <Phone className="text-primary-dark" /> and ask what the charge is before you book.
           </p>
         </div>
       </div>

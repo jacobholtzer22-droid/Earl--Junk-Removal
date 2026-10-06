@@ -102,7 +102,7 @@ export default async function PrivacyPolicyPage() {
               </a>
             </>
           ) : null}{' '}
-          and we will take care of it.
+          and ask for it to be corrected or removed.
         </p>
       </article>
     </>

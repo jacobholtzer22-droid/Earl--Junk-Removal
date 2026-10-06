@@ -7,11 +7,19 @@ generated from the template until it is fixed at source.
 **The template repo was not touched in this session.** This is the list to work
 from when you do.
 
-Branched from `aa-site-template` at `9e93653` (branch `feat/contact-form-fields`,
-2 commits ahead of `AA-Template` `origin/main` at `aff28dc`). Note that the two
-unmerged commits carry the current `ContactForm.tsx` **and** its matching
-`scripts/contact-form.sha256`, so any upstream work should start from that
-branch rather than `main`.
+## BASE OF THIS REPO, read this before upstreaming anything
+
+**This repo was generated from `AA-Template` branch `feat/contact-form-fields`
+at `9e93653`, NOT from `main` at `aff28dc`.** That branch is 2 commits ahead of
+`main` and those 2 commits are the optional contact-form fields.
+
+It matters for two reasons. The branch carries the current `ContactForm.tsx`
+**and** its matching `scripts/contact-form.sha256`, so a fix rebased onto `main`
+would be sitting on an older sealed form with a different checksum. And every
+line number and context in the fixes below refers to the branch, not to `main`.
+
+Start upstream work from `feat/contact-form-fields`, or merge it to `main`
+first.
 
 Ordered by how much damage each one does if left alone.
 

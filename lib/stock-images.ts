@@ -35,8 +35,19 @@ export const LOGO = 'ejc-logo.png'
 export const STOCK = {
   /** Homepage hero. Reused on the yard waste page; it is the same photograph. */
   hero: 'uprooted-tree-on-lawn.jpg',
-  /** About page. */
-  about: 'stacked-cardboard-boxes.jpg',
+  /**
+   * NULL ON PURPOSE, and it must stay null while the photography is stock.
+   *
+   * The About page and the homepage's "Run by Earl" teaser are the two places
+   * on this site that are explicitly about Earl and his company. A photograph
+   * there does not illustrate a service, it illustrates HIM, so a stock image
+   * in that slot is read by every visitor as his premises, his work or his
+   * crew. That is a claim, and it is not one we can make.
+   *
+   * Both sections run on the logo and type instead. When Earl supplies a real
+   * photograph of his own operation, this is the line to fill in.
+   */
+  about: null,
 
   junkRemoval: 'basement-with-old-furniture.jpg',
   furnitureRemoval: 'discarded-sofa-at-kerb.jpg',

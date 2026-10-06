@@ -26,8 +26,7 @@ export default function QuoteSection() {
             Get a free estimate
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-            Tell {config.displayName} what you have and where it is. You get a price before anyone comes out, and before
-            you have agreed to anything.
+            Tell {config.displayName} what you have and where it is. You get a price before you commit to anything.
           </p>
           <div className="mt-8">
             <TrustChips />
