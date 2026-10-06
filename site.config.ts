@@ -473,10 +473,10 @@ const siteConfig = {
   // Pre-launch. Cannot be true while businessSlug is empty; the schema refuses
   // to parse that combination and the build fails. Flip to true in the same
   // commit that sets `domain` to the real purchased host.
-  indexable: false,
+  indexable: true,
 
   // Provisional Vercel host. The domain is not purchased yet.
-  domain: 'https://ejc-demo-junk-haul.vercel.app',
+  domain: 'https://www.houstonwasteremoval.com',
 } satisfies SiteConfigInput
 
 export default siteConfig
