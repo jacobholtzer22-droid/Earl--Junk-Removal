@@ -645,6 +645,99 @@ const siteConfig = {
     },
   ],
 
+  /**
+   * Q&A for the five standalone pages. See lib/config-schema.ts pageFaqs for
+   * why it lives here rather than in the MDX.
+   *
+   * about, services, areas and referral are the questions that were already
+   * visible on those pages as headings in content/*.mdx with the answer in the
+   * paragraph underneath. The words are the same words; moving them here is
+   * what puts FAQPage markup over them without writing them twice. The couple
+   * of headings that were statements rather than questions ("Why this exists")
+   * are now phrased as the question they were already answering.
+   *
+   * contact is the only new copy. That page had no Q&A of any kind, and every
+   * answer below comes from seo/FACTS.md: the estimate is virtual and free,
+   * access is arranged at booking, the phone is answered seven days a week.
+   * Nothing here promises a response time, because no response time was given.
+   */
+  pageFaqs: {
+    about: [
+      {
+        q: 'Is this the same company as EJC Demo Junk & Haul?',
+        a: 'Yes. Houston Waste Removal is the name the business trades under, EJC Demo Junk & Haul is the company that operates it, and Mustang Logistix LLC is the registered legal name. One business, one phone number, three names. If someone recommended any of them to you, you are in the right place.',
+      },
+      {
+        q: 'What does the "Demo" in EJC Demo Junk & Haul stand for?',
+        a: 'Demolition. It is in the name because light demolition is on the service list alongside hauling: sheds, decks, fences, playground sets and interior fixtures. Because both are services here, the teardown and the debris can be quoted together rather than as two jobs.',
+      },
+      {
+        q: 'How do you work?',
+        a: 'You call or send the form, describe what you have, and get a free virtual estimate before you commit to anything. Mark anything that is staying before work starts, and if what is on site turns out to be different from what you described, raise it and ask for the quote to be looked at again.',
+      },
+      {
+        q: 'Who do you work for?',
+        a: 'Homeowners and renters, realtors and property managers, contractors, businesses and municipalities, senior citizens, estate executors, and storage facility operators. The scheduling and the free estimate work the same way whichever of those you are.',
+      },
+    ],
+    services: [
+      {
+        q: 'Can you do more than one of these in a visit?',
+        a: 'Ask when you call. A garage cleanout plus a shed that has to come down plus the brush pile out back can be quoted as one job rather than three. Mention everything during the free virtual estimate so the quote covers the whole lot.',
+      },
+      {
+        q: 'What if my job is not on this list?',
+        a: 'Call and ask. This list is not a boundary. We also handle labour-only moving help, packing and unpacking, pressure washing, dumpster rental coordination, event cleanup and subscription junk pickup, which do not each need their own page to be real.',
+      },
+      {
+        q: 'How are these services priced?',
+        a: 'None of them has a flat rate, because a few bags and a full garage are not the same job. Every service on this list is priced by a free virtual estimate, so you have the number before you commit to anything, and nothing is owed if you decide against it.',
+      },
+    ],
+    areas: [
+      {
+        q: 'Why are these places listed individually?',
+        a: 'Because three of them are not cities, and that trips people up. Cypress is an unincorporated community, Spring is a census-designated place, and The Woodlands is a township that voted against becoming a city. A postal address in any of them can sit outside the boundary a map shows you, which is why every page here says to give the address rather than the place name.',
+      },
+      {
+        q: 'What if my address is not on the list?',
+        a: 'Call and ask. The list is where the work usually goes, not a fence. It is a short conversation and it beats guessing from a map.',
+      },
+      {
+        q: 'Can you come out the same day in these areas?',
+        a: 'Same-day service is available. Rather than deciding for yourself that it is too late, call and ask what is still open today; the phone is answered Monday through Sunday, 8:00am to 5:00pm Central.',
+      },
+    ],
+    contact: [
+      {
+        q: 'What happens after I send this form?',
+        a: 'It reaches Earl, who runs the business, and he follows up to set up your free virtual estimate. If you would rather not wait on a reply, call instead; the phone is answered Monday through Sunday, 8:00am to 5:00pm Central.',
+      },
+      {
+        q: 'What should I have ready when I call?',
+        a: 'Roughly what the items are, which room or part of the property they are in, and anything awkward about reaching them: stairs, a narrow doorway, a locked back gate, a long carry from the kerb. Access affects a quote as much as volume does, so it is better said now than discovered on the day.',
+      },
+      {
+        q: 'Do I need to be there?',
+        a: 'Not to get a price. The estimate is virtual, so nobody has to meet anyone to work out what the job costs. Property access is arranged when you book, and that is the point to say whether you will be there or leaving a gate unlocked.',
+      },
+    ],
+    referral: [
+      {
+        q: 'Why does this program exist?',
+        a: 'You are already standing in the garage, the crawlspace and the gutted bathroom. You see the pile before anyone else does, and if hauling is not your trade there is nothing you can do with it. This turns that into something you get paid for instead.',
+      },
+      {
+        q: 'What counts as a lead?',
+        a: 'Someone you sent who contacts us and asks for a quote. The first payment is for that, whether or not it becomes a job. The second, larger payment is for a referral that books and has the work completed.',
+      },
+      {
+        q: 'How do I set it up?',
+        a: 'Call before you refer anybody. Agree with Earl how you will pass work over, what counts as verified on your jobs, and how you want to be paid. Settling that in one phone call up front is how this stays simple later.',
+      },
+    ],
+  },
+
   images: {
     hero: STOCK.hero,
     about: STOCK.about,

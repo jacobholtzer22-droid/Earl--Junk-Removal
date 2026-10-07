@@ -8,13 +8,13 @@ sees them, so a review of the source is a review of something nobody reads.
 Every business claim below traces to `seo/FACTS.md`. The reasoning for each
 sentence that was changed or removed is in `seo/COPY-CLAIMS-REVIEW.md`.
 
-Pages read: **20**
+Pages read: **29**
 
 ---
 
 ## 1. Hero, homepage
 
-**Eyebrow:** EJC Demo Junk & Haul
+**Eyebrow:** Houston Waste Removal
 
 **H1:** Junk Removal in Houston, TX
 
@@ -44,11 +44,173 @@ Same-day service is available, and scheduling runs seven days a week from 8:00am
 
 ## 3. Questions and answers, by page
 
-Visible questions: **51** across **14** pages.
+Visible questions: **131** across **27** pages.
 
-### `/`: Frequently Asked Questions (8)
+### `/about`: Questions answered in the page copy (4)
 
-**Q. What areas does EJC Demo Junk & Haul serve?**
+**Q. Is this the same company as EJC Demo Junk & Haul?**
+
+A. Yes. Houston Waste Removal is the name the business trades under, EJC Demo Junk & Haul is the company that operates it, and Mustang Logistix LLC is the registered legal name. One business, one phone number, three names. If someone recommended any of them to you, you are in the right place.
+
+**Q. What does the "Demo" in EJC Demo Junk & Haul stand for?**
+
+A. Demolition. It is in the name because light demolition is on the service list alongside hauling: sheds, decks, fences, playground sets and interior fixtures. Because both are services here, the teardown and the debris can be quoted together rather than as two jobs.
+
+**Q. How do you work?**
+
+A. You call or send the form, describe what you have, and get a free virtual estimate before you commit to anything. Mark anything that is staying before work starts, and if what is on site turns out to be different from what you described, raise it and ask for the quote to be looked at again.
+
+**Q. Who do you work for?**
+
+A. Homeowners and renters, realtors and property managers, contractors, businesses and municipalities, senior citizens, estate executors, and storage facility operators. The scheduling and the free estimate work the same way whichever of those you are.
+
+### `/areas`: Questions answered in the page copy (3)
+
+**Q. Why are these places listed individually?**
+
+A. Because three of them are not cities, and that trips people up. Cypress is an unincorporated community, Spring is a census-designated place, and The Woodlands is a township that voted against becoming a city. A postal address in any of them can sit outside the boundary a map shows you, which is why every page here says to give the address rather than the place name.
+
+**Q. What if my address is not on the list?**
+
+A. Call and ask. The list is where the work usually goes, not a fence. It is a short conversation and it beats guessing from a map.
+
+**Q. Can you come out the same day in these areas?**
+
+A. Same-day service is available. Rather than deciding for yourself that it is too late, call and ask what is still open today; the phone is answered Monday through Sunday, 8:00am to 5:00pm Central.
+
+### `/areas/cypress`: Cypress questions (3)
+
+**Q. Is Cypress its own city?**
+
+A. No. Cypress is an unincorporated community in Harris County, and it sits entirely inside the City of Houston extraterritorial jurisdiction. There is no Cypress city hall, which is why permits and rules get routed through the county or through Houston.
+
+**Q. Do you clear garages and storage units in Cypress?**
+
+A. Yes, and they are the same job with one difference worth planning around: a storage facility has access hours and they are often narrower than ours. Mention them when you book so the visit lands inside them.
+
+**Q. Can you come out at the weekend in Cypress?**
+
+A. Yes. Saturday and Sunday are ordinary working days here, 8:00am to 5:00pm, same as the rest of the week. After-hours calls are answered too.
+
+### `/areas/humble`: Humble questions (3)
+
+**Q. Do you serve Humble itself or the wider area?**
+
+A. Both are worth asking about. Humble is a small incorporated city in Harris County surrounded by a much larger area that shares its name and its postal addresses, so give the address rather than the city name and you will get a straight answer.
+
+**Q. Do you do hoarder and estate cleanouts in Humble?**
+
+A. Yes, and both are handled with the pacing agreed before any work starts. Say what you need when you call: discretion, stages across several visits, or anything set aside and kept.
+
+**Q. Is the virtual estimate available for Humble addresses?**
+
+A. Yes. It costs nothing whether or not you go ahead, and you have a price before you commit. Call and ask how to set one up.
+
+### `/areas/katy`: Katy questions (3)
+
+**Q. Which county is my Katy address in?**
+
+A. It depends which side of town you are on. Katy sits at the tripoint of Harris, Fort Bend and Waller counties, so three different county lines run through the same small city. It makes no difference to a quote, but it is worth knowing when a permit or a deed is involved.
+
+**Q. Do you take construction debris from a Katy remodel?**
+
+A. Yes. Lumber, drywall, roofing tear-off, concrete, brick and scrap metal all come under construction debris removal. Say what the pile is made of when you call, because weight drives that job more than volume does.
+
+**Q. Can you pick up the same day in Katy?**
+
+A. Same-day service is available. Call and ask what is still open today rather than assuming it is too late; the phone is answered seven days a week from 8:00am to 5:00pm.
+
+### `/areas/pasadena`: Pasadena questions (3)
+
+**Q. Do you cover all of Pasadena?**
+
+A. Ask with the address. Pasadena is an incorporated city in Harris County and one of the older ones, which means the city limits have moved more than once and a postal address does not always match them.
+
+**Q. Do you clear out rental properties in Pasadena?**
+
+A. Yes. Tenant eviction cleanouts, move-outs and listing preparation are on the property cleanouts page, and same-day service is available when a unit has to be empty by a particular date.
+
+**Q. Do you take renovation debris in Pasadena?**
+
+A. Yes. Construction and renovation waste, roofing tear-off, concrete, brick, lumber and scrap metal all come under construction debris removal, and repeat visits across a build are quoted the same way as a single clear.
+
+### `/areas/pearland`: Pearland questions (3)
+
+**Q. Pearland sits in three counties. Does that change anything?**
+
+A. Not for a quote. Pearland is mostly in Brazoria County with portions reaching into Fort Bend and Harris, which matters for your tax bill and your ISD rather than for what it costs to empty a garage.
+
+**Q. Do you handle estate cleanouts in Pearland?**
+
+A. Yes. Whole-property clearing for executors and families is on the estate cleanouts page, the pace is agreed when the job is quoted, and the estimate is virtual so an out-of-state executor does not need to travel for a price.
+
+**Q. Is the estimate really free for a Pearland address?**
+
+A. Yes, and it is free whether or not you book. That is the whole point of a virtual estimate: you have a price before you commit to anything, and nothing is owed if you decide against it.
+
+### `/areas/spring`: Spring questions (3)
+
+**Q. Which Spring do you mean?**
+
+A. Whichever one you live in. Spring is a census-designated place in Harris County, but the name is popularly applied to a much larger stretch of northern Harris County and a smaller area of southern Montgomery County. Give the address and it stops being ambiguous.
+
+**Q. Do you clear storm debris in Spring?**
+
+A. Yes. Brush, limbs, leaves and whatever the wind brought down come under yard waste and storm debris removal, along with old fencing and decking. Emergency after-hours service is available and a trip charge applies; ask what it is when you call.
+
+**Q. Do you take appliances and mattresses from a Spring home?**
+
+A. Yes, and each has its own page. Appliance removal covers refrigerators, washers, dryers and water heaters; mattress disposal covers any size, box spring included. Both can go in one visit if you mention both when you call.
+
+### `/areas/sugar-land`: Sugar Land questions (3)
+
+**Q. Do you clear properties for realtors in Sugar Land?**
+
+A. Yes. Listing preparation, move-outs, evictions and foreclosure cleanouts are all on the property cleanouts page, and the estimate is virtual, which matters when you are running several Fort Bend County listings at once and cannot meet anyone on site.
+
+**Q. What about an address outside the Sugar Land city limits?**
+
+A. Ask when you call. A Sugar Land postal address and the incorporated city are not always the same boundary, and the only way to know whether yours is covered is to say the address out loud to someone.
+
+**Q. Do you remove hot tubs and sheds in Sugar Land?**
+
+A. Yes, and they are two different jobs on the list. A hot tub is broken down where it sits and carried out in pieces; a shed comes under light demolition, where the teardown and the debris are quoted together.
+
+### `/areas/the-woodlands`: The Woodlands questions (3)
+
+**Q. Is The Woodlands a city?**
+
+A. No, and residents have chosen to keep it that way. The Woodlands is a special-purpose district and census-designated place, run by The Woodlands Township and its elected board rather than by a city council. Residents voted against incorporation in 2021.
+
+**Q. Do you do commercial cleanouts in The Woodlands?**
+
+A. Yes. Offices, retail units, warehouses, restaurants and hotels are all on the commercial cleanouts page, including the furniture, appliances and kitchen equipment inside them. Say what window you need when you call and ask what fits it.
+
+**Q. What about work outside normal hours in The Woodlands?**
+
+A. After-hours calls are answered, and emergency after-hours service is available with a trip charge. Ask what the charge is before you book rather than after the work is done.
+
+### `/contact`: Before you call (3)
+
+**Q. What happens after I send this form?**
+
+A. It reaches Earl, who runs the business, and he follows up to set up your free virtual estimate. If you would rather not wait on a reply, call instead; the phone is answered Monday through Sunday, 8:00am to 5:00pm Central.
+
+**Q. What should I have ready when I call?**
+
+A. Roughly what the items are, which room or part of the property they are in, and anything awkward about reaching them: stairs, a narrow doorway, a locked back gate, a long carry from the kerb. Access affects a quote as much as volume does, so it is better said now than discovered on the day.
+
+**Q. Do I need to be there?**
+
+A. Not to get a price. The estimate is virtual, so nobody has to meet anyone to work out what the job costs. Property access is arranged when you book, and that is the point to say whether you will be there or leaving a gate unlocked.
+
+### `/`: Frequently Asked Questions (9)
+
+**Q. Is Houston Waste Removal the same company as EJC Demo Junk & Haul?**
+
+A. Yes. Houston Waste Removal is the name the business trades under, EJC Demo Junk & Haul is the company that operates it, and Mustang Logistix LLC is the registered legal name. One business, one phone number, three names. If you were recommended any of them, you are in the right place.
+
+**Q. What areas does Houston Waste Removal serve?**
 
 A. We serve the Houston, Texas area. If you are not sure whether your address is covered, call and ask rather than guessing; it is a short conversation and it saves everyone a wasted trip.
 
@@ -58,7 +220,7 @@ A. Price depends on what you have and how hard it is to reach, so there is no si
 
 **Q. What is a free virtual estimate?**
 
-A. It is a quote that costs nothing, whether or not you go ahead. Call EJC Demo Junk & Haul and ask how to set one up.
+A. It is a quote that costs nothing, whether or not you go ahead. Call and ask how to set one up.
 
 **Q. Can you come out today?**
 
@@ -76,11 +238,39 @@ A. Yes. New customers get $50 off their first service. Mention it when you call 
 
 A. Renters, realtors, property managers, contractors, businesses, municipalities, senior citizens, estate executors, and storage facility operators. The scheduling and the free estimate work the same way for all of them.
 
-**Q. Is EJC Demo Junk & Haul veteran owned?**
+**Q. Is Houston Waste Removal veteran owned?**
 
 A. Yes. It is a veteran owned business, owned by Earl. The "Demo" in the name is short for demolition, which is why light demolition sits alongside hauling and cleanouts on the service list.
 
-### `/services/appliance-removal`: Common questions (3)
+### `/referral-program`: Questions answered in the page copy (3)
+
+**Q. Why does this program exist?**
+
+A. You are already standing in the garage, the crawlspace and the gutted bathroom. You see the pile before anyone else does, and if hauling is not your trade there is nothing you can do with it. This turns that into something you get paid for instead.
+
+**Q. What counts as a lead?**
+
+A. Someone you sent who contacts us and asks for a quote. The first payment is for that, whether or not it becomes a job. The second, larger payment is for a referral that books and has the work completed.
+
+**Q. How do I set it up?**
+
+A. Call before you refer anybody. Agree with Earl how you will pass work over, what counts as verified on your jobs, and how you want to be paid. Settling that in one phone call up front is how this stays simple later.
+
+### `/services`: Questions answered in the page copy (3)
+
+**Q. Can you do more than one of these in a visit?**
+
+A. Ask when you call. A garage cleanout plus a shed that has to come down plus the brush pile out back can be quoted as one job rather than three. Mention everything during the free virtual estimate so the quote covers the whole lot.
+
+**Q. What if my job is not on this list?**
+
+A. Call and ask. This list is not a boundary. We also handle labour-only moving help, packing and unpacking, pressure washing, dumpster rental coordination, event cleanup and subscription junk pickup, which do not each need their own page to be real.
+
+**Q. How are these services priced?**
+
+A. None of them has a flat rate, because a few bags and a full garage are not the same job. Every service on this list is priced by a free virtual estimate, so you have the number before you commit to anything, and nothing is owed if you decide against it.
+
+### `/services/appliance-removal`: Common questions (6)
 
 **Q. Do you take refrigerators and freezers?**
 
@@ -94,7 +284,19 @@ A. Yes, and timing it around a delivery window is worth raising when you book. W
 
 A. Appliance recycling and scrap metal recycling are both on the service list. Ask about your specific unit during the free virtual estimate.
 
-### `/services/commercial-cleanouts`: Common questions (3)
+**Q. Can you time it around a delivery?**
+
+A. Yes, and it is worth raising when you book. Delivery windows move, so it helps to know that scheduling runs seven days a week from 8:00am to 5:00pm and same-day service is available.
+
+**Q. What happens to the old unit?**
+
+A. Appliance recycling and scrap metal recycling are both part of what we offer. Ask about your specific unit when you call rather than assuming from this page.
+
+**Q. Do you take more than one at a time?**
+
+A. Yes. Kitchen remodels, rental turnovers and estate clearances can mean several at once. Give the count when you call (713) 291-9440 so the quote covers the full load.
+
+### `/services/commercial-cleanouts`: Common questions (6)
 
 **Q. Can you work outside our business hours?**
 
@@ -108,7 +310,19 @@ A. Yes. Restaurant equipment removal is part of commercial work here, along with
 
 A. Business owners, property managers, hotels, storage facility operators, and municipalities, as well as contractors clearing a space between tenants. Tell us which you are and the quote will reflect that scope.
 
-### `/services/construction-debris-removal`: Common questions (3)
+**Q. Can you work around our opening hours?**
+
+A. Scheduling runs seven days a week from 8:00am to 5:00pm, after-hours calls are answered, and emergency after-hours service is available with a trip charge. Tell us the window you need when you call and ask what fits it.
+
+**Q. Do you remove restaurant equipment?**
+
+A. Yes. Restaurant equipment removal sits alongside office, retail, warehouse and hospitality cleanouts here. Heavy kitchen items are worth flagging early because access and weight drive the job.
+
+**Q. Who is this for?**
+
+A. Business owners, property managers, hotels, storage facility operators and municipalities, as well as contractors clearing a unit between tenants. Say which you are when you call (713) 291-9440 and the quote will reflect that scope.
+
+### `/services/construction-debris-removal`: Common questions (6)
 
 **Q. Do you take concrete and brick?**
 
@@ -122,7 +336,19 @@ A. Yes. Repeat visits across a build are quoted the same way as a single clear, 
 
 A. Yes, and there is a referral program for contractors who send work our way: $20 for a verified lead that requests a quote, and $75 for a lead that books and has the job completed.
 
-### `/services/estate-cleanouts`: Common questions (3)
+**Q. Do you take concrete and brick?**
+
+A. Yes. Concrete and brick removal and scrap metal hauling are part of this service, along with lumber disposal and renovation waste. Say what the pile is made of when you call, because weight changes the job more than volume does.
+
+**Q. Can you come back between phases?**
+
+A. Yes. Repeat visits across a build are scheduled the same way as a single clear, and scheduling runs seven days a week from 8:00am to 5:00pm.
+
+**Q. Is there anything in it for contractors?**
+
+A. Yes. There is a referral program for trade contractors who send work our way, paid once when a referred lead asks for a quote and again when that job is completed. Call (713) 291-9440 to set it up before you refer anyone.
+
+### `/services/estate-cleanouts`: Common questions (6)
 
 **Q. What if we have not finished deciding what to keep?**
 
@@ -136,7 +362,19 @@ A. Yes. The estimate is virtual and free, so you do not need to be in Houston to
 
 A. Donation drop-off is on the service list. Say during the estimate which items you would rather see donated than discarded, and ask what is workable for them.
 
-### `/services/furniture-removal`: Common questions (3)
+**Q. What if we have not finished deciding?**
+
+A. Then say so when you call. Mark or set aside anything that stays before work starts, and ask about splitting the job across several visits if that suits the family better than one day.
+
+**Q. Can you work with an out-of-state executor?**
+
+A. Yes. The estimate is virtual and free, so you do not need to be in Houston to get a price. Arrange property access when you book.
+
+**Q. Can usable things be donated?**
+
+A. Donation drop-off is one of the services offered here. Say during the estimate which items you would rather see donated, and ask what is workable for them. Call (713) 291-9440 to talk it through.
+
+### `/services/furniture-removal`: Common questions (6)
 
 **Q. Can you get a sectional down a narrow staircase?**
 
@@ -150,7 +388,19 @@ A. Yes. Call with whatever you have, however small, and ask for a quote on it.
 
 A. Yes. Commercial furniture and appliance removal is part of what we do, alongside office, retail, and warehouse cleanouts. The scheduling is the same; call and tell us what the space looks like.
 
-### `/services/garage-cleanouts`: Common questions (4)
+**Q. What about stairs and narrow doorways?**
+
+A. Sectionals, sleeper sofas and armoires can have to come apart to get out. Mention the stairs, the turns and the doorway width during the free virtual estimate and the quote will reflect the real job instead of a guess.
+
+**Q. Will you take a single piece?**
+
+A. Yes. One chair is a job. You are not required to fill a truck to be worth booking, and a single item is quoted the same way as a full house.
+
+**Q. Can you take furniture from a business?**
+
+A. Yes. Commercial furniture removal runs alongside office, retail and warehouse cleanouts here. Call (713) 291-9440 and describe the space and the access.
+
+### `/services/garage-cleanouts`: Common questions (7)
 
 **Q. Do I need to sort everything before you arrive?**
 
@@ -168,7 +418,19 @@ A. It depends on how full it is and how much has to be carried, which is what th
 
 A. Yes. Attic, basement and storage cleanouts all fall under this service. Mention the stairs, hatches or pull-down ladders involved during the estimate so the access is part of what gets quoted.
 
-### `/services/hoarder-cleanouts`: Common questions (4)
+**Q. Do I have to sort it first?**
+
+A. No. Point out anything that stays before work starts. Plenty of people would rather sort first, and that is fine too, but it is not a condition of booking.
+
+**Q. Can you clear a storage unit instead?**
+
+A. Yes, and the work is the same. The one difference worth planning around is facility access hours, which may be narrower than ours. Mention them when you book so the visit lands inside them.
+
+**Q. How long will it take?**
+
+A. That depends on how full it is and how far things have to be carried. The free virtual estimate is there so you have the scope and the price before you commit. Call (713) 291-9440 to set one up.
+
+### `/services/hoarder-cleanouts`: Common questions (7)
 
 **Q. Will anyone judge the condition of the home?**
 
@@ -180,13 +442,25 @@ A. Ask about splitting the work across several visits. Say what pace suits the h
 
 **Q. How do we keep this private?**
 
-A. Say what discretion you need and when, and ask how the visit can be arranged around it. EJC Demo Junk & Haul works seven days a week from 8:00am to 5:00pm.
+A. Say what discretion you need and when, and ask how the visit can be arranged around it. We work seven days a week from 8:00am to 5:00pm.
 
 **Q. What if we find things we want to keep partway through?**
 
 A. Say so and set them aside. Anything you want to keep is worth marking before work starts, and worth saying straight away if you change your mind partway.
 
-### `/services/hot-tub-removal`: Common questions (3)
+**Q. Will anybody comment on the state of the house?**
+
+A. You do not owe anyone an explanation of how the house got this way, and you do not have to give one to get a quote. Ask about discretion directly when you call.
+
+**Q. Can it be done in stages?**
+
+A. Ask about splitting the work across several visits. Say what pace suits the household during the free virtual estimate and ask for the schedule to be set around it.
+
+**Q. What if we want to keep something partway through?**
+
+A. Say so and set it aside. Anything you want to keep is worth marking before work starts, and worth saying straight away if you change your mind partway. Call (713) 291-9440 whenever you are ready to talk about it.
+
+### `/services/hot-tub-removal`: Common questions (6)
 
 **Q. Does the hot tub have to be drained first?**
 
@@ -200,11 +474,23 @@ A. That is why a hot tub is often cut down on site rather than carried out whole
 
 A. Point out anything you are concerned about before work starts, including decking, pavers and sprinkler heads on the path out, and ask how the route out will be handled.
 
-### `/services/junk-removal`: Common questions (4)
+**Q. Does it need to be drained first?**
+
+A. It has to be empty before it can be moved, so draining it ahead of the visit saves time on the day. If that is not something you can do yourself, raise it during the estimate rather than on the day.
+
+**Q. What if it is on a deck or behind a fence?**
+
+A. That is the usual situation, and it is exactly why hot tubs get cut down on site instead of carried out whole. Describe the route out during the free virtual estimate so the quote matches the real work.
+
+**Q. Will the patio or deck get damaged?**
+
+A. Point out anything you are worried about before work starts, including decking boards, pavers and sprinkler heads on the path out, and ask how the route out will be handled. Call (713) 291-9440 and walk us through it.
+
+### `/services/junk-removal`: Common questions (7)
 
 **Q. How much does junk removal cost in Houston?**
 
-A. There is no flat rate, because a few bags and a full garage are not the same job. EJC Demo Junk & Haul gives a free virtual estimate, so you have a price before you commit to anything.
+A. There is no flat rate, because a few bags and a full garage are not the same job. Houston Waste Removal gives a free virtual estimate, so you have a price before you commit to anything.
 
 **Q. Can you come out the same day?**
 
@@ -218,7 +504,19 @@ A. No. Say where the items are when you call. If it is upstairs, in a back room,
 
 A. Recycling pickup, donation drop-off, scrap metal recycling and electronics recycling are all on the service list. Ask about a specific item during your estimate.
 
-### `/services/light-demolition`: Common questions (3)
+**Q. What counts as junk?**
+
+A. Almost anything that is not hazardous and is not nailed down. Furniture, appliances, electronics, mattresses, carpet, yard waste, construction debris and the contents of a garage all come under this. If you are unsure about a specific item, say what it is during the estimate and you will get a straight answer.
+
+**Q. Do I have to be there?**
+
+A. Not necessarily. Arrange access with us and point out what stays. For renters, executors and property managers who are not local, the estimate is virtual and free specifically so nobody has to drive across town to get a price.
+
+**Q. How fast can you come out?**
+
+A. Same-day service is available. We work seven days a week from 8:00am to 5:00pm, and after-hours calls are answered, so call (713) 291-9440 and ask what is open rather than assuming.
+
+### `/services/light-demolition`: Common questions (6)
 
 **Q. What counts as light demolition?**
 
@@ -232,7 +530,19 @@ A. Yes. Demolition and removal are both on the service list, so clearing the deb
 
 A. That depends on the structure and your local rules, and it is worth checking with the City of Houston or your HOA before work is scheduled. We cannot answer that for your specific property.
 
-### `/services/mattress-disposal`: Common questions (3)
+**Q. What counts as light demolition?**
+
+A. Freestanding structures and attached features that come apart without structural work. If you are not certain yours qualifies, describe it during the free virtual estimate rather than guessing, and ask plainly whether it is a job for us.
+
+**Q. Does the debris go too?**
+
+A. Yes. Demolition and removal are both on the service list, so clearing the debris can be quoted with the teardown rather than as a second job with a second contractor.
+
+**Q. Do I need a permit?**
+
+A. That depends on the structure and your local rules, and it is worth checking with the City of Houston or your HOA before work is scheduled. We cannot answer it for your specific property. Call (713) 291-9440 once you know where you stand.
+
+### `/services/mattress-disposal`: Common questions (6)
 
 **Q. Will you take a mattress and the box spring together?**
 
@@ -244,9 +554,21 @@ A. Yes. Move-outs, rentals and property turnovers can mean several at once. Give
 
 **Q. Can you pick one up the same day I call?**
 
-A. Same-day service is available, so call and ask what is open. EJC Demo Junk & Haul works seven days a week from 8:00am to 5:00pm, and after-hours calls are answered.
+A. Same-day service is available, so call and ask what is open. We work seven days a week from 8:00am to 5:00pm, and after-hours calls are answered.
 
-### `/services/property-cleanouts`: Common questions (4)
+**Q. Will you take the box spring too?**
+
+A. Yes, and handling the set in one visit costs less than booking twice. Say that both are going when you call so the estimate covers the pair rather than one piece of it.
+
+**Q. Can you do several at once?**
+
+A. Yes. Move-outs, rental turnovers and furnished properties can mean three or four. Give the number during the free virtual estimate and the quote will reflect the whole load.
+
+**Q. How soon can it be gone?**
+
+A. Same-day service is available, seven days a week between 8:00am and 5:00pm. Call (713) 291-9440 and ask what is still open today.
+
+### `/services/property-cleanouts`: Common questions (7)
 
 **Q. How fast can a unit be cleared between tenants?**
 
@@ -264,7 +586,19 @@ A. Yes. The virtual estimate is free and does not require you on site, which mat
 
 A. Yes. The referral program pays $20 for a verified lead that requests a quote and $75 for a lead that books and has the job completed. It is open to realtors, property managers, and trade contractors.
 
-### `/services/yard-waste-removal`: Common questions (3)
+**Q. How fast can a unit be turned around?**
+
+A. Same-day service is available and we work seven days a week from 8:00am to 5:00pm. Call with the date it has to be empty by and ask what is open.
+
+**Q. Do you handle eviction and foreclosure cleanouts?**
+
+A. Yes. Tenant eviction cleanouts, foreclosure cleanouts and moving cleanouts all fall under this, as does clearing a property so it photographs properly for a listing.
+
+**Q. Can I get a quote without meeting you there?**
+
+A. Yes, and that is the point of a virtual estimate when you are running several properties at once. Arrange access and you will have a price before the visit. Call (713) 291-9440 to set it up.
+
+### `/services/yard-waste-removal`: Common questions (6)
 
 **Q. Do you clear storm debris after a Houston storm?**
 
@@ -278,6 +612,18 @@ A. Yes. Fence removal, deck removal, playground equipment, and outdoor furniture
 
 A. We remove brush, limbs and debris that is already down. Felling a standing tree is a different trade; if that is what you need, get it dropped first, and clearing the debris is a job for us.
 
+**Q. Do you work after a storm?**
+
+A. Yes. Storm debris cleanup is part of this service, along with brush and tree debris removal. Emergency after-hours service is available and a trip charge applies. Ask what it is when you call.
+
+**Q. Will you take the fence and the old patio set as well?**
+
+A. Yes. Fence removal, deck removal, playground equipment and outdoor furniture all come under outdoor work here, so one visit can clear the whole back yard instead of just the brush pile.
+
+**Q. Do you cut down trees?**
+
+A. We remove brush, limbs and debris that is already down. Felling a standing tree is a different trade with different insurance. Get it dropped first, and clearing the debris is a job for us. Call (713) 291-9440 to book that part.
+
 ---
 
 ## 4. LocalBusiness structured data, verbatim from `/`
@@ -289,15 +635,16 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://ejc-demo-junk-haul.vercel.app/#business",
-  "name": "EJC Demo Junk & Haul",
+  "@id": "https://www.houstonwasteremoval.com/#business",
+  "name": "Houston Waste Removal",
+  "alternateName": "EJC Demo Junk & Haul",
   "legalName": "Mustang Logistix LLC",
   "description": "Veteran owned junk removal, cleanouts, and light demolition serving Houston, Texas seven days a week.",
-  "url": "https://ejc-demo-junk-haul.vercel.app",
+  "url": "https://www.houstonwasteremoval.com",
   "telephone": "+17132919440",
   "email": "ejcdjh75@gmail.com",
-  "image": "https://ejc-demo-junk-haul.vercel.app/images/processed/uprooted-tree-on-lawn-1024.webp",
-  "logo": "https://ejc-demo-junk-haul.vercel.app/images/processed/ejc-logo-222.webp",
+  "image": "https://www.houstonwasteremoval.com/images/processed/uprooted-tree-on-lawn-1024.webp",
+  "logo": "https://www.houstonwasteremoval.com/images/processed/ejc-logo-222.webp",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -346,6 +693,38 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
     {
       "@type": "City",
       "name": "Houston"
+    },
+    {
+      "@type": "City",
+      "name": "Katy"
+    },
+    {
+      "@type": "City",
+      "name": "Sugar Land"
+    },
+    {
+      "@type": "City",
+      "name": "Pearland"
+    },
+    {
+      "@type": "Place",
+      "name": "Cypress"
+    },
+    {
+      "@type": "Place",
+      "name": "Spring"
+    },
+    {
+      "@type": "Place",
+      "name": "The Woodlands"
+    },
+    {
+      "@type": "City",
+      "name": "Pasadena"
+    },
+    {
+      "@type": "City",
+      "name": "Humble"
     }
   ],
   "sameAs": [
@@ -354,14 +733,14 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "EJC Demo Junk & Haul services",
+    "name": "Houston Waste Removal services",
     "itemListElement": [
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
           "name": "Junk Removal",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/junk-removal"
+          "url": "https://www.houstonwasteremoval.com/services/junk-removal"
         }
       },
       {
@@ -369,7 +748,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Furniture Removal",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/furniture-removal"
+          "url": "https://www.houstonwasteremoval.com/services/furniture-removal"
         }
       },
       {
@@ -377,7 +756,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Appliance Removal",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/appliance-removal"
+          "url": "https://www.houstonwasteremoval.com/services/appliance-removal"
         }
       },
       {
@@ -385,7 +764,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Mattress Disposal",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/mattress-disposal"
+          "url": "https://www.houstonwasteremoval.com/services/mattress-disposal"
         }
       },
       {
@@ -393,7 +772,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Garage Cleanouts",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/garage-cleanouts"
+          "url": "https://www.houstonwasteremoval.com/services/garage-cleanouts"
         }
       },
       {
@@ -401,7 +780,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Estate Cleanouts",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/estate-cleanouts"
+          "url": "https://www.houstonwasteremoval.com/services/estate-cleanouts"
         }
       },
       {
@@ -409,7 +788,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Hoarder Cleanouts",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/hoarder-cleanouts"
+          "url": "https://www.houstonwasteremoval.com/services/hoarder-cleanouts"
         }
       },
       {
@@ -417,7 +796,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Construction Debris Removal",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/construction-debris-removal"
+          "url": "https://www.houstonwasteremoval.com/services/construction-debris-removal"
         }
       },
       {
@@ -425,7 +804,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Light Demolition",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/light-demolition"
+          "url": "https://www.houstonwasteremoval.com/services/light-demolition"
         }
       },
       {
@@ -433,7 +812,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Hot Tub Removal",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/hot-tub-removal"
+          "url": "https://www.houstonwasteremoval.com/services/hot-tub-removal"
         }
       },
       {
@@ -441,7 +820,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Commercial Cleanouts",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/commercial-cleanouts"
+          "url": "https://www.houstonwasteremoval.com/services/commercial-cleanouts"
         }
       },
       {
@@ -449,7 +828,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Property Cleanouts for Realtors and Property Managers",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/property-cleanouts"
+          "url": "https://www.houstonwasteremoval.com/services/property-cleanouts"
         }
       },
       {
@@ -457,7 +836,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
         "itemOffered": {
           "@type": "Service",
           "name": "Yard Waste and Storm Debris Removal",
-          "url": "https://ejc-demo-junk-haul.vercel.app/services/yard-waste-removal"
+          "url": "https://www.houstonwasteremoval.com/services/yard-waste-removal"
         }
       }
     ]
@@ -482,21 +861,53 @@ Each of the 13 service pages emits one of these.
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://ejc-demo-junk-haul.vercel.app/services/junk-removal#service",
+  "@id": "https://www.houstonwasteremoval.com/services/junk-removal#service",
   "name": "Junk Removal",
   "serviceType": "Junk Removal",
   "description": "Household junk hauled away: boxes, bags, old furniture, electronics, and whatever else has stacked up.",
-  "url": "https://ejc-demo-junk-haul.vercel.app/services/junk-removal",
+  "url": "https://www.houstonwasteremoval.com/services/junk-removal",
   "provider": {
-    "@id": "https://ejc-demo-junk-haul.vercel.app/#business"
+    "@id": "https://www.houstonwasteremoval.com/#business"
   },
   "areaServed": [
     {
       "@type": "City",
       "name": "Houston"
+    },
+    {
+      "@type": "City",
+      "name": "Katy"
+    },
+    {
+      "@type": "City",
+      "name": "Sugar Land"
+    },
+    {
+      "@type": "City",
+      "name": "Pearland"
+    },
+    {
+      "@type": "Place",
+      "name": "Cypress"
+    },
+    {
+      "@type": "Place",
+      "name": "Spring"
+    },
+    {
+      "@type": "Place",
+      "name": "The Woodlands"
+    },
+    {
+      "@type": "City",
+      "name": "Pasadena"
+    },
+    {
+      "@type": "City",
+      "name": "Humble"
     }
   ],
-  "image": "https://ejc-demo-junk-haul.vercel.app/images/processed/basement-with-old-furniture-1024.webp"
+  "image": "https://www.houstonwasteremoval.com/images/processed/basement-with-old-furniture-1024.webp"
 }
 ```
 

@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import CtaBand from '@/components/CtaBand'
+import FaqProse from '@/components/FaqProse'
 import JsonLd from '@/components/JsonLd'
 import PageHeader from '@/components/PageHeader'
 import Phone from '@/components/Phone'
 import { config } from '@/lib/config'
 import { loadContent, readFrontmatter } from '@/lib/content'
-import { breadcrumbList } from '@/lib/schema'
+import { breadcrumbList, faqPage } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 
 const CONTENT = 'referral-program.mdx'
@@ -49,6 +50,7 @@ export default async function ReferralProgramPage() {
   return (
     <>
       <JsonLd data={breadcrumbList(CRUMBS)} />
+      <JsonLd data={faqPage(config.pageFaqs.referral)} />
       <PageHeader
         title="Contractor Referral Program"
         intro="You are already in the houses where this work turns up. Send it our way and get paid for it."
@@ -67,7 +69,10 @@ export default async function ReferralProgramPage() {
         </div>
       </div>
 
-      <article className="mx-auto max-w-3xl px-4 pt-12 sm:px-6">{content}</article>
+      <article className="mx-auto max-w-3xl px-4 pt-12 sm:px-6">
+        {content}
+        <FaqProse faqs={config.pageFaqs.referral} />
+      </article>
 
       <section className="mt-16 bg-primary py-16 text-on-primary">
         <div className="mx-auto max-w-page px-4 sm:px-6">

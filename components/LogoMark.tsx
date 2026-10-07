@@ -20,13 +20,25 @@ export default function LogoMark({ className = '' }: { className?: string }) {
   if (!logo) return null
   return (
     <div className={`flex items-center justify-center bg-primary p-10 ${className}`}>
+      {/*
+        DECORATIVE, and declared as such.
+
+        The header already renders this same badge with a full description, and
+        on both pages that use this panel the surrounding prose names the brand,
+        the operating company and the legal name in text. A second described
+        copy means a screen reader reads "a dump truck above the letters EJC on
+        a black circular badge" twice on one page, which is noise, not access.
+        alt="" plus aria-hidden is WCAG H67 and is what verify.ts check 11
+        exempts; it will not accept either half on its own.
+      */}
       <img
         src={logo.src}
         srcSet={logo.srcSet}
         sizes="224px"
         width={logo.width}
         height={logo.height}
-        alt={logo.alt}
+        alt=""
+        aria-hidden="true"
         className="h-auto w-full max-w-[224px]"
         decoding="async"
       />

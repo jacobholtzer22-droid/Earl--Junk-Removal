@@ -33,12 +33,41 @@ const BANNED_CLAIMS = [
 ]
 
 /** Place names that must not appear: template leftovers and Houston suburbs. */
+/**
+ * The nine places this site is allowed to name, and the counties they sit in.
+ *
+ * This list used to be empty, because the site named only Houston, and every
+ * other place in Texas was banned outright. Eight of them are now legitimate
+ * subjects with a page each, so they moved here. The counties come with them:
+ * seo/AREA-SOURCES.md allows a county to be stated as geography and nothing
+ * else, and three of these places straddle county lines, which is half the
+ * reason the pages exist.
+ *
+ * APPROVED is checked against the built sitemap further down, so it cannot
+ * quietly disagree with site.config.ts serviceAreas.
+ */
+const APPROVED_PLACES = [
+  'Houston', 'Katy', 'Sugar Land', 'Pearland', 'Cypress', 'Spring', 'The Woodlands', 'Pasadena', 'Humble',
+]
+const APPROVED_COUNTIES = ['Harris', 'Fort Bend', 'Waller', 'Brazoria', 'Montgomery']
+
+/**
+ * Places that must never appear. Two kinds, and both matter.
+ *
+ * The first six are the template's sample business, which was in Springfield,
+ * Illinois. A hit there means sample copy survived into a client's pages.
+ *
+ * The rest are real Houston-area cities that are NOT on the approved list. The
+ * cap is eight area pages and no other city gets so much as a mention, because
+ * a place named on the site is a place the phone will ring about, and Earl has
+ * not agreed to drive to any of these.
+ */
 const FOREIGN_PLACES = [
   'Springfield', 'Chatham', 'Rochester', 'Sherman', 'Sangamon', 'Illinois',
-  'Katy', 'Cypress', 'Sugar Land', 'Woodlands', 'Pasadena', 'Pearland', 'Humble',
   'Tomball', 'Conroe', 'Baytown', 'Galveston', 'Missouri City', 'Stafford',
   'Richmond', 'Rosenberg', 'Friendswood', 'League City', 'Clear Lake', 'Bellaire',
-  'Willowbrook', 'Harris County', 'Fort Bend', 'Montgomery County',
+  'Willowbrook', 'Kingwood', 'Atascocita', 'Channelview', 'Deer Park', 'La Porte',
+  'Alvin', 'Manvel', 'Fresno', 'Jersey Village', 'Spring Branch',
 ]
 
 /** Template identity and placeholder junk, scanned across the whole source. */
@@ -102,7 +131,7 @@ const claimHits = BANNED_CLAIMS.filter((term) => {
 })
 if (claimHits.length === 0) row(`all ${BANNED_CLAIMS.length} banned claim terms, in rendered page text`, 0)
 
-// 2. Place names other than Houston.
+// 2. Place names that are not on the approved list.
 {
   const hits = []
   for (const term of FOREIGN_PLACES) {
@@ -112,7 +141,21 @@ if (claimHits.length === 0) row(`all ${BANNED_CLAIMS.length} banned claim terms,
       if (n) hits.push(`${term} on ${routeOf(f)}`)
     }
   }
-  row(`place names other than Houston (${FOREIGN_PLACES.length} checked)`, hits.length, hits.slice(0, 5).join(', '))
+  row(`unapproved place names (${FOREIGN_PLACES.length} checked, ${APPROVED_PLACES.length} allowed)`, hits.length, hits.slice(0, 5).join(', '))
+
+  // 2b. The approved list must match the pages that were actually built, or
+  // this check is policing a list nobody maintains.
+  const slugify = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  const sitemap = fs.readFileSync(path.join(OUT, 'sitemap.xml'), 'utf8')
+  const builtAreas = [...sitemap.matchAll(/<loc>[^<]*\/areas\/([^<\/]+)<\/loc>/g)].map((m) => m[1]).sort()
+  const expected = APPROVED_PLACES.filter((p) => p !== 'Houston').map(slugify).sort()
+  const drift = [
+    ...builtAreas.filter((b) => !expected.includes(b)).map((b) => `built but not approved: ${b}`),
+    ...expected.filter((e) => !builtAreas.includes(e)).map((e) => `approved but not built: ${e}`),
+  ]
+  row(`approved places match built area pages (${builtAreas.length} pages)`, drift.length, drift.join(', '))
+  const countyMiss = APPROVED_COUNTIES.filter((c) => !pages.some((f) => visibleText(fs.readFileSync(f, 'utf8')).includes(c)))
+  if (countyMiss.length) row('approved counties never rendered (dead entries)', countyMiss.length, countyMiss.join(', '))
 }
 
 // 3. Em dashes, anywhere in source or output.

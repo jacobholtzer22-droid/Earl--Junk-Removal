@@ -361,10 +361,31 @@ async function run() {
   {
     const problems: string[] = []
     const altToFiles = new Map<string, Set<string>>()
+    let decorative = 0
     for (const p of pages) {
       p.$('img').each((_, el) => {
-        const alt = (p.$(el).attr('alt') ?? '').trim()
+        const raw = p.$(el).attr('alt')
+        const alt = (raw ?? '').trim()
         const src = p.$(el).attr('src') ?? ''
+        /*
+         * A declared-decorative image is exempt, and ONLY a declared one.
+         *
+         * WCAG H67 is explicit that an image carrying no information a sighted
+         * reader does not already have takes an empty alt, so a screen reader
+         * skips it instead of reading a description of the same badge twice on
+         * one page. That is the correct markup, and the old rule failed it.
+         *
+         * The exemption is narrower than the rule it sits inside, not looser:
+         * it needs alt="" AND aria-hidden="true" together, which is a sentence
+         * an author has to mean. A missing alt attribute still fails. A short
+         * non-empty alt ("logo", "photo") still fails. alt="" on its own still
+         * fails. Nothing can land here by being lazy.
+         */
+        const declaredDecorative = raw === '' && p.$(el).attr('aria-hidden') === 'true'
+        if (declaredDecorative) {
+          decorative++
+          return
+        }
         if (alt.length < 15) problems.push(`${p.route}: <img src="${src}"> alt "${alt}" is under 15 characters`)
         const key = imageKey(src)
         const set = altToFiles.get(alt) ?? new Set<string>()
@@ -375,7 +396,12 @@ async function run() {
     for (const [alt, files] of altToFiles) {
       if (files.size > 1) problems.push(`alt "${alt.slice(0, 40)}..." is shared by different images: ${[...files].join(', ')}`)
     }
-    record(11, 'every image has a 15+ char alt; no two images share an alt', problems.length === 0, problems.slice(0, 8).join('; '))
+    record(
+      11,
+      'every image has a 15+ char alt; no two images share an alt',
+      problems.length === 0,
+      problems.length ? problems.slice(0, 8).join('; ') : `${decorative} declared-decorative images exempt`,
+    )
   }
 
   // 12. One h1.

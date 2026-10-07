@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import ContactDetails from '@/components/ContactDetails'
+import FaqAccordion from '@/components/FaqAccordion'
 import PendingFormGate from '@/components/PendingFormGate'
 import JsonLd from '@/components/JsonLd'
 import PageHeader from '@/components/PageHeader'
 import { config } from '@/lib/config'
 import { loadContent, readFrontmatter } from '@/lib/content'
-import { breadcrumbList } from '@/lib/schema'
+import { breadcrumbList, faqPage } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 
 const CONTENT = 'contact.mdx'
@@ -32,6 +33,7 @@ export default async function ContactPage() {
   return (
     <>
       <JsonLd data={breadcrumbList(CRUMBS)} />
+      <JsonLd data={faqPage(config.pageFaqs.contact)} />
       <PageHeader
         title={`Contact ${config.displayName}`}
         intro="Free virtual estimates, same-day service, open seven days a week."
@@ -46,6 +48,13 @@ export default async function ContactPage() {
           <ContactDetails />
         </aside>
       </div>
+      {/*
+        Collapsed, not open, and below the form on purpose. The job of this
+        page is the form and the phone number; three open answers above them
+        would push both down the page. FaqAccordion needs no JavaScript, so
+        every answer is still in the HTML a crawler reads.
+      */}
+      <FaqAccordion faqs={config.pageFaqs.contact} heading="Before you call" />
     </>
   )
 }

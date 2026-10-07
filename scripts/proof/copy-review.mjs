@@ -69,32 +69,86 @@ const steps = [...home.matchAll(/<li class="bg-bg pb-8[^"]*">([\s\S]*?)<\/li>/g)
 }))
 const stepsHeading = dec((home.match(/<h2 class="max-w-2xl[^"]*">([\s\S]*?)<\/h2>/) ?? [])[1] ?? '')
 
-// ---------- FAQs, from the visible accordion ----------
+/**
+ * Every question a visitor can see on a page, in the order it appears.
+ *
+ * TWO shapes count. An accordion is the obvious one. The other is an open
+ * question heading with the answer in the paragraph underneath, which is how
+ * the about, services, areas and referral pages present theirs: nothing to
+ * click, the whole answer on screen. Counting only accordions reported those
+ * thirteen questions as schema with no visible copy behind it, which is the
+ * exact failure this file exists to catch, pointed at the wrong thing.
+ */
+function visibleQuestions(html, dec) {
+  const out = []
+  for (const m of html.matchAll(/<details[^>]*>([\s\S]*?)<\/details>/g)) {
+    const q = dec((m[1].match(/<summary[^>]*>([\s\S]*?)<\/summary>/) ?? [])[1] ?? '').replace(/\s*\+$/, '').trim()
+    const a = dec((m[1].match(/<p[^>]*>([\s\S]*?)<\/p>/) ?? [])[1] ?? '')
+    if (q) out.push({ q, a, shape: 'accordion' })
+  }
+  // Open prose: <h2>Question?</h2> followed immediately by its answer.
+  const re = /<h2\b[^>]*>/g
+  let m
+  while ((m = re.exec(html))) {
+    const afterOpen = m.index + m[0].length
+    const end = html.indexOf('</h2>', afterOpen)
+    if (end === -1) continue
+    const q = dec(html.slice(afterOpen, end)).trim()
+    if (!q.includes('?')) continue
+    const pm = html.slice(end + 5).match(/^\s*(?:<section[^>]*>|<div[^>]*>)*\s*<p[^>]*>([\s\S]*?)<\/p>/)
+    if (!pm) continue
+    const a = dec(pm[1])
+    if (a.length >= 100) out.push({ q, a, shape: 'prose' })
+  }
+  return out
+}
+
+// ---------- FAQs, from the visible page ----------
 const faqPages = []
+const overclaims = []
 let visibleQs = 0
 let schemaQs = 0
 let faqPageBlocks = 0
 for (const f of pages) {
   const html = fs.readFileSync(f, 'utf8')
-  const items = [...html.matchAll(/<details[^>]*>([\s\S]*?)<\/details>/g)].map((m) => {
-    const q = dec((m[1].match(/<summary[^>]*>([\s\S]*?)<\/summary>/) ?? [])[1] ?? '').replace(/\s*\+$/, '').trim()
-    const a = dec((m[1].match(/<p[^>]*>([\s\S]*?)<\/p>/) ?? [])[1] ?? '')
-    return { q, a }
-  })
+  const items = visibleQuestions(html, dec)
   // structured-data cross-check on the same page
+  let declaredHere = 0
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     const data = JSON.parse(m[1])
     if (data['@type'] === 'FAQPage') {
       faqPageBlocks++
+      declaredHere += (data.mainEntity ?? []).length
       schemaQs += (data.mainEntity ?? []).length
     }
+  }
+  /*
+   * The invariant is "schema never claims more than the page shows", NOT
+   * "the two numbers are equal".
+   *
+   * Equality was right while every question lived in an accordion that fed
+   * the markup. It is wrong now: the service and area pages carry question
+   * headings in their prose that are deliberately NOT in the FAQPage block,
+   * and marking those up would mean maintaining the same sentence twice.
+   * Visible-without-schema is a missed opportunity; schema-without-visible is
+   * what Google penalises, so that is the direction worth failing on.
+   */
+  if (declaredHere > items.length) {
+    overclaims.push(`${routeOf(f)}: FAQPage declares ${declaredHere} question(s), ${items.length} visible`)
   }
   if (items.length) {
     // The heading that actually belongs to this accordion: the last <h2>
     // before the first <details>, not the first <h2> on the page.
-    const prefix = html.slice(0, html.indexOf('<details'))
-    const h2s = [...prefix.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => dec(m[1]))
-    const h2 = h2s.length ? h2s[h2s.length - 1] : 'Questions'
+    /*
+     * The accordion's own heading is the last <h2> before the first <details>.
+     * A page with no accordion has no such heading, and indexOf returns -1,
+     * which slices the WHOLE page and hands back the last h2 on it: the four
+     * prose pages were each labelled with their closing call-to-action band
+     * ("Ready to get started in Houston?") as if that were the FAQ heading.
+     */
+    const at = html.indexOf('<details')
+    const h2s = at === -1 ? [] : [...html.slice(0, at).matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => dec(m[1]))
+    const h2 = h2s.length ? h2s[h2s.length - 1] : 'Questions answered in the page copy'
     faqPages.push({ route: routeOf(f), heading: h2, items })
     visibleQs += items.length
   }
@@ -209,8 +263,11 @@ console.log(`  questions in that JSON-LD:  ${schemaQs}`)
 console.log(`  hero chips: ${heroChips.length}   how-it-works steps: ${steps.length}`)
 console.log(`  LocalBusiness block: ${localBusiness ? 'found' : 'MISSING'}   Service block: ${serviceLd ? 'found' : 'MISSING'}`)
 console.log('')
-if (visibleQs !== schemaQs || faqPages.length !== faqPageBlocks) {
-  console.error('MISMATCH: the visible questions and the FAQPage markup have drifted apart.')
+if (overclaims.length) {
+  console.error('OVERCLAIM: FAQPage markup promises questions the page does not show.')
+  for (const o of overclaims) console.error(`  ${o}`)
   process.exit(1)
 }
-console.log('Visible FAQ and FAQPage markup agree, on both the page count and the question count.')
+console.log(`  every FAQPage block is backed by visible copy on its own page: yes`)
+console.log(`  (${visibleQs - schemaQs} visible questions are deliberately not marked up)`)
+console.log('No page claims a question it does not show.')

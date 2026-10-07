@@ -242,6 +242,37 @@ export const siteConfigSchema = z
     /** Homepage FAQs. FAQPage schema on the homepage renders only when non-empty. */
     faqs: z.array(faq).default([]),
 
+    /**
+     * Q&A for the five standalone pages, which are neither a service nor a
+     * place and so have nowhere else to put it.
+     *
+     * These exist so that a page's visible questions and its FAQPage markup
+     * are THE SAME OBJECTS. Before this slot existed, the about, services,
+     * areas and referral pages carried question headings in MDX with answers
+     * underneath and no structured data over any of it: readable to a person,
+     * invisible to an answer engine. Writing the pairs twice, once in MDX and
+     * once for the schema, is the other way to fix that and is how they drift.
+     *
+     * Rendered by components/FaqProse.tsx as open headings and paragraphs, or
+     * by components/FaqAccordion.tsx where a collapsed list reads better. Both
+     * take the same array and lib/schema.ts faqPage() turns it into markup.
+     *
+     * NO LEGAL KEY, deliberately. A privacy policy and a terms page answer in
+     * prose and are indexed for trust rather than for answers; FAQPage markup
+     * over a liability clause claims a role the page does not have. See
+     * scripts/proof/seo-score.mjs, which names that exemption rather than
+     * quietly scoring those two pages as if they had Q&A.
+     */
+    pageFaqs: z
+      .object({
+        about: z.array(faq).max(6).default([]),
+        services: z.array(faq).max(6).default([]),
+        areas: z.array(faq).max(6).default([]),
+        contact: z.array(faq).max(6).default([]),
+        referral: z.array(faq).max(6).default([]),
+      })
+      .default({}),
+
     /** Which processed images go where. Filenames are keys in public/images/manifest.json. */
     images: z.object({
       hero: z.string().nullable(),

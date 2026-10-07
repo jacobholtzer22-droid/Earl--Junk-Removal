@@ -35,11 +35,21 @@ function Anchor({ href = '', children, ...rest }: ComponentPropsWithoutRef<'a'>)
   )
 }
 
+/*
+ * Exported because components/FaqProse.tsx renders question headings and answer
+ * paragraphs that sit in the same prose column as MDX and have to be
+ * indistinguishable from it. Two copies of these class strings is two things
+ * to remember when the prose type scale changes, and the second one never gets
+ * remembered.
+ */
+export const PROSE_H2 = 'mt-12 font-heading text-2xl font-bold text-primary-dark md:text-3xl'
+export const PROSE_P = 'mt-4 text-base leading-relaxed text-ink'
+
 export const mdxComponents: MDXComponents = {
   h1: H1,
-  h2: (props) => <h2 className="mt-12 font-heading text-2xl font-bold text-primary-dark md:text-3xl" {...props} />,
+  h2: (props) => <h2 className={PROSE_H2} {...props} />,
   h3: (props) => <h3 className="mt-8 font-heading text-xl font-semibold text-primary-dark" {...props} />,
-  p: (props) => <p className="mt-4 text-base leading-relaxed text-ink" {...props} />,
+  p: (props) => <p className={PROSE_P} {...props} />,
   ul: (props) => <ul className="mt-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-ink" {...props} />,
   ol: (props) => <ol className="mt-4 list-decimal space-y-2 pl-6 text-base leading-relaxed text-ink" {...props} />,
   li: (props) => <li {...props} />,

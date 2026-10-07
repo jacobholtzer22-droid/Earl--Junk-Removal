@@ -60,16 +60,27 @@ const allow = (v) => { if (typeof v === 'string' && v.trim()) allowed.add(v.trim
 allow(cfg.displayName); allow(cfg.legalName); allow(cfg.tagline); allow(cfg.phone)
 allow(cfg.email); allow(cfg.domain); allow(cfg.primaryCity); allow(cfg.primaryState)
 allow(cfg.schemaType); allow('en-US'); allow('US')
-for (const a of cfg.serviceAreas) { allow(a.name); allow(a.slug) }
+// The operating company, published as schema.org alternateName.
+allow(cfg.alternateName)
+for (const a of cfg.serviceAreas) {
+  allow(a.name); allow(a.slug); allow(a.county); allow(a.titleOverride)
+  // Per-place Q&A, which is FAQPage markup on that place's page.
+  for (const f of a.faqs ?? []) { allow(f.q); allow(f.a) }
+}
 for (const s of cfg.services) {
   allow(s.name); allow(s.shortDescription); allow(s.slug)
   for (const f of s.faqs) { allow(f.q); allow(f.a) }
 }
 for (const f of cfg.faqs) { allow(f.q); allow(f.a) }
+// Q&A for the five standalone pages. Same FAQPage markup, different home in
+// the config; see lib/config-schema.ts pageFaqs.
+for (const list of Object.values(cfg.pageFaqs ?? {})) {
+  for (const f of list) { allow(f.q); allow(f.a) }
+}
 for (const h of cfg.hours ?? []) { allow(h.day); allow(h.open); allow(h.close) }
 for (const u of Object.values(cfg.profiles ?? {})) allow(u)
 // Breadcrumb labels and the page titles they come from.
-for (const label of ['Home', 'Services', 'About', 'Contact', 'Privacy Policy', 'Terms', 'Referral Program']) allow(label)
+for (const label of ['Home', 'Services', 'Service Areas', 'About', 'Contact', 'Privacy Policy', 'Terms', 'Referral Program']) allow(label)
 allow(`${cfg.displayName} services`)
 
 const isUrl = (s) => s.startsWith(cfg.domain) || s === 'https://schema.org' || s.startsWith('https://www.facebook.com/') || s.startsWith('https://www.instagram.com/')

@@ -189,7 +189,99 @@ taking upstream together with the schema change, or neither.
 
 ---
 
-## 8. Smaller things, no commit of their own
+## 9. Standalone pages could not carry Q&A, so none of theirs was machine-readable
+
+The template has three homes for FAQs: `faqs` for the homepage,
+`services[].faqs` and `serviceAreas[].faqs`. There is nowhere to put Q&A for
+the about, services index, areas index, contact or referral pages, so a site
+that wants questions on those pages writes them as headings in MDX and gets no
+FAQPage markup over any of it. Four of this site's pages were in exactly that
+state: readable to a person, invisible to an answer engine.
+
+Writing the pairs twice, once in MDX and once for the schema, is the other way
+to fix it, and is how the two drift apart.
+
+**Fixed here** with a `pageFaqs` object in `lib/config-schema.ts` keyed by page,
+plus `components/FaqProse.tsx`, a sibling of `FaqAccordion` that renders the
+same array as open headings and paragraphs for pages where collapsing the body
+of the page behind four clicks would be worse. Both feed `faqPage()`. The prose
+classes moved to exported `PROSE_H2` / `PROSE_P` constants in
+`mdx-components.tsx` so FaqProse output is indistinguishable from the MDX it
+replaced.
+
+There is deliberately **no key for the legal pages.** FAQPage markup over a
+liability clause claims a role a privacy policy does not have.
+
+## 10. Three audit scripts counted an accordion instead of counting a question
+
+`scripts/proof/copy-review.mjs`, `scripts/proof/schema-audit.mjs` and
+`scripts/proof/content-audit.mjs` all encode assumptions that were true when
+written and silently went stale.
+
+- **copy-review** counted visible questions as `<summary>` elements and asserted
+  `visible === declared`. Both are wrong once a page presents Q&A as prose: it
+  reported thirteen questions as schema with no visible copy behind them, which
+  is the exact failure the file exists to catch, aimed at the wrong thing. The
+  invariant is **schema must never exceed what the page shows**, per page.
+  Under-claiming is fine and common; over-claiming is what Google penalises.
+  Its FAQ heading logic also used `indexOf('<details')` without checking for
+  `-1`, so on a page with no accordion it sliced the whole document and
+  labelled the section with the page's closing call-to-action band.
+- **schema-audit** allow-listed `faqs` and `services[].faqs` but never
+  `serviceAreas[].faqs`, `alternateName`, or the new `pageFaqs`. It had been
+  failing since the rebrand and area pages landed, two commits before anyone
+  re-ran it.
+- **content-audit** banned every Texas place name except Houston, which was
+  right until eight of them became legitimate pages. The list now separates the
+  template's own sample town from unapproved neighbours, and a second check
+  asserts the approved list still matches the area pages that were actually
+  built, so the allow-list cannot quietly outlive the config.
+
+The template-level lesson: **a proof script that encodes today's page structure
+needs a reason to fail that survives the structure changing.** All three passed
+for the wrong reason or failed for the wrong reason.
+
+## 11. `justify-[safe_center]` compiles to nothing, and the bug it hides is invisible
+
+A horizontally scrollable row with `justify-center` puts its first item at a
+negative offset the moment the content overflows, and no amount of scrolling
+reaches it. The mobile nav hit this as soon as it grew to six items: at 390px
+the row was 449px wide, `scrollLeft` was 0, and the left edge of the "Home"
+link sat at **-42px**. The link was in the DOM, in the accessibility tree, and
+unreachable by any user.
+
+`justify-content: safe center` is the one-word fix. **Tailwind emits no CSS at
+all for `justify-[safe_center]`:** the class lands in the markup, the
+declaration never exists, and the row goes on losing its first item while the
+code looks fixed. Verified by grepping the built stylesheet. It is a rule in
+`globals.css` on a `[data-safe-center]` attribute instead.
+
+Any template scroller that centres is exposed to this. `AreaList`, the service
+grid and any future chip row should use the attribute rather than
+`justify-center`.
+
+## 12. Nav links were 21px tall, under the WCAG 2.2 minimum
+
+The mobile nav put its padding on the row and none on the anchors, so each link
+was a 21px-tall target inside a 41px row: below SC 2.5.8's 24px floor and less
+than half a thumb. Moving the same padding inside the anchor makes them 47px
+and costs the sticky header 4px, because the row was already that tall and was
+simply mostly not clickable. Worth auditing the footer's link lists too, which
+are still 21px here and were left alone rather than restyled without a brief.
+
+## 13. `verify.ts` check 11 had no concept of a decorative image
+
+Check 11 requires a 15+ character alt on every `<img>`. That is right for
+content images and wrong for a logo rendered twice on one page, where WCAG H67
+calls for `alt=""` so a screen reader does not read the same badge description
+twice. The check made the correct markup impossible.
+
+Narrowed, not loosened: an image is exempt only when it declares `alt=""` **and**
+`aria-hidden="true"` together. A missing alt still fails, a short alt still
+fails, and a bare `alt=""` still fails. The pass line reports how many images
+took the exemption so it cannot be used quietly.
+
+## 14. Smaller things, no commit of their own
 
 - **`getImage()` reports the wrong `og:image` dimensions.** It returns
   `entry.width`/`entry.height` (the original) alongside a `src` capped at 1024,
