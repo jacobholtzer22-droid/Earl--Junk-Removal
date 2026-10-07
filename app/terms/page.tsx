@@ -39,8 +39,10 @@ export default function TermsPage() {
       <PageHeader title="Terms of Service" crumbs={CRUMBS} />
       <article className="mx-auto max-w-3xl px-4 pb-20 pt-10 text-base leading-relaxed text-ink sm:px-6">
         <p>
-          These terms cover your use of {host}, the website of {config.legalName}, trading as {config.displayName}. By using
-          this site or sending a request through it, you agree to them.
+          These terms cover your use of {host}, the website of {config.displayName}. {config.displayName} is operated by{' '}
+          {config.alternateName ?? config.legalName}
+          {config.alternateName ? <> ({config.legalName})</> : null}, which is the contracting party for any work arranged
+          through this site. By using the site or sending a request through it, you agree to these terms.
         </p>
 
         <h2 className="mt-10 font-heading text-2xl font-bold uppercase tracking-tight text-primary-dark">
@@ -100,7 +102,8 @@ export default function TermsPage() {
           Content on this site
         </h2>
         <p className="mt-4">
-          The {config.displayName} name and logo belong to {config.legalName}. Photographs on this site are stock
+          The {config.displayName} and {config.alternateName ?? config.displayName} names and the logo belong to{' '}
+          {config.legalName}. Photographs on this site are stock
           images used to illustrate the kinds of work described. They do not depict particular jobs carried out by{' '}
           {config.displayName}.
         </p>

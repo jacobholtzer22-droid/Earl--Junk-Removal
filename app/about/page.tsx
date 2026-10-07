@@ -19,8 +19,9 @@ export function generateMetadata(): Metadata {
   const fm = readFrontmatter(CONTENT)
   return buildMetadata({
     kind: 'about',
-    // Explicit: the derived about title names the business twice.
-    title: 'About EJC Demo Junk & Haul in Houston',
+    // Explicit: the derived title would name the business twice, and the
+    // brand already carries "Houston", so the head does not repeat it.
+    title: 'About Us: Veteran Owned Junk Removal',
     path: '/about',
     description: fm.description,
     image: fm.image ?? config.images.about,

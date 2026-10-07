@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   const fm = readFrontmatter(CONTENT)
   return buildMetadata({
     kind: 'services',
-    title: 'Junk Removal Services in Houston, TX',
+    title: 'Junk Removal and Cleanout Services',
     path: '/services',
     description: fm.description,
     image: fm.image,

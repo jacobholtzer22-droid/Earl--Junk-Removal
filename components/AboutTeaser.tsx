@@ -16,16 +16,17 @@ import LogoMark from './LogoMark'
  */
 export default function AboutTeaser() {
   return (
-    <section className="border-t-2 border-primary-dark bg-bg">
+    <section data-about-teaser className="border-t-2 border-primary-dark bg-bg">
       <div className="mx-auto grid max-w-page items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-5 md:py-24">
         <div className="md:col-span-3">
           <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-accent-dark">Veteran owned</p>
           <h2 className="mt-4 font-heading text-3xl font-bold uppercase leading-tight tracking-tight text-primary-dark md:text-5xl">
-            Run by Earl, out of Houston
+            Run by Earl
           </h2>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            {config.displayName} is a veteran owned business. The &quot;Demo&quot; is short for demolition, which is why
-            sheds, decks and fences come down here as well as getting hauled off.
+            {config.displayName} is a veteran owned business, operated by {config.alternateName}. The &quot;Demo&quot; in
+            that name is short for demolition, which is why sheds, decks and fences are on the service list alongside
+            hauling.
           </p>
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
             Houston, seven days a week, 8:00am to 5:00pm. Free virtual estimates, and $50 off a first service.

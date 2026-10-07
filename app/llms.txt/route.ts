@@ -11,7 +11,22 @@ export function GET() {
     '',
     `> ${c.tagline}`,
     '',
-    `${c.legalName} provides ${c.services.map((s) => s.name.toLowerCase()).join(', ')} in ${c.primaryCity}, ${c.primaryState} and surrounding areas.`,
+    /*
+     * The three names, stated before anything else.
+     *
+     * An answer engine that has seen this business under one name and a page
+     * under another has no way to connect them unless something says so in
+     * plain text. The same statement is on the about page, in a homepage FAQ,
+     * in the footer, and as schema.org alternateName.
+     */
+    ...(c.alternateName
+      ? [
+          '## Company names',
+          `${c.displayName} is the trading name. It is operated by ${c.alternateName}, whose registered legal name is ${c.legalName}. These are one business with one phone number, not three companies.`,
+          '',
+        ]
+      : []),
+    `${c.displayName} provides ${c.services.map((s) => s.name.toLowerCase()).join(', ')} in ${c.primaryCity}, ${c.primaryState} and surrounding areas.`,
     '',
     '## Contact',
     `- Phone: ${c.phoneDisplay}`,

@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
     kind: 'contact',
     // Explicit: the derived contact title would run to 62 characters and name
     // the business twice.
-    title: 'Free Estimate in Houston, TX',
+    title: 'Free Estimate for Junk Removal',
     path: '/contact',
     description: fm.description,
     image: fm.image,

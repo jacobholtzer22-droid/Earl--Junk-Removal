@@ -2,7 +2,8 @@ import type { SiteConfigInput } from './lib/config-schema'
 import { LOGO, STOCK } from './lib/stock-images'
 
 /**
- * Every business fact for EJC Demo Junk & Haul lives here and nowhere else.
+ * Every business fact for Houston Waste Removal, operated by EJC Demo Junk &
+ * Haul, lives here and nowhere else.
  *
  * SOURCED ENTIRELY FROM seo/FACTS.md. If a claim is not in that file it is not
  * in this one: no license number, no insurance status, no years in business,
@@ -25,7 +26,15 @@ const siteConfig = {
   businessSlug: 'houston-waste-removal-1791303748120',
 
   legalName: 'Mustang Logistix LLC',
-  displayName: 'EJC Demo Junk & Haul',
+  /**
+   * The customer-facing brand. EJC Demo Junk & Haul is the operating company
+   * and stays visible: in the header lockup, in the footer, on the about page,
+   * in a homepage FAQ, in llms.txt, and as schema.org alternateName. A visitor
+   * who was recommended one name and lands on the other has to be able to tell
+   * they are the same business, in one glance.
+   */
+  displayName: 'Houston Waste Removal',
+  alternateName: 'EJC Demo Junk & Haul',
   tagline: 'Veteran owned junk removal, cleanouts, and light demolition serving Houston, Texas seven days a week.',
 
   // Service-area business, no storefront. LocalBusiness is the honest type:
@@ -64,7 +73,7 @@ const siteConfig = {
       faqs: [
         {
           q: 'How much does junk removal cost in Houston?',
-          a: 'There is no flat rate, because a few bags and a full garage are not the same job. EJC Demo Junk & Haul gives a free virtual estimate, so you have a price before you commit to anything.',
+          a: 'There is no flat rate, because a few bags and a full garage are not the same job. Houston Waste Removal gives a free virtual estimate, so you have a price before you commit to anything.',
         },
         {
           q: 'Can you come out the same day?',
@@ -148,7 +157,7 @@ const siteConfig = {
         },
         {
           q: 'Can you pick one up the same day I call?',
-          a: 'Same-day service is available, so call and ask what is open. EJC Demo Junk & Haul works seven days a week from 8:00am to 5:00pm, and after-hours calls are answered.',
+          a: 'Same-day service is available, so call and ask what is open. We work seven days a week from 8:00am to 5:00pm, and after-hours calls are answered.',
         },
       ],
     },
@@ -224,7 +233,7 @@ const siteConfig = {
         },
         {
           q: 'How do we keep this private?',
-          a: 'Say what discretion you need and when, and ask how the visit can be arranged around it. EJC Demo Junk & Haul works seven days a week from 8:00am to 5:00pm.',
+          a: 'Say what discretion you need and when, and ask how the visit can be arranged around it. We work seven days a week from 8:00am to 5:00pm.',
         },
         {
           q: 'What if we find things we want to keep partway through?',
@@ -420,7 +429,11 @@ const siteConfig = {
 
   faqs: [
     {
-      q: 'What areas does EJC Demo Junk & Haul serve?',
+      q: 'Is Houston Waste Removal the same company as EJC Demo Junk & Haul?',
+      a: 'Yes. Houston Waste Removal is the name the business trades under, EJC Demo Junk & Haul is the company that operates it, and Mustang Logistix LLC is the registered legal name. One business, one phone number, three names. If you were recommended any of them, you are in the right place.',
+    },
+    {
+      q: 'What areas does Houston Waste Removal serve?',
       a: 'We serve the Houston, Texas area. If you are not sure whether your address is covered, call and ask rather than guessing; it is a short conversation and it saves everyone a wasted trip.',
     },
     {
@@ -429,7 +442,7 @@ const siteConfig = {
     },
     {
       q: 'What is a free virtual estimate?',
-      a: 'It is a quote that costs nothing, whether or not you go ahead. Call EJC Demo Junk & Haul and ask how to set one up.',
+      a: 'It is a quote that costs nothing, whether or not you go ahead. Call and ask how to set one up.',
     },
     {
       q: 'Can you come out today?',
@@ -448,7 +461,7 @@ const siteConfig = {
       a: 'Renters, realtors, property managers, contractors, businesses, municipalities, senior citizens, estate executors, and storage facility operators. The scheduling and the free estimate work the same way for all of them.',
     },
     {
-      q: 'Is EJC Demo Junk & Haul veteran owned?',
+      q: 'Is Houston Waste Removal veteran owned?',
       a: 'Yes. It is a veteran owned business, owned by Earl. The "Demo" in the name is short for demolition, which is why light demolition sits alongside hauling and cleanouts on the service list.',
     },
   ],

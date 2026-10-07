@@ -94,7 +94,18 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-2 px-4 py-4 text-xs opacity-70 sm:px-6">
+          {/*
+            The operating company, stated plainly. "Operated by", never "doing
+            business as": EJC Demo Junk & Haul is the company, Houston Waste
+            Removal is the brand it trades under, and a d/b/a claim would be a
+            statement about a filing nobody here has seen.
+          */}
           <p>
+            {config.alternateName ? (
+              <>
+                {config.displayName} is operated by {config.alternateName} ({config.legalName}).{' '}
+              </>
+            ) : null}
             &copy; {year} {config.legalName}. All rights reserved.
           </p>
           <p className="flex flex-wrap gap-4">

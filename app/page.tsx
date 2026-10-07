@@ -24,7 +24,9 @@ export function generateMetadata(): Metadata {
     path: '/',
     // Explicit, because the derived home title would be 49 characters and would
     // also collide with the junk removal service page's title.
-    title: 'Houston Junk Removal and Cleanouts',
+    // Avoids the stutter of a head starting "Houston" in front of a brand
+    // that already starts "Houston".
+    title: 'Junk Removal, Cleanouts and Hauling',
     description: fm.description,
     image: fm.image,
   }).metadata
