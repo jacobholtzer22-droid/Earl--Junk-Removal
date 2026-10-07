@@ -65,9 +65,13 @@ export function buildTitle(args: Pick<BuildMetadataArgs, 'kind' | 'service' | 'a
       const head = args.service.titleOverride ?? `${args.service.name} in ${primaryCity}, ${primaryState}`
       return `${head} | ${displayName}`
     }
-    case 'area':
+    case 'area': {
       if (!args.area) throw new Error('buildTitle: kind "area" needs an area')
-      return `${primaryService.name} in ${args.area.name}, ${primaryState} | ${displayName}`
+      // Same reason as services[].titleOverride: a short place name lands the
+      // derived title under 50 characters and wastes displayed width.
+      const head = args.area.titleOverride ?? `${primaryService.name} in ${args.area.name}, ${primaryState}`
+      return `${head} | ${displayName}`
+    }
     case 'services':
       return `All Services in ${primaryCity} | ${displayName}`
     case 'about':

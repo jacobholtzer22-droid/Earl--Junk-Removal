@@ -78,6 +78,17 @@ export const siteConfigSchema = z
 
     legalName: z.string().min(2),
     displayName: z.string().min(2),
+    /**
+     * A second name the same business trades under, emitted as schema.org
+     * `alternateName` on LocalBusiness and Organization.
+     *
+     * Exists for the case where the customer-facing brand and the name on the
+     * truck are different. Search engines and answer engines otherwise have no
+     * way to know the two refer to one business, and a visitor who was
+     * recommended one name and lands on the other has no way to know either.
+     * null when the business trades under one name.
+     */
+    alternateName: z.string().min(2).nullable().default(null),
     tagline: z.string().min(10),
 
     schemaType: z.enum(SCHEMA_TYPES),
@@ -111,6 +122,29 @@ export const siteConfigSchema = z
           slug,
           name: z.string().min(2),
           county: z.string().nullable(),
+          /**
+           * The schema.org type for this place.
+           *
+           * NOT every place with a name and a post office is a city. A
+           * census-designated place, an unincorporated community and a
+           * special-purpose district are none of them cities, and calling one
+           * a City in structured data is simply false. schema.org has no CDP
+           * type, so anything not incorporated uses the broader `Place`, which
+           * is true of all of them.
+           *
+           * Check before setting this. The status of each place and its source
+           * belong in seo/AREA-SOURCES.md.
+           */
+          placeType: z.enum(['City', 'Place']).default('City'),
+          /**
+           * Replaces "<primaryService> in <name>, <state>" as the head of the
+           * <title>, same idea as services[].titleOverride.
+           *
+           * Short place names are the reason this exists: a four-letter name
+           * lands the derived title under 50 characters, which wastes the
+           * space Google will actually display. The H1 is unaffected.
+           */
+          titleOverride: z.string().min(10).nullable().default(null),
         }),
       )
       .min(1),

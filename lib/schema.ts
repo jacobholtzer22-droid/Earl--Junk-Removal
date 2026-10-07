@@ -49,8 +49,16 @@ function logoUrl(c: SiteConfig): string | null {
   return c.images.logo && hasImage(c.images.logo) ? absolute(getImage(c.images.logo).src) : null
 }
 
+/**
+ * areaServed, using each place's REAL schema.org type.
+ *
+ * This used to hardcode 'City' for everything, which is false for a
+ * census-designated place, an unincorporated community or a special-purpose
+ * district. config.serviceAreas[].placeType carries the verified status; see
+ * seo/AREA-SOURCES.md for where each one was checked.
+ */
 function areaServed(areas: readonly ServiceArea[]): Json[] {
-  return areas.map((a) => ({ '@type': 'City', name: a.name }))
+  return areas.map((a) => ({ '@type': a.placeType, name: a.name }))
 }
 
 function aggregateRating(c: SiteConfig): Json {
@@ -89,6 +97,7 @@ export function localBusiness(areas: readonly ServiceArea[] = config.serviceArea
     '@type': c.schemaType,
     '@id': BUSINESS_ID(),
     name: c.displayName,
+    ...when(c.alternateName, (alt) => ({ alternateName: alt })),
     legalName: c.legalName,
     description: c.tagline,
     url: site(),
@@ -140,6 +149,7 @@ export function organization(): Json {
     '@type': 'Organization',
     '@id': ORGANIZATION_ID(),
     name: c.displayName,
+    ...when(c.alternateName, (alt) => ({ alternateName: alt })),
     legalName: c.legalName,
     url: site(),
     telephone: c.phone,
