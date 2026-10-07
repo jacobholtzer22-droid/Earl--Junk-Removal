@@ -91,15 +91,45 @@ export default function Header() {
         </div>
       </div>
 
+      {/*
+        data-safe-center, NOT justify-center.
+        
+        Plain centring on a scroller that overflows pushes the first item into
+        negative space: at 390px this row was 449px wide, scrollLeft was 0, and
+        the left edge of "Home" sat at -42px, which is unreachable by scrolling
+        in either direction. The item was on the page and no user could ever
+        get to it. It appeared the moment Home and Service Areas were added.
+        
+        The fix is `justify-content: safe center`, where the `safe` keyword
+        means "centre only while that loses nothing, and align to the start
+        when it would": the whole bug in one word. A browser too old to know it
+        drops the declaration and falls back to flex-start, which is also
+        reachable, so there is no bad outcome either way.
+        
+        It is a data attribute and a rule in globals.css rather than a utility
+        because Tailwind silently emits NOTHING for justify-[safe_center]: the
+        class lands in the HTML, no CSS is generated for it, and the row goes
+        on quietly losing its first item. Verified by grepping the built CSS.
+      */}
       <nav
         aria-label="Main mobile"
-        className="flex justify-center gap-x-5 gap-y-1 overflow-x-auto border-t border-line px-4 py-2.5 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        data-safe-center
+        className="flex gap-x-5 gap-y-1 overflow-x-auto border-t border-line px-4 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {NAV.map((item) => (
+          /*
+            py-3 on the LINK, not on the row.
+            
+            The row carried the padding and the links were 21px tall: under
+            WCAG 2.2 target-size minimum of 24px, and less than half a thumb.
+            Moving the same padding inside the anchor makes each one 45px and
+            costs the sticky header 4px of height, because the row was already
+            41px tall and was simply mostly not clickable.
+          */
           <Link
             key={item.href}
             href={item.href}
-            className="shrink-0 whitespace-nowrap font-heading text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-100 hover:text-accent-dark motion-reduce:transition-none"
+            className="shrink-0 whitespace-nowrap py-3 font-heading text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-100 hover:text-accent-dark motion-reduce:transition-none"
           >
             {item.label}
           </Link>

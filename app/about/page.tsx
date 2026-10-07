@@ -35,7 +35,15 @@ export default async function AboutPage() {
     <>
       <JsonLd data={breadcrumbList(CRUMBS)} />
       <JsonLd data={faqPage(config.pageFaqs.about)} />
-      <PageHeader title={`About ${config.displayName}`} intro={config.tagline} crumbs={CRUMBS} />
+      {/*
+        The intro must not restate the paragraph directly under it. These three
+        pages each said the same thing twice in a row: the header announced the
+        structure or the noun list and the opening paragraph repeated it almost
+        word for word, a line apart, which reads as padding. The opening
+        paragraph is the one that stays as written, because it is what an
+        answer engine lifts as the page's direct answer; the intro changed.
+      */}
+      <PageHeader title={`About ${config.displayName}`} intro="One business, three names, one phone number." crumbs={CRUMBS} />
       <div className="mx-auto grid max-w-page gap-10 px-4 pt-10 sm:px-6 lg:grid-cols-3">
         <article className="lg:col-span-2">
           <Credentials />

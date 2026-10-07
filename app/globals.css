@@ -123,3 +123,19 @@ details[open] > p {
     scroll-behavior: auto !important;
   }
 }
+
+/*
+ * A scroller that centres its contents only while centring loses nothing.
+ *
+ * Plain `justify-content: center` on an overflowing scroll container puts the
+ * first item at a negative offset that no amount of scrolling can reach. The
+ * mobile nav hit this the moment it grew to six items. `safe` is the keyword
+ * for exactly that case and degrades to flex-start where it is unsupported.
+ *
+ * Here rather than in Tailwind because `justify-[safe_center]` compiles to no
+ * CSS at all: the class name appears in the markup and the declaration never
+ * exists, which is worse than not trying.
+ */
+[data-safe-center] {
+  justify-content: safe center;
+}
