@@ -3,14 +3,25 @@ import { config } from '@/lib/config'
 import { getImage, hasImage } from '@/lib/images'
 import Phone from './Phone'
 
+/**
+ * `short` is the label a phone gets; `label` is the full one. `mobile: false`
+ * keeps an item out of the phone nav entirely.
+ *
+ * The phone row has to FIT at 360px with nothing to scroll sideways. Six full
+ * labels came to 508px at 390px wide, so the row scrolled and the items past
+ * the fold were a guess away. Referrals is the one that leaves: it is the only
+ * link aimed at contractors rather than customers, and it is already in the
+ * footer on every page, so nothing becomes unreachable. Home stays first.
+ */
 const NAV = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/areas', label: 'Service Areas' },
+  { href: '/areas', label: 'Service Areas', short: 'Areas' },
   { href: '/about', label: 'About' },
-  { href: '/referral-program', label: 'Referrals' },
+  { href: '/referral-program', label: 'Referrals', mobile: false },
   { href: '/contact', label: 'Contact' },
 ]
+const MOBILE_NAV = NAV.filter((i) => i.mobile !== false)
 
 export default function Header() {
   const logoName = config.images.logo
@@ -114,9 +125,9 @@ export default function Header() {
       <nav
         aria-label="Main mobile"
         data-safe-center
-        className="flex gap-x-5 gap-y-1 overflow-x-auto border-t border-line px-4 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex gap-x-2 overflow-x-auto border-t border-line px-3 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {NAV.map((item) => (
+        {MOBILE_NAV.map((item) => (
           /*
             py-3 on the LINK, not on the row.
             
@@ -125,13 +136,20 @@ export default function Header() {
             Moving the same padding inside the anchor makes each one 45px and
             costs the sticky header 4px of height, because the row was already
             41px tall and was simply mostly not clickable.
+            
+            13px with no letter-spacing, where the desktop row is 14px and
+            tracked: five labels have to fit 360px minus the gutters, and
+            tracking is the cheapest width to give back. overflow-x-auto stays
+            as a safety net for a future label, not because anything scrolls
+            today; data-safe-center keeps the first item reachable if it ever
+            does.
           */
           <Link
             key={item.href}
             href={item.href}
-            className="shrink-0 whitespace-nowrap py-3 font-heading text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-100 hover:text-accent-dark motion-reduce:transition-none"
+            className="whitespace-nowrap px-1 py-3 font-heading text-[13px] font-semibold uppercase text-ink transition-colors duration-100 hover:text-accent-dark motion-reduce:transition-none"
           >
-            {item.label}
+            {item.short ?? item.label}
           </Link>
         ))}
       </nav>

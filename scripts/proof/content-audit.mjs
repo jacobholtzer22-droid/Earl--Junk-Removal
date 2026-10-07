@@ -70,6 +70,38 @@ const FOREIGN_PLACES = [
   'Alvin', 'Manvel', 'Fresno', 'Jersey Village', 'Spring Branch',
 ]
 
+/**
+ * Company-behaviour claims: a sentence that asserts how this business
+ * habitually acts, how often, or what it typically sees.
+ *
+ * These are the hardest claims to notice, because they read like description
+ * rather than assertion. "What comes out of Katy is renovation waste" sounds
+ * like geography and is actually a statement about jobs this business has done
+ * in a place it has no record of working in. All eight area pages carried one.
+ *
+ * Patterns, not terms, because the claim is a shape of sentence rather than a
+ * word. Each of the eight sentences removed on 2026-10-07 is matched by at
+ * least one of these; the spring one is why the last two exist, since it was
+ * the only one the first draft of this list missed.
+ */
+const BEHAVIOUR_CLAIMS = [
+  /\bwe (always|never|routinely|typically|usually|often)\b/i,
+  /\bis (routine|standard|normal) (work|practice) here\b/i,
+  /\b(most|many|a lot) of (our|the) (jobs|calls|work|customers)\b/i,
+  /\bwhat comes out of\b/i,
+  /\bthe usual .{0,20}\bcall\b/i,
+  /\bcomes? out of \w+ more than\b/i,
+  /\bthe mix here\b/i,
+  /\bskews towards?\b/i,
+  /\ba fair share of\b/i,
+  /\bwe (have|had) (done|cleared|hauled)\b/i,
+  /\bour (customers|clients|crews?|trucks?)\b/i,
+  /\b(every|each) (job|week|day) we\b/i,
+  /\btreated that way\b/i,
+  /\bthe calls? (that )?comes? in\b/i,
+  /\bis often (about|a)\b/i,
+]
+
 /** Template identity and placeholder junk, scanned across the whole source. */
 const SOURCE_TOKENS = [
   'Sample Lawn Care', 'sample-lawn-care', 'sample-', 'REPLACE_ME', 'EXAMPLE_',
@@ -130,6 +162,18 @@ const claimHits = BANNED_CLAIMS.filter((term) => {
   return pages.some((f) => re.test(visibleText(fs.readFileSync(f, 'utf8'))))
 })
 if (claimHits.length === 0) row(`all ${BANNED_CLAIMS.length} banned claim terms, in rendered page text`, 0)
+
+// 1b. Company-behaviour claims in rendered page text.
+{
+  const hits = []
+  for (const re of BEHAVIOUR_CLAIMS) {
+    for (const f of pages) {
+      const m = visibleText(fs.readFileSync(f, 'utf8')).match(new RegExp(re.source, 'gi'))
+      if (m) hits.push(`${routeOf(f)}: ${m[0]}`)
+    }
+  }
+  row(`company-behaviour claims (${BEHAVIOUR_CLAIMS.length} patterns)`, hits.length, hits.slice(0, 5).join(', '))
+}
 
 // 2. Place names that are not on the approved list.
 {

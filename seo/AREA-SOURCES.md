@@ -69,6 +69,48 @@ by someone who thinks otherwise.
 | Legal status | "The Woodlands is a township rather than an incorporated city." | Any implication this changes the service |
 | Adjacency | "Cypress sits inside Houston's extraterritorial jurisdiction." | "We are just down the road." |
 
+## General facts used on more than one page
+
+Two statements appear on several area pages and are not claims about any
+particular place. They are listed here so that a provenance audit does not have
+to treat them as unsourced local geography.
+
+| Statement | What it rests on |
+|---|---|
+| "A postal address and an incorporated city are not always the same shape, here as anywhere." | General US postal geography: a ZIP code is a USPS mail delivery route, drawn for carrier efficiency, and has no relationship to municipal incorporation. It is stated on the pages in a form that is explicitly general ("here as anywhere") rather than as a finding about that city. |
+| "Give the address rather than the place name." | Follows from the line above. It is an instruction, not a claim. |
+
+## What was removed, and why, on 2026-10-07
+
+Every one of the eight pages originally had a second section that described
+**what kind of work comes out of that place**: "a lot of what comes out of Katy
+is renovation waste", "the usual Pearland call is several things at once", "the
+mix here leans commercial", "two kinds of call come out of Pasadena more than
+any other", and five more in the same shape.
+
+Every one of those is a past-jobs claim wearing different clothes. The banned
+list at the top of this file already forbids them, and they got written anyway,
+because describing a local job mix feels like describing geography. **It is not.
+It is a claim about work this business has done in a place it has no record of
+working in**, and it is the single easiest sentence to write by accident on a
+page like this.
+
+They were rewritten to describe the SERVICE rather than the place: "renovation
+waste is priced differently from household clutter" says the same useful thing
+and claims nothing. The service links, the headings and the structure stayed.
+
+Four other claims went at the same time, none of them traceable to a line in the
+table above:
+
+| Claim | Page | Why it went |
+|---|---|---|
+| "the largest city in Fort Bend County" | Sugar Land | True, but not in this file, and nothing here verified it |
+| "like most of the county it has grown outwards faster than anyone's mental map" | Sugar Land | Unsourced growth claim about a county |
+| "Cities that old have annexed in stages, so the limits have shifted more than once" | Pasadena | No annexation history was ever sourced |
+| "The name reaches a lot further than the city limits do: a large area outside them shares the postal address" | Humble | This is sourced for SPRING and was quietly reused for Humble, where nothing supports it |
+| "That split decides your school district" | Pearland | Wrong as well as unsourced. Texas school districts do not follow county lines; Pearland ISD itself spans more than one |
+| "one of the older ones" / "a small incorporated city" / "the same small city" | Pasadena, Humble, Katy | Size and age characterisations with no line behind them. Pasadena now states its 1923 incorporation, which is in the table |
+
 ## Confirm with Earl
 
 **None of these eight has been confirmed by Earl one by one.** He gave a

@@ -78,7 +78,7 @@ const siteConfig = {
       faqs: [
         {
           q: 'Which county is my Katy address in?',
-          a: 'It depends which side of town you are on. Katy sits at the tripoint of Harris, Fort Bend and Waller counties, so three different county lines run through the same small city. It makes no difference to a quote, but it is worth knowing when a permit or a deed is involved.',
+          a: 'It depends which side of town you are on. Katy sits at the tripoint of Harris, Fort Bend and Waller counties, so three different county lines run through the same city. It makes no difference to a quote, but it is worth knowing when a permit or a deed is involved.',
         },
         {
           q: 'Do you take construction debris from a Katy remodel?',
@@ -120,7 +120,7 @@ const siteConfig = {
       faqs: [
         {
           q: 'Pearland sits in three counties. Does that change anything?',
-          a: 'Not for a quote. Pearland is mostly in Brazoria County with portions reaching into Fort Bend and Harris, which matters for your tax bill and your ISD rather than for what it costs to empty a garage.',
+          a: 'Not for a quote. Pearland is mostly in Brazoria County with portions reaching into Fort Bend and Harris, which can matter for a permit rather than for what it costs to empty a garage.',
         },
         {
           q: 'Do you handle estate cleanouts in Pearland?',
@@ -204,7 +204,7 @@ const siteConfig = {
       faqs: [
         {
           q: 'Do you cover all of Pasadena?',
-          a: 'Ask with the address. Pasadena is an incorporated city in Harris County and one of the older ones, which means the city limits have moved more than once and a postal address does not always match them.',
+          a: 'Ask with the address. Pasadena is an incorporated city in Harris County, and a postal address does not always match the limits of an incorporated city, here or anywhere else.',
         },
         {
           q: 'Do you clear out rental properties in Pasadena?',
@@ -225,7 +225,7 @@ const siteConfig = {
       faqs: [
         {
           q: 'Do you serve Humble itself or the wider area?',
-          a: 'Both are worth asking about. Humble is a small incorporated city in Harris County surrounded by a much larger area that shares its name and its postal addresses, so give the address rather than the city name and you will get a straight answer.',
+          a: 'Both are worth asking about. Humble is an incorporated city in Harris County, and a postal address does not always match the limits of an incorporated city, so give the address rather than the city name and you will get a straight answer.',
         },
         {
           q: 'Do you do hoarder and estate cleanouts in Humble?',
