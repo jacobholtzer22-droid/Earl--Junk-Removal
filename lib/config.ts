@@ -23,6 +23,18 @@ export function getService(slug: string) {
   return config.services.find((s) => s.slug === slug) ?? null
 }
 
+/**
+ * Every service area except the primary city. The homepage is the primary
+ * city's page, so it never gets one under /areas.
+ */
+export function outlyingAreas() {
+  return config.serviceAreas.filter((a) => a.name !== config.primaryCity)
+}
+
+export function getArea(slug: string) {
+  return config.serviceAreas.find((a) => a.slug === slug) ?? null
+}
+
 /** Minutes-since-midnight "HH:MM" -> "8:00 AM". */
 export function formatTime(hhmm: string): string {
   const [h = 0, m = 0] = hhmm.split(':').map(Number)

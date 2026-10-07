@@ -37,15 +37,62 @@ og:image and every `@id` and `url` in the JSON-LD are on the www host; no
 
 ## BLOCKING LAUNCH
 
-### 3. Service city list
-Houston only, provisionally. **No suburb, neighborhood or county is named
-anywhere on the site**, because naming one we cannot confirm is an invented
-fact. The service-area section currently reads "Serving the Houston, TX area."
+### 3. Confirm each service area with Earl. EIGHT PAGES ARE LIVE ON AN ASSUMPTION
 
-Which cities does Earl actually drive to? Katy, Spring, Cypress, Sugar Land,
-The Woodlands, Pasadena, Pearland? Once there is a real list, add it to
-`serviceAreas` and revert the commit titled "remove city landing pages
-(/areas)" to bring the city pages back.
+There are now eight area pages plus Houston. **Earl has not confirmed a single
+one of them individually.** The list was drawn from a driving radius he gave,
+and that figure is deliberately not published anywhere on the site.
+
+**Why this matters more than it looks.** A page for a place he will not drive
+to is worse than no page at all: it ranks, the phone rings, and he either turns
+the job down or takes a drive that loses money. The fix is one conversation.
+
+Go through these one at a time and get a yes or a no:
+
+| Place | Status | Confirmed? |
+|---|---|---|
+| Houston | Incorporated city, Harris County | **confirm with Earl** |
+| Katy | Incorporated city, Harris / Fort Bend / Waller tripoint | **confirm with Earl** |
+| Sugar Land | Incorporated city, Fort Bend County | **confirm with Earl** |
+| Pearland | Incorporated city, mostly Brazoria County | **confirm with Earl** |
+| Cypress | Unincorporated community, Harris County | **confirm with Earl** |
+| Spring | Census-designated place, Harris / Montgomery | **confirm with Earl** |
+| The Woodlands | Township, Montgomery County | **confirm with Earl** |
+| Pasadena | Incorporated city, Harris County | **confirm with Earl** |
+| Humble | Incorporated city, Harris County | **confirm with Earl** |
+
+A no means deleting that entry from `serviceAreas` in `site.config.ts` and its
+file in `content/areas/`. Nothing else has to change; the routes, sitemap,
+footer and llms.txt all derive from that array.
+
+Legal status and county for every one of them is sourced in
+`seo/AREA-SOURCES.md`. Three of these are **not cities** and the copy says so.
+
+### 3b. One real detail per place, from Earl
+
+Right now every area page is built from public geography: the county, the legal
+status, and which services tend to come up there. That is honest, and it is
+also the ceiling of what can be written without him.
+
+**Each page needs one true, specific thing only Earl knows.** Not a
+testimonial, not a job count. Something like: the kind of property that calls
+most often there, an access quirk he has run into, a type of job he gets there
+and nowhere else, or a reason he likes or dislikes working there.
+
+One sentence per place is enough to lift all eight out of template territory:
+
+- Houston
+- Katy
+- Sugar Land
+- Pearland
+- Cypress
+- Spring
+- The Woodlands
+- Pasadena
+- Humble
+
+Until those exist, the pages are accurate but generic, and the similarity check
+in `scripts/proof/area-similarity.mjs` is the only thing keeping them honest.
 
 ---
 

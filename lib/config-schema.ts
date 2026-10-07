@@ -145,6 +145,27 @@ export const siteConfigSchema = z
            * space Google will actually display. The H1 is unaffected.
            */
           titleOverride: z.string().min(10).nullable().default(null),
+          /**
+           * Questions for this place specifically. Rendered as the visible
+           * accordion AND as the FAQPage markup, from the same objects, so the
+           * two cannot drift.
+           *
+           * Write them per place. Three near-identical sets across eight pages
+           * is the thing that makes a city-page template look like a city-page
+           * template, and it is what the similarity check in
+           * scripts/proof/area-similarity.mjs exists to catch.
+           */
+          faqs: z
+            .array(faq)
+            .max(6)
+            .default([])
+            // Empty is legal, and means exactly one thing: this place has no
+            // page of its own. The primary city is the homepage, so it never
+            // gets one. Any place that DOES get a page needs at least three,
+            // or the FAQPage markup is not worth emitting.
+            .refine((a) => a.length === 0 || a.length >= 3, {
+              message: 'a place with its own page needs 3 to 6 faqs; only the primary city may have none',
+            }),
         }),
       )
       .min(1),

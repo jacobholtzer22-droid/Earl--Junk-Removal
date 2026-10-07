@@ -6,6 +6,7 @@ import Gallery from './Gallery'
 import Img from './Img'
 import Phone from './Phone'
 import ServiceGrid from './ServiceGrid'
+import AreaList from './AreaList'
 
 /**
  * Everything a content file may use. Facts arrive through these components or
@@ -50,5 +51,6 @@ export const mdxComponents: MDXComponents = {
   Img,
   Gallery,
   ServiceGrid,
+  AreaList,
   Credentials,
 }

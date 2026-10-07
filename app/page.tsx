@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import AboutTeaser from '@/components/AboutTeaser'
+import AreaList from '@/components/AreaList'
 import FaqAccordion from '@/components/FaqAccordion'
 import Hero from '@/components/Hero'
 import HoursPanel from '@/components/HoursPanel'
@@ -50,6 +51,7 @@ export default async function HomePage() {
       <AboutTeaser />
       <HoursPanel />
       <ServiceArea />
+      <AreaList heading="Where we work" exclude="houston" />
       <FaqAccordion faqs={config.faqs} />
       <QuoteSection />
     </>

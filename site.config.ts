@@ -53,12 +53,191 @@ const siteConfig = {
   primaryState: 'TX',
 
   /**
-   * PROVISIONAL, and deliberately one entry. The client has not supplied a
-   * city list, so no suburb, neighborhood or county is named anywhere on this
-   * site. This entry exists to feed `areaServed` in lib/schema.ts; there are
-   * no /areas routes in this build (see the commit that removed them).
+   * The eight places besides Houston, each verified against a public source
+   * before it was written about. Status, county and the source URL for every
+   * one are in seo/AREA-SOURCES.md.
+   *
+   * placeType is NOT decorative. Cypress, Spring and The Woodlands are not
+   * incorporated cities, and calling them City in structured data would be
+   * false. schema.org has no census-designated-place type, so they use Place.
+   *
+   * NONE OF THESE HAS BEEN CONFIRMED BY EARL ONE BY ONE. The list was drawn
+   * from a driving radius he gave. See item 3 on the client question list at the repo root; a page for a place
+   * he will not drive to is worse than no page, because it ranks.
    */
-  serviceAreas: [{ slug: 'houston', name: 'Houston', county: null }],
+  serviceAreas: [
+    { slug: 'houston', name: 'Houston', county: 'Harris County', placeType: 'City', titleOverride: null, faqs: [] },
+    {
+      slug: 'katy',
+      name: 'Katy',
+      county: 'Harris, Fort Bend and Waller counties',
+      placeType: 'City',
+      // "Junk Removal in Katy, TX | Houston Waste Removal" is 48 characters.
+      // Short name, wasted width.
+      titleOverride: 'Junk Removal and Hauling in Katy, TX',
+      faqs: [
+        {
+          q: 'Which county is my Katy address in?',
+          a: 'It depends which side of town you are on. Katy sits at the tripoint of Harris, Fort Bend and Waller counties, so three different county lines run through the same small city. It makes no difference to a quote, but it is worth knowing when a permit or a deed is involved.',
+        },
+        {
+          q: 'Do you take construction debris from a Katy remodel?',
+          a: 'Yes. Lumber, drywall, roofing tear-off, concrete, brick and scrap metal all come under construction debris removal. Say what the pile is made of when you call, because weight drives that job more than volume does.',
+        },
+        {
+          q: 'Can you pick up the same day in Katy?',
+          a: 'Same-day service is available. Call and ask what is still open today rather than assuming it is too late; the phone is answered seven days a week from 8:00am to 5:00pm.',
+        },
+      ],
+    },
+    {
+      slug: 'sugar-land',
+      name: 'Sugar Land',
+      county: 'Fort Bend County',
+      placeType: 'City',
+      titleOverride: null,
+      faqs: [
+        {
+          q: 'Do you clear properties for realtors in Sugar Land?',
+          a: 'Yes. Listing preparation, move-outs, evictions and foreclosure cleanouts are all on the property cleanouts page, and the estimate is virtual, which matters when you are running several Fort Bend County listings at once and cannot meet anyone on site.',
+        },
+        {
+          q: 'What about an address outside the Sugar Land city limits?',
+          a: 'Ask when you call. A Sugar Land postal address and the incorporated city are not always the same boundary, and the only way to know whether yours is covered is to say the address out loud to someone.',
+        },
+        {
+          q: 'Do you remove hot tubs and sheds in Sugar Land?',
+          a: 'Yes, and they are two different jobs on the list. A hot tub is broken down where it sits and carried out in pieces; a shed comes under light demolition, where the teardown and the debris are quoted together.',
+        },
+      ],
+    },
+    {
+      slug: 'pearland',
+      name: 'Pearland',
+      county: 'Brazoria County, with portions in Fort Bend and Harris',
+      placeType: 'City',
+      titleOverride: null,
+      faqs: [
+        {
+          q: 'Pearland sits in three counties. Does that change anything?',
+          a: 'Not for a quote. Pearland is mostly in Brazoria County with portions reaching into Fort Bend and Harris, which matters for your tax bill and your ISD rather than for what it costs to empty a garage.',
+        },
+        {
+          q: 'Do you handle estate cleanouts in Pearland?',
+          a: 'Yes. Whole-property clearing for executors and families is on the estate cleanouts page, the pace is agreed when the job is quoted, and the estimate is virtual so an out-of-state executor does not need to travel for a price.',
+        },
+        {
+          q: 'Is the estimate really free for a Pearland address?',
+          a: 'Yes, and it is free whether or not you book. That is the whole point of a virtual estimate: you have a price before you commit to anything, and nothing is owed if you decide against it.',
+        },
+      ],
+    },
+    {
+      slug: 'cypress',
+      name: 'Cypress',
+      county: 'Harris County',
+      placeType: 'Place',
+      titleOverride: null,
+      faqs: [
+        {
+          q: 'Is Cypress its own city?',
+          a: 'No. Cypress is an unincorporated community in Harris County, and it sits entirely inside the City of Houston extraterritorial jurisdiction. There is no Cypress city hall, which is why permits and rules get routed through the county or through Houston.',
+        },
+        {
+          q: 'Do you clear garages and storage units in Cypress?',
+          a: 'Yes, and they are the same job with one difference worth planning around: a storage facility has access hours and they are often narrower than ours. Mention them when you book so the visit lands inside them.',
+        },
+        {
+          q: 'Can you come out at the weekend in Cypress?',
+          a: 'Yes. Saturday and Sunday are ordinary working days here, 8:00am to 5:00pm, same as the rest of the week. After-hours calls are answered too.',
+        },
+      ],
+    },
+    {
+      slug: 'spring',
+      name: 'Spring',
+      county: 'Harris County, with a smaller area in Montgomery',
+      placeType: 'Place',
+      titleOverride: null,
+      faqs: [
+        {
+          q: 'Which Spring do you mean?',
+          a: 'Whichever one you live in. Spring is a census-designated place in Harris County, but the name is popularly applied to a much larger stretch of northern Harris County and a smaller area of southern Montgomery County. Give the address and it stops being ambiguous.',
+        },
+        {
+          q: 'Do you clear storm debris in Spring?',
+          a: 'Yes. Brush, limbs, leaves and whatever the wind brought down come under yard waste and storm debris removal, along with old fencing and decking. Emergency after-hours service is available and a trip charge applies; ask what it is when you call.',
+        },
+        {
+          q: 'Do you take appliances and mattresses from a Spring home?',
+          a: 'Yes, and each has its own page. Appliance removal covers refrigerators, washers, dryers and water heaters; mattress disposal covers any size, box spring included. Both can go in one visit if you mention both when you call.',
+        },
+      ],
+    },
+    {
+      slug: 'the-woodlands',
+      name: 'The Woodlands',
+      county: 'Montgomery County, with portions in Harris',
+      placeType: 'Place',
+      titleOverride: null,
+      faqs: [
+        {
+          q: 'Is The Woodlands a city?',
+          a: 'No, and residents have chosen to keep it that way. The Woodlands is a special-purpose district and census-designated place, run by The Woodlands Township and its elected board rather than by a city council. Residents voted against incorporation in 2021.',
+        },
+        {
+          q: 'Do you do commercial cleanouts in The Woodlands?',
+          a: 'Yes. Offices, retail units, warehouses, restaurants and hotels are all on the commercial cleanouts page, including the furniture, appliances and kitchen equipment inside them. Say what window you need when you call and ask what fits it.',
+        },
+        {
+          q: 'What about work outside normal hours in The Woodlands?',
+          a: 'After-hours calls are answered, and emergency after-hours service is available with a trip charge. Ask what the charge is before you book rather than after the work is done.',
+        },
+      ],
+    },
+    {
+      slug: 'pasadena',
+      name: 'Pasadena',
+      county: 'Harris County',
+      placeType: 'City',
+      titleOverride: null,
+      faqs: [
+        {
+          q: 'Do you cover all of Pasadena?',
+          a: 'Ask with the address. Pasadena is an incorporated city in Harris County and one of the older ones, which means the city limits have moved more than once and a postal address does not always match them.',
+        },
+        {
+          q: 'Do you clear out rental properties in Pasadena?',
+          a: 'Yes. Tenant eviction cleanouts, move-outs and listing preparation are on the property cleanouts page, and same-day service is available when a unit has to be empty by a particular date.',
+        },
+        {
+          q: 'Do you take renovation debris in Pasadena?',
+          a: 'Yes. Construction and renovation waste, roofing tear-off, concrete, brick, lumber and scrap metal all come under construction debris removal, and repeat visits across a build are quoted the same way as a single clear.',
+        },
+      ],
+    },
+    {
+      slug: 'humble',
+      name: 'Humble',
+      county: 'Harris County',
+      placeType: 'City',
+      titleOverride: null,
+      faqs: [
+        {
+          q: 'Do you serve Humble itself or the wider area?',
+          a: 'Both are worth asking about. Humble is a small incorporated city in Harris County surrounded by a much larger area that shares its name and its postal addresses, so give the address rather than the city name and you will get a straight answer.',
+        },
+        {
+          q: 'Do you do hoarder and estate cleanouts in Humble?',
+          a: 'Yes, and both are handled with the pacing agreed before any work starts. Say what you need when you call: discretion, stages across several visits, or anything set aside and kept.',
+        },
+        {
+          q: 'Is the virtual estimate available for Humble addresses?',
+          a: 'Yes. It costs nothing whether or not you go ahead, and you have a price before you commit. Call and ask how to set one up.',
+        },
+      ],
+    },
+  ],
 
   services: [
     {

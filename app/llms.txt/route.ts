@@ -39,8 +39,11 @@ export function GET() {
     ...c.services.map((s) => `- [${s.name}](${url(`/services/${s.slug}`)}): ${s.shortDescription}`),
     '',
     '## Service areas',
-    // Named, not linked: this build has no /areas routes.
-    ...c.serviceAreas.map((a) => `- ${a.name}, ${c.primaryState}`),
+    ...c.serviceAreas.map((a) => {
+      // The primary city is the home page, not an /areas route.
+      const href = a.name === c.primaryCity ? url('/') : url(`/areas/${a.slug}`)
+      return `- [${a.name}, ${c.primaryState}](${href})${a.county ? `: ${a.county}` : ''}`
+    }),
   ]
   if (c.hours) {
     lines.push('', '## Hours', ...c.hours.map((h) => `- ${h.day}: ${formatTime(h.open)} to ${formatTime(h.close)}`))

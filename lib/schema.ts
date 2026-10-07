@@ -171,7 +171,12 @@ export function website(): Json {
   }
 }
 
-export function service(s: Service): Json {
+/**
+ * `areas` scopes areaServed to one place, which is what an area page needs:
+ * a Service block on /areas/katy should say it serves Katy, not recite all
+ * nine places. Defaults to every service area for the service pages.
+ */
+export function service(s: Service, areas: readonly ServiceArea[] = config.serviceAreas): Json {
   const c = config
   const img = s.image && hasImage(s.image) ? absolute(getImage(s.image).src) : null
   return {
@@ -183,7 +188,7 @@ export function service(s: Service): Json {
     description: s.shortDescription,
     url: absolute(`/services/${s.slug}`),
     provider: { '@id': BUSINESS_ID() },
-    areaServed: areaServed(c.serviceAreas),
+    areaServed: areaServed(areas),
     ...when(img, (image) => ({ image })),
     ...when(s.priceFrom, (price) => ({
       offers: {
