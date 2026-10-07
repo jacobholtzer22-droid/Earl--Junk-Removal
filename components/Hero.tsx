@@ -28,13 +28,13 @@ export default function Hero() {
       {/* Mobile: call is first in the DOM and visually primary. */}
       <a
         href={`tel:${config.phone}`}
-        className="bg-accent px-7 py-4 text-center font-heading text-lg font-bold uppercase tracking-wide text-on-accent hover:bg-accent-dark sm:order-2 sm:px-6 sm:py-3.5 sm:text-base"
+        className="bg-accent px-7 py-4 text-center font-heading text-lg font-bold uppercase tracking-wide text-on-accent transition-colors duration-100 hover:bg-accent-dark active:translate-y-px motion-reduce:transition-none sm:order-2 sm:px-6 sm:py-3.5 sm:text-base"
       >
         Call {config.phoneDisplay}
       </a>
       <a
         href="#quote"
-        className="border-2 border-on-primary px-7 py-4 text-center font-heading text-base font-semibold uppercase tracking-wide text-on-primary hover:bg-on-primary hover:text-primary-dark sm:order-1 sm:py-3"
+        className="border-2 border-on-primary px-7 py-4 text-center font-heading text-base font-semibold uppercase tracking-wide text-on-primary transition-colors duration-100 hover:bg-on-primary hover:text-primary-dark active:translate-y-px motion-reduce:transition-none sm:order-1 sm:py-3"
       >
         Get a free estimate
       </a>

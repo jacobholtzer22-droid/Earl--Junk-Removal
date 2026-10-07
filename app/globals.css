@@ -49,3 +49,77 @@
     color: var(--c-on-primary);
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * MOTION. Five patterns, no library, roughly 40 lines of CSS and one
+ * IntersectionObserver in components/Motion.tsx.
+ *
+ * THREE RULES THAT OVERRIDE EVERYTHING ELSE HERE:
+ *
+ * 1. Every pixel of content is visible with JavaScript off. The reveal is
+ *    scoped to `.js-motion`, a class only the script adds, so without it the
+ *    initial state never applies and sections simply render.
+ * 2. Under prefers-reduced-motion everything collapses to its end state. Not
+ *    "a shorter animation": no animation.
+ * 3. Nothing animates layout. Only opacity, transform and colour, so
+ *    Cumulative Layout Shift stays at 0. The header in particular changes its
+ *    border colour and nothing else: no height, no padding, no font size.
+ * ------------------------------------------------------------------------ */
+
+/* 1. Section reveal on scroll. */
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.js-motion [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 180ms ease-out,
+    transform 180ms ease-out;
+}
+
+/* 5. Header on scroll: border colour only. */
+[data-site-header][data-scrolled='true'] {
+  border-bottom-color: var(--c-accent);
+}
+
+/* 4. FAQ open. The marker rotation is on the element in FaqAccordion. */
+details[open] > p {
+  animation: faq-in 150ms ease-out;
+}
+@keyframes faq-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * The reduced-motion escape hatch. Anyone who has asked their OS to stop
+ * moving things has usually asked for a reason, and a 180ms fade is still
+ * movement.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .js-motion [data-reveal],
+  .js-motion [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  details[open] > p {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

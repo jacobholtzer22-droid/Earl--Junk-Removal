@@ -19,7 +19,7 @@ import TrustChips from './TrustChips'
  */
 export default function QuoteSection() {
   return (
-    <section id="quote" className="scroll-mt-24 border-t-2 border-primary-dark bg-bg">
+    <section data-reveal id="quote" className="scroll-mt-24 border-t-2 border-primary-dark bg-bg">
       <div className="mx-auto grid max-w-page gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2">
         <div>
           <h2 className="font-heading text-3xl font-bold uppercase leading-tight tracking-tight text-primary-dark md:text-5xl">

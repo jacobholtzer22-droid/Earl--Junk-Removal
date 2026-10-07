@@ -18,7 +18,7 @@ export default function HoursPanel() {
     hours.length === 7 && hours.every((h) => h.open === open?.open && h.close === open?.close)
 
   return (
-    <section className="border-t-2 border-primary-dark bg-bg">
+    <section data-reveal className="border-t-2 border-primary-dark bg-bg">
       <div className="mx-auto grid max-w-page gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
         <div>
           <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-primary-dark md:text-4xl">

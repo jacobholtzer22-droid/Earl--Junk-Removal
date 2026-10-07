@@ -16,7 +16,7 @@ export default function FaqAccordion({ faqs, heading = 'Frequently Asked Questio
             <summary className="cursor-pointer list-none font-semibold text-ink marker:content-none">
               <span className="flex items-center justify-between gap-4">
                 {f.q}
-                <span aria-hidden="true" className="text-primary transition group-open:rotate-45">
+                <span aria-hidden="true" className="text-primary transition-transform duration-150 group-open:rotate-45 motion-reduce:transition-none">
                   +
                 </span>
               </span>

@@ -14,7 +14,7 @@ export default function CtaBand({ heading }: { heading?: string }) {
             Call <Phone className="text-primary-dark" /> or send a message to start a free estimate.
           </p>
         </div>
-        <Link href="/contact" className="shrink-0 bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-on-accent hover:bg-accent-dark">
+        <Link href="/contact" className="shrink-0 bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-on-accent transition-colors duration-100 hover:bg-accent-dark active:translate-y-px motion-reduce:transition-none">
           Request a Free Quote
         </Link>
       </div>

@@ -25,7 +25,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="border-t-2 border-primary-dark bg-bg">
+    <section data-reveal className="border-t-2 border-primary-dark bg-bg">
       <div className="mx-auto max-w-page px-4 py-16 sm:px-6 md:py-24">
         <h2 className="max-w-2xl font-heading text-3xl font-bold uppercase leading-tight tracking-tight text-primary-dark md:text-5xl">
           Three steps, no surprises

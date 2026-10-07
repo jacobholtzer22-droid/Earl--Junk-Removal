@@ -3,6 +3,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import MobileCallBar from '@/components/MobileCallBar'
+import Motion from '@/components/Motion'
 import PromoBar from '@/components/PromoBar'
 import { config } from '@/lib/config'
 import { buildTitle, renderTitle, TITLE_TEMPLATE } from '@/lib/seo'
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </main>
         <Footer />
         <MobileCallBar />
+        <Motion />
       </body>
     </html>
   )

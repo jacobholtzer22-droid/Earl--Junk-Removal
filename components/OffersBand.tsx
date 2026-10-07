@@ -17,7 +17,7 @@ const OFFERS = [
 
 export default function OffersBand() {
   return (
-    <section className="border-t-2 border-accent bg-primary text-on-primary">
+    <section data-reveal className="border-t-2 border-accent bg-primary text-on-primary">
       <div className="mx-auto max-w-page px-4 py-16 sm:px-6 md:py-24">
         <h2 className="font-heading text-3xl font-bold uppercase tracking-tight md:text-5xl">What you get</h2>
 
@@ -45,7 +45,7 @@ export default function OffersBand() {
           </div>
           <Link
             href="/referral-program"
-            className="mt-6 inline-block shrink-0 bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-on-accent hover:bg-accent-dark md:mt-0"
+            className="mt-6 inline-block shrink-0 bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-on-accent transition-colors duration-100 hover:bg-accent-dark active:translate-y-px motion-reduce:transition-none md:mt-0"
           >
             How the referral program works
           </Link>

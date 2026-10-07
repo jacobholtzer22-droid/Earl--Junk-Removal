@@ -15,7 +15,7 @@ export default function AreaList({ heading = 'Areas we cover', exclude }: { head
   if (areas.length === 0) return null
   const showHouston = exclude !== 'houston'
   return (
-    <section className="border-t-2 border-primary-dark bg-surface">
+    <section data-reveal className="border-t-2 border-primary-dark bg-surface">
       <div className="mx-auto max-w-page px-4 py-16 sm:px-6 md:py-24">
         <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-primary-dark md:text-4xl">
           {heading}
