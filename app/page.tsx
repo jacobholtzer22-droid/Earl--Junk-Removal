@@ -9,7 +9,6 @@ import HowItWorks from '@/components/HowItWorks'
 import JsonLd from '@/components/JsonLd'
 import OffersBand from '@/components/OffersBand'
 import QuoteSection from '@/components/QuoteSection'
-import ServiceArea from '@/components/ServiceArea'
 import ServiceCards, { ServiceTextList } from '@/components/ServiceCards'
 import WhoWeServe from '@/components/WhoWeServe'
 import { config } from '@/lib/config'
@@ -95,9 +94,16 @@ export default async function HomePage() {
       <OffersBand />
       <WhoWeServe />
       <FaqAccordion faqs={config.faqs} />
+      {/*
+        AreaList, not ServiceArea. Both render a "Where we work" heading, so
+        with the nine areas in place the homepage carried it twice. AreaList is
+        the one that LINKS to the area pages; ServiceArea prints the same names
+        as plain text. It stays in the codebase because its single-city
+        fallback is still right for a template site with one area, but it has
+        nothing to add to this page.
+      */}
       <AreaList heading="Where we work" exclude="houston" />
       <HoursPanel />
-      <ServiceArea />
       <CtaBand quoteHref="#quote" />
     </>
   )

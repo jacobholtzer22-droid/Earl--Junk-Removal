@@ -38,7 +38,17 @@ export default function PageBanner({ image, label }: { image: string | null; lab
         height={img.height}
         alt={img.alt}
         decoding="async"
-        className="h-48 w-full object-cover sm:h-64 lg:h-80"
+        /*
+          object-position 62%, not the default centre.
+          
+          The banner is a 200px letterbox out of a photograph that is nearly
+          square, so it keeps about a third of the frame. Centred, the junk
+          removal banner was a crop of the blank basement wall ABOVE the
+          furniture: a grey band that looked like an image that had failed to
+          load. Interior shots in this library put their subject low, so the
+          crop favours the lower part.
+        */
+        className="h-48 w-full object-cover object-[center_62%] sm:h-64 lg:h-80"
       />
     </div>
   )
