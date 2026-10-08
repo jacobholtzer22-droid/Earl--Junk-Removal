@@ -19,7 +19,19 @@ const ROOT = process.cwd()
 const ORIGINALS = path.join(ROOT, 'public/images/originals')
 const PROCESSED = path.join(ROOT, 'public/images/processed')
 const MANIFEST = path.join(ROOT, 'public/images/manifest.json')
-const WIDTHS = [640, 1024, 1920]
+/*
+ * 320 is here for the LOGO, and it earns its place.
+ *
+ * The header draws the lockup in a 100 to 112px slot. With 640 as the
+ * narrowest rendition the browser had nothing smaller to pick, so a phone
+ * downloaded 88kB to paint a 100px mark, and the about panel pulled another
+ * 113kB of the white version for a 224px box. Two hundred kilobytes, above
+ * the fold, to show a logo. 320 covers a 112px slot even at 3x.
+ *
+ * Every photo gets a 320 too. They are a few kB each and a narrow phone is
+ * better served by one.
+ */
+const WIDTHS = [320, 640, 1024, 1920]
 const QUALITY = 82
 const EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.tif', '.tiff', '.avif', '.gif'])
 

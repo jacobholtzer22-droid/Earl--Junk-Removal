@@ -50,6 +50,13 @@ export default function LogoMark({ className = '' }: { className?: string }) {
         aria-hidden="true"
         className="h-auto w-full max-w-[224px]"
         decoding="async"
+        /*
+          Lazy, because this panel is below the fold on both pages that use
+          it: the about page's aside and the homepage teaser. Eager, the white
+          lockup put 42kB on the critical path of the homepage to paint
+          something nobody has scrolled to yet.
+        */
+        loading="lazy"
       />
     </div>
   )

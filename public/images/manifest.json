@@ -5,6 +5,7 @@
     "alt": "An attic room stacked with framed paintings, ceramics, an old cabinet and decades of stored household belongings",
     "base": "attic-with-stored-paintings-and-furniture",
     "sizes": [
+      320,
       640,
       1024,
       1920
@@ -16,6 +17,7 @@
     "alt": "A finished basement holding a dated wooden dresser, a curio cabinet, a side table and shelved storage bins",
     "base": "basement-with-old-furniture",
     "sizes": [
+      320,
       640,
       1024
     ]
@@ -26,6 +28,7 @@
     "alt": "A large pile of broken paving bricks, concrete and rubble heaped against a corrugated steel wall",
     "base": "broken-concrete-and-brick-pile",
     "sizes": [
+      320,
       640,
       1024,
       1920
@@ -37,6 +40,7 @@
     "alt": "A worn pink buttoned sofa with torn upholstery left at the kerb beside a weathered concrete wall",
     "base": "discarded-sofa-at-kerb",
     "sizes": [
+      320,
       640,
       1024,
       1920
@@ -48,6 +52,7 @@
     "alt": "A cleared commercial hall with wooden chairs and stools stacked against one wall beside an open doorway",
     "base": "emptied-hall-with-stacked-chairs",
     "sizes": [
+      320,
       640,
       1024,
       1920
@@ -59,6 +64,7 @@
     "alt": "Houston Waste Removal logo, white version for dark backgrounds",
     "base": "houston-waste-removal-logo-white",
     "sizes": [
+      320,
       640,
       1024
     ]
@@ -69,6 +75,7 @@
     "alt": "Houston Waste Removal logo",
     "base": "houston-waste-removal-logo",
     "sizes": [
+      320,
       640,
       1024
     ]
@@ -79,6 +86,7 @@
     "alt": "Open and sealed cardboard moving boxes grouped on the bare concrete floor of an otherwise empty white room",
     "base": "moving-boxes-in-empty-room",
     "sizes": [
+      320,
       640,
       1024,
       1920
@@ -90,6 +98,7 @@
     "alt": "An attached residential garage with timber storage shelving, a step ladder, cabinets and a concrete floor",
     "base": "residential-garage-with-shelving",
     "sizes": [
+      320,
       640,
       1024
     ]
@@ -100,6 +109,7 @@
     "alt": "Cardboard packing boxes of several sizes stacked in front of a panelled white interior door",
     "base": "stacked-cardboard-boxes",
     "sizes": [
+      320,
       640,
       1024,
       1920
@@ -111,6 +121,7 @@
     "alt": "A large tree uprooted by a storm lying across a residential front lawn and kerb beside a white house",
     "base": "uprooted-tree-on-lawn",
     "sizes": [
+      320,
       640,
       1024,
       1920
