@@ -252,6 +252,36 @@ export const siteConfigSchema = z
      */
     acceptsTexts: z.boolean().default(false),
 
+    /**
+     * Google Ads conversion tracking. Nothing else: no Tag Manager, no GA4,
+     * no third tag.
+     *
+     * Every field is a kill switch, and that is the point. An empty
+     * googleAdsId renders no script at all. An empty label means that one
+     * event does not fire and says nothing about it, which is what lets the
+     * tag ship before the labels exist: the base tag starts collecting
+     * audience data immediately and each conversion switches itself on the
+     * moment its label is pasted in, with no code change.
+     *
+     * A label is a short opaque string from the Google Ads console, the part
+     * after the slash in a send_to value. It is NOT secret, it ships in the
+     * page, and it is worthless without the account.
+     */
+    tracking: z
+      .object({
+        /** The AW- measurement id. null or empty renders no tag. */
+        googleAdsId: z.string().nullable().default(null),
+        conversionLabels: z
+          .object({
+            /** Fires once per successful contact form submission. */
+            contact: z.string().default(''),
+            /** Fires on any click of a tel: link, anywhere on the site. */
+            call: z.string().default(''),
+          })
+          .default({}),
+      })
+      .default({}),
+
     /** Homepage FAQs. FAQPage schema on the homepage renders only when non-empty. */
     faqs: z.array(faq).default([]),
 

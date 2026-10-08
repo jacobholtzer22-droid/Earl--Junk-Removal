@@ -611,6 +611,18 @@ const siteConfig = {
   // cannot receive them loses the message silently, so it stays off.
   acceptsTexts: false,
 
+  tracking: {
+    googleAdsId: 'AW-18497989799',
+    conversionLabels: {
+      // EMPTY ON PURPOSE. The labels do not exist yet in the Google Ads
+      // console. The base tag is live and collecting; each of these switches
+      // its own event on the moment the label is pasted in. Nothing else has
+      // to change, and an empty one fires nothing and logs nothing.
+      contact: '',
+      call: '',
+    },
+  },
+
   faqs: [
     {
       q: 'Is Houston Waste Removal the same company as EJC Demo Junk & Haul?',

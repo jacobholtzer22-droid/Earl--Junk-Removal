@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import type { CSSProperties, ReactNode } from 'react'
+import ConversionTracking from '@/components/ConversionTracking'
 import Footer from '@/components/Footer'
+import GoogleAdsTag from '@/components/GoogleAdsTag'
 import Header from '@/components/Header'
 import MobileCallBar from '@/components/MobileCallBar'
 import Motion from '@/components/Motion'
@@ -75,6 +77,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Footer />
         <MobileCallBar />
         <Motion />
+        {/*
+          Google Ads, last in the body and afterInteractive, so the page is
+          rendered and usable before a conversion tag asks for anything. Both
+          render nothing when config.tracking.googleAdsId is empty.
+        */}
+        <GoogleAdsTag />
+        <ConversionTracking />
       </body>
     </html>
   )

@@ -89,10 +89,25 @@ export default async function PrivacyPolicyPage() {
         </p>
 
         <h2 className="mt-10 font-heading text-2xl font-bold text-primary-dark">Cookies and analytics</h2>
-        <p className="mt-4">
-          This site does not set tracking cookies of its own. If analytics or advertising tags are added in the future, this
-          policy will be updated to describe them.
-        </p>
+        {/*
+          Conditional on the config, because the honest sentence is different
+          in each case and the previous one became FALSE the moment the Google
+          Ads tag shipped. It said the site set no tracking cookies. Leaving
+          that in place while loading gtag.js would have been the policy
+          telling the visitor the opposite of what the page was doing.
+        */}
+        {config.tracking.googleAdsId ? (
+          <p className="mt-4">
+            This site uses Google Ads conversion tracking, which sets cookies to record when a visit that arrived from a
+            Google ad goes on to call us or send the form. It measures advertising only. No other analytics or
+            advertising tags are used.
+          </p>
+        ) : (
+          <p className="mt-4">
+            This site does not set tracking cookies of its own. If analytics or advertising tags are added in the future,
+            this policy will be updated to describe them.
+          </p>
+        )}
 
         <h2 className="mt-10 font-heading text-2xl font-bold text-primary-dark">Your choices</h2>
         <p className="mt-4">

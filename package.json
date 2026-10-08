@@ -11,7 +11,8 @@
     "verify": "next build && tsx scripts/verify.ts",
     "typecheck": "tsc --noEmit",
     "seal-contact-form": "tsx scripts/seal-contact-form.ts",
-    "proof:form": "node scripts/proof/run.mjs"
+    "proof:form": "node scripts/proof/run.mjs",
+    "proof:conversions": "node scripts/proof/conversions.mjs"
   },
   "dependencies": {
     "next": "14.2.21",
