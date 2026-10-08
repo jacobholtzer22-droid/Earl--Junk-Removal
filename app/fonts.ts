@@ -9,15 +9,19 @@ import { Archivo, Barlow } from 'next/font/google'
  * the opposite shape: HOUSTON WASTE REMOVAL is set WIDE and heavy, and Oswald
  * next to it looked like a different company's type.
  *
- * It is loaded as the VARIABLE family with the width axis, not Archivo Black,
- * and that is the load-bearing part. Archivo's `wdth` runs 62 to 125, so a
- * long H1 can be narrowed a few percent instead of wrapping to an orphan or
- * running off a 360px screen. A wider display face changes every line break on
- * the site, and the axis is how those get fixed with type rather than by
- * rewriting headlines to fit, which would be a copy change.
+ * WEIGHT AXIS ONLY. It briefly carried the width axis too, so long headlines
+ * could be narrowed a few percent rather than wrapping badly, and that cost
+ * 87kB against 34kB for this. 53kB of font, above the fold, to shave a few
+ * percent off two headlines is not a trade worth making.
  *
- * Use the `.h-narrow` helper in globals.css rather than setting
- * font-variation-settings inline, so the narrowing is in one place.
+ * Measured, because the three options are not obvious: wdth+wght is 87kB,
+ * wght-only is 34kB, and static 600+700 is BYTE-IDENTICAL to wght-only, same
+ * build hash, because next/font resolves both to the same variable file. So
+ * the choice between the last two is about intent, not size. Only 600 and 700
+ * are used anywhere on the site.
+ *
+ * Long headlines are handled by text-wrap: balance and a size clamp in
+ * globals.css instead. Neither touches a word of copy.
  *
  * Barlow for body, unchanged. It is a slightly squared grotesk from the same
  * industrial lineage and it already matched the body text on the client's own
@@ -25,7 +29,7 @@ import { Archivo, Barlow } from 'next/font/google'
  */
 export const headingFont = Archivo({
   subsets: ['latin'],
-  axes: ['wdth'],
+  weight: 'variable',
   variable: '--font-heading',
   display: 'swap',
 })

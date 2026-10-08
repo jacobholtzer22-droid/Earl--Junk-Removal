@@ -27,7 +27,14 @@ export default function PageHeader({ title, intro, crumbs }: { title: string; in
             </ol>
           </nav>
         )}
-        <h1 className="font-heading text-4xl font-bold leading-tight text-primary-dark md:text-5xl">{title}</h1>
+        {/*
+          data-page-header is the hook for the phone-width size clamp in
+          globals.css. The clamp only ever shrinks this below md, so a long
+          interior title loses a point of size instead of gaining a line.
+        */}
+        <h1 data-page-header className="font-heading text-4xl font-bold leading-tight text-primary-dark md:text-5xl">
+          {title}
+        </h1>
         {intro && <p className="mt-4 max-w-2xl text-lg text-muted">{intro}</p>}
       </div>
     </section>

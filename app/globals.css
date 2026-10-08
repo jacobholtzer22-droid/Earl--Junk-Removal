@@ -152,41 +152,38 @@ details[open] > p {
 }
 
 /*
- * The display face's WIDTH AXIS, used to fix line breaks with type instead of
- * with copy.
+ * Long headlines, handled with size and wrapping rather than with copy.
  *
- * Archivo replaced Oswald, and Oswald is a condensed face while Archivo is
- * not, so every headline on the site got wider overnight and several started
- * breaking in the wrong place. "Junk Removal in Houston, TX" fell as
- * JUNK / REMOVAL IN / HOUSTON, TX on a 360px screen, which orphans the first
- * word and reads as three ideas.
+ * Archivo replaced Oswald, and Oswald is condensed while Archivo is not, so
+ * every headline on the site got wider overnight. "Junk Removal in Houston,
+ * TX" fell as JUNK / REMOVAL IN / HOUSTON, TX on a 360px screen, which
+ * orphans the first word and reads as three ideas.
  *
- * Rewriting headlines to fit would be a copy change, and copy is out of scope
- * this round. Archivo's wdth axis runs 62 to 125, so the narrowing happens in
- * the font instead. 88% is as far as it goes: past about 85% the face starts
- * reading as a different, more condensed typeface and stops matching the
- * wordmark in the logo, which is the whole reason it was chosen.
+ * This was briefly solved with Archivo's width axis, narrowing h1 to 88% on
+ * phones. That axis costs 53kB of extra font to load, which is not worth a
+ * few percent of width, so it is gone and these two rules do the work:
  *
- * Phones only. There is room at every larger size.
- */
-@media (max-width: 520px) {
-  h1 {
-    font-stretch: 88%;
-  }
-}
-
-/*
- * Evens out the line lengths of a wrapped headline so the last line is not a
- * single orphaned word. "Service Areas Around Houston, TX" was breaking with
- * "TX" alone on a third line at 16% of the width of the line above it.
+ *   text-wrap: balance   evens out the line lengths so the last line is never
+ *                        a single orphaned word. "Service Areas Around
+ *                        Houston, TX" was breaking with "TX" alone on a third
+ *                        line at 16% of the width of the line above it.
+ *   the clamp            lets the interior page h1 shrink on a narrow screen
+ *                        instead of forcing another line. It only ever makes
+ *                        the type smaller than the old fixed text-4xl, and
+ *                        only below the md breakpoint where that size applies.
  *
- * This is the other half of fixing line breaks without touching copy: the
- * width axis above makes the words narrower, this decides where they break.
  * Browsers without text-wrap: balance ignore it and wrap as before, so it
  * cannot make anything worse.
  */
 h1 {
   text-wrap: balance;
+}
+
+@media (max-width: 767px) {
+  /* The interior page header h1, which is text-4xl (2.25rem) until md. */
+  h1[data-page-header] {
+    font-size: clamp(1.75rem, 7.2vw, 2.25rem);
+  }
 }
 
 /*

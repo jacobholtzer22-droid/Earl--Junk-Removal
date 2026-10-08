@@ -36,7 +36,14 @@ const config: Config = {
         site: 'var(--shadow)',
       },
       fontSize: {
-        hero: ['clamp(2.5rem, 6vw, 4.5rem)', { lineHeight: '1.02', letterSpacing: '-0.01em' }],
+        /*
+         * The floor dropped from 2.5rem to 2.25rem when the display face
+         * changed. Archivo is wider than the Oswald it replaced, and at 40px
+         * "Junk Removal in Houston, TX" fell to three lines on a 360px screen
+         * where it had been two. 36px puts it back to two. The ceiling and the
+         * growth rate are untouched, so nothing changes above about 420px.
+         */
+        hero: ['clamp(2.25rem, 6vw, 4.5rem)', { lineHeight: '1.02', letterSpacing: '-0.01em' }],
       },
       maxWidth: { page: '72rem' },
     },
