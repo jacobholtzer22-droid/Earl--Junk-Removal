@@ -5,7 +5,9 @@ import FaqAccordion from '@/components/FaqAccordion'
 import Img from '@/components/Img'
 import JsonLd from '@/components/JsonLd'
 import PageHeader from '@/components/PageHeader'
-import ServiceGrid from '@/components/ServiceGrid'
+import HowItWorks from '@/components/HowItWorks'
+import PageBanner from '@/components/PageBanner'
+import ServiceCards from '@/components/ServiceCards'
 import { config, getService } from '@/lib/config'
 import { loadContent, readFrontmatter } from '@/lib/content'
 import { breadcrumbList, faqPage, service as serviceSchema } from '@/lib/schema'
@@ -56,14 +58,11 @@ export default async function ServicePage({ params }: { params: { slug: string }
         crumbs={crumbs}
       />
 
+      <PageBanner image={service.image} label={service.name} />
+
       <div className="mx-auto grid max-w-page gap-10 px-4 pt-10 sm:px-6 lg:grid-cols-3">
         <article className="lg:col-span-2">{content}</article>
         <aside className="space-y-6">
-          {service.image && (
-            <div className="overflow-hidden">
-              <Img name={service.image} sizes="(min-width: 1024px) 33vw, 100vw" className="h-auto w-full" />
-            </div>
-          )}
           {service.priceFrom !== null && (
             <div className="border-l-4 border-accent bg-surface p-6">
               <p className="text-sm font-semibold uppercase tracking-wide text-muted">Pricing</p>
@@ -82,8 +81,9 @@ export default async function ServicePage({ params }: { params: { slug: string }
 
       {/* A fixed heading: several service names are long enough that
           "<name> Questions" reads badly. */}
+      <HowItWorks />
       <FaqAccordion faqs={service.faqs} heading="Common questions" />
-      <ServiceGrid heading="Other services" exclude={service.slug} />
+      <ServiceCards heading="Other services" services={config.services.filter((s) => s.slug !== service.slug)} />
       <CtaBand heading={`Need ${service.name.toLowerCase()} in ${config.primaryCity}?`} />
     </>
   )

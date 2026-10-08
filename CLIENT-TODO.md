@@ -280,3 +280,59 @@ for differently. The brand works; it just points somewhere slightly to the
 side of what he is being paid for. If he wants the site to follow the logo
 rather than the other way round, that is a bigger conversation about what the
 business is selling, not a website change.
+
+---
+
+## FROM THE OCTOBER 2026 LAYOUT ROUND
+
+### 24. Appliance removal has no photograph
+Twelve of the thirteen services have one. Appliance removal does not, and its
+card and page banner show a brand-green block with the service name instead.
+That is a finished state, not a placeholder, but a real photograph would be
+better.
+
+Three searches were made, which was the agreed limit: Pexels "old washing
+machine", Pexels "old refrigerator kitchen", Unsplash "old-refrigerator".
+Every result was one of three things: a working kitchen, a styled studio
+product shot, or an old unit with the manufacturer's badge on the door. The
+badge is what kills it, because it sits on the subject itself and cannot be
+cropped out without losing the appliance.
+
+**What would fix it:** one photograph from Earl of a fridge, washer, dryer or
+water heater waiting to go, with no brand badge visible and nobody in frame.
+A phone photo is fine.
+
+### 25. The reviews wall is built and switched off
+`components/Reviews.tsx` renders nothing while `config.reviews` is empty, and
+`lib/schema.ts` emits Review and aggregateRating under the same condition, so
+the markup can never claim a review a visitor cannot see.
+
+**What is needed:** real reviews, each with the reviewer's name, the rating,
+the text, and a source URL. Once the Google Business Profile is live they can
+be quoted from there. **There will be no placeholder reviews at any point.**
+A fabricated review is both a lie to the customer and, in Google's eyes, a
+manual-action risk against the business.
+
+### 26. The work gallery is built and switched off
+`components/Gallery.tsx` renders nothing while `config.images.gallery` is
+empty. The reference site's equivalent, "Our Best Work", carries 22 photographs
+of actual jobs, and it is the single strongest thing on their page.
+
+**What is needed:** photographs of Earl's own completed jobs. **Stock can never
+go here.** A gallery headed "our work" that is full of licensed stock is a
+claim that those are his jobs, which is the one thing this site has refused to
+do from the start. Before and after pairs are worth more than either alone.
+
+### 27. Blog, not this round
+The reference site has one. It is a content commitment rather than a build
+task: an empty or stale blog is worse than none, so it is not worth adding
+until there is someone to write it. Raise it again when there is.
+
+### 28. Does the business number accept texts?
+`config.acceptsTexts` is false. Turn it true and a Text Us button appears
+beside Call Now in the header, pointing at an sms: link on the same number.
+
+It is off because an sms: link on a number that cannot receive texts loses the
+message silently: the customer believes they have made contact and nobody ever
+sees it. The reference site leads with "Send us a text", so this is likely
+worth having.

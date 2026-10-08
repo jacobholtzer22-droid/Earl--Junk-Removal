@@ -643,7 +643,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
   "url": "https://www.houstonwasteremoval.com",
   "telephone": "+17132919440",
   "email": "ejcdjh75@gmail.com",
-  "image": "https://www.houstonwasteremoval.com/images/processed/uprooted-tree-on-lawn-1024.webp",
+  "image": "https://www.houstonwasteremoval.com/images/processed/basement-with-old-furniture-1024.webp",
   "logo": "https://www.houstonwasteremoval.com/images/processed/houston-waste-removal-logo-1024.webp",
   "openingHoursSpecification": [
     {

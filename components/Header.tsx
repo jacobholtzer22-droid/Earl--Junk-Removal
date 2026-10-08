@@ -84,7 +84,7 @@ export default function Header() {
         <nav aria-label="Main" className="hidden items-center gap-5 lg:flex xl:gap-6">
           {NAV.map((item) =>
             item.label === 'Services' ? (
-              <div key={item.href} className="group relative">
+              <div key={item.href} data-services-menu className="group relative">
                 <Link
                   href={item.href}
                   className="flex items-center gap-1 whitespace-nowrap py-2 font-heading text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-100 hover:text-accent-dark motion-reduce:transition-none"

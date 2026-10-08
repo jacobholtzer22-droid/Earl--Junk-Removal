@@ -54,12 +54,67 @@ export default function Motion() {
       for (const t of targets) observer.observe(t)
     }
 
+    /*
+     * ESCAPE CLOSES THE SERVICES DROPDOWN.
+     *
+     * The dropdown is CSS only, opened by :hover and :focus-within, which is
+     * what puts all thirteen service links in the HTML with no JavaScript and
+     * makes it work for a keyboard by plain tabbing. The one thing CSS cannot
+     * do is honour Escape, and WAI-ARIA's disclosure-navigation pattern says
+     * it should.
+     *
+     * So this is the enhancement: Escape marks the wrapper closed and returns
+     * focus to the trigger, which is what the pattern asks for. The marker is
+     * cleared as soon as focus leaves the wrapper, so the next Tab or hover
+     * opens it again. With JavaScript off, the dropdown is exactly as it was
+     * and only Escape is missing.
+     */
+    const onMenuKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        const wrap = (document.activeElement as HTMLElement | null)?.closest<HTMLElement>('[data-services-menu]')
+        if (!wrap) return
+        wrap.dataset.forceClosed = 'true'
+        wrap.querySelector('a')?.focus()
+        return
+      }
+      /*
+       * Tab clears the marker, because Tab is the key that moves focus out.
+       *
+       * This deliberately does NOT listen to focusin or focusout. The first
+       * two attempts did, and both left the menu permanently shut after a
+       * single Escape: relatedTarget is null too often to trust, and the
+       * browser pane these were tested in does not dispatch focus events for
+       * programmatic .focus() at all, so neither version could be verified
+       * before shipping. A key event fires either way.
+       *
+       * The clear is deferred a tick so the submenu is still hidden while the
+       * browser works out where Tab goes. Hidden links are not in the tab
+       * order, which is what sends focus to the next top-level item rather
+       * than back into the menu Escape just closed.
+       */
+      if (e.key === 'Tab') {
+        const wrap = document.querySelector<HTMLElement>('[data-services-menu][data-force-closed]')
+        if (wrap) window.setTimeout(() => delete wrap.dataset.forceClosed, 0)
+      }
+    }
+    /** A mouse user who presses Escape and hovers back expects it to open. */
+    const clearOnHover = () => {
+      const wrap = document.querySelector<HTMLElement>('[data-services-menu][data-force-closed]')
+      if (wrap) delete wrap.dataset.forceClosed
+    }
+    document.addEventListener('keydown', onMenuKey)
+    const menus = Array.from(document.querySelectorAll('[data-services-menu]'))
+    for (const el of menus) el.addEventListener('pointerenter', clearOnHover)
+
     return () => {
+      document.removeEventListener('keydown', onMenuKey)
+      for (const el of menus) el.removeEventListener('pointerenter', clearOnHover)
       window.removeEventListener('scroll', onScroll)
       if (frame) window.cancelAnimationFrame(frame)
       observer?.disconnect()
       root.classList.remove('js-motion')
     }
+
   }, [])
 
   return null

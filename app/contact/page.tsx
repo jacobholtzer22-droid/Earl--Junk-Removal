@@ -3,8 +3,10 @@ import ContactDetails from '@/components/ContactDetails'
 import FaqAccordion from '@/components/FaqAccordion'
 import PendingFormGate from '@/components/PendingFormGate'
 import JsonLd from '@/components/JsonLd'
+import PageBanner from '@/components/PageBanner'
 import PageHeader from '@/components/PageHeader'
 import { config } from '@/lib/config'
+import { STOCK } from '@/lib/stock-images'
 import { loadContent, readFrontmatter } from '@/lib/content'
 import { breadcrumbList, faqPage } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
@@ -39,6 +41,8 @@ export default async function ContactPage() {
         intro="Free virtual estimates, same-day service, open seven days a week."
         crumbs={CRUMBS}
       />
+
+      <PageBanner image={STOCK.ctaBand} label="Free Estimates" />
       <div className="mx-auto grid max-w-page gap-10 px-4 pt-10 sm:px-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <article className="mb-8">{content}</article>

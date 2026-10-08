@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useId, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { config } from '@/lib/config'
@@ -28,6 +29,11 @@ export interface NavItem {
  *     back as padding so the page does not jump sideways
  *   - route changes close it, because a client-side navigation leaves the
  *     panel open over the new page otherwise
+ *   - the panel is PORTALLED to <body>. Rendered in place it sits inside the
+ *     header's stacking context, and the fixed call bar, which is a sibling of
+ *     the header rather than a descendant, painted over the bottom of the open
+ *     menu and hid two items. Raising z-index inside the header cannot beat a
+ *     sibling outside it; moving the node out can
  *
  * Services is a nested disclosure rather than a link, because the index is
  * reachable from "All services" at the end of the list and a parent that both
@@ -35,6 +41,8 @@ export interface NavItem {
  */
 export default function MobileMenu({ items, services }: { items: readonly NavItem[]; services: readonly NavItem[] }) {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
   const [servicesOpen, setServicesOpen] = useState(false)
   const panelId = useId()
   const submenuId = useId()
@@ -113,11 +121,13 @@ export default function MobileMenu({ items, services }: { items: readonly NavIte
         </span>
       </button>
 
-      {open && (
+      {open &&
+        mounted &&
+        createPortal(
         <div
           id={panelId}
           ref={panelRef}
-          className="fixed inset-0 z-50 overflow-y-auto bg-surface"
+          className="fixed inset-0 z-[60] overflow-y-auto bg-surface"
         >
           <div className="flex items-center justify-between border-b-2 border-primary-dark px-4 py-3">
             <span className="font-heading text-base font-bold uppercase tracking-tight text-primary-dark">Menu</span>
@@ -195,8 +205,9 @@ export default function MobileMenu({ items, services }: { items: readonly NavIte
               </Link>
             </div>
           </nav>
-        </div>
-      )}
+        </div>,
+          document.body,
+        )}
     </div>
   )
 }

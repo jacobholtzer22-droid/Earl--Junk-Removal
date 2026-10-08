@@ -207,3 +207,15 @@ h1 {
     rgb(var(--c-primary-dark-rgb) / 0.9) 100%
   );
 }
+
+/*
+ * The Escape marker for the services dropdown. components/Motion.tsx sets it
+ * when Escape is pressed inside the menu and removes it when focus leaves, so
+ * the submenu stays shut for exactly as long as the WAI-ARIA disclosure
+ * pattern says it should and not a moment longer.
+ */
+[data-services-menu][data-force-closed] > ul.invisible,
+[data-services-menu][data-force-closed] > ul {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}

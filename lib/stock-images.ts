@@ -44,15 +44,30 @@ export const LOGO_ON_DARK = 'houston-waste-removal-logo-white.png'
 
 export const STOCK = {
   /**
-   * Homepage hero, and the yard waste page, which is the same photograph on
-   * purpose. A wide uprooted tree with sky to carry the headline is the best
-   * storm-debris image in the library, and a search for a better hero (a
-   * kerbside pile, a cluttered garage) turned up nothing that passed: the best
-   * kerbside frame was a second-hand furniture market with three identifiable
-   * people in it, and the best garage was a storage unit carrying two readable
-   * brand marks in the middle of the frame.
+   * Homepage hero: old furniture in a basement. The same photograph as the
+   * junk removal page, which is the point. The hero should show JUNK, and a
+   * dresser, a curio cabinet and stacked boxes are exactly what this business
+   * is called to take away.
+   *
+   * It replaced an uprooted tree, which showed storm damage: true of one of
+   * the thirteen services and misleading about the other twelve. The tree now
+   * belongs to yard waste alone.
+   *
+   * Three candidates were measured at 390 and 1440 rather than eyeballed, for
+   * two things: whether the white headline still clears AA against the
+   * brightest point behind it, and how much of the picture survives the scrim.
+   *
+   *   image      headline      visible variation, 390 / 1440
+   *   tree       10.22:1       0.141 / 0.129
+   *   basement    7.11:1       0.081 / 0.087, and the highest mean of the three
+   *   garage      7.63:1       0.064 / 0.062, the flattest and darkest
+   *
+   * All three hold the headline comfortably; AA large text needs 3.0. The
+   * garage is out because it reads as a dark field at both widths. The
+   * basement carries less variation than the tree but more light, and it
+   * shows the right thing.
    */
-  hero: 'uprooted-tree-on-lawn.jpg',
+  hero: 'basement-with-old-furniture.jpg',
   /**
    * NULL ON PURPOSE, and it must stay null while the photography is stock.
    *

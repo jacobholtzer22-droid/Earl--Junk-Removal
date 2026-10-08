@@ -7,7 +7,8 @@ import HoursPanel from '@/components/HoursPanel'
 import JsonLd from '@/components/JsonLd'
 import OffersBand from '@/components/OffersBand'
 import PageHeader from '@/components/PageHeader'
-import ServiceGrid from '@/components/ServiceGrid'
+import HowItWorks from '@/components/HowItWorks'
+import ServiceCards from '@/components/ServiceCards'
 import { config, outlyingAreas } from '@/lib/config'
 import { loadContent, readFrontmatter } from '@/lib/content'
 import { breadcrumbList, faqPage, service as serviceSchema } from '@/lib/schema'
@@ -69,9 +70,10 @@ export default async function AreaPage({ params }: { params: { slug: string } })
         {content}
       </article>
 
-      <ServiceGrid heading={`What we haul in ${area.name}`} />
+      <ServiceCards heading={`What we haul in ${area.name}`} />
       <OffersBand />
       <HoursPanel />
+      <HowItWorks />
       <FaqAccordion faqs={area.faqs} heading={`${area.name} questions`} />
       <AreaList heading="Other areas we cover" exclude={area.slug} />
       <CtaBand heading={`Need a hand in ${area.name}?`} />

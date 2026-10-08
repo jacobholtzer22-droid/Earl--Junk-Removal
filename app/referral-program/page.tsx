@@ -2,9 +2,11 @@ import type { Metadata } from 'next'
 import CtaBand from '@/components/CtaBand'
 import FaqProse from '@/components/FaqProse'
 import JsonLd from '@/components/JsonLd'
+import PageBanner from '@/components/PageBanner'
 import PageHeader from '@/components/PageHeader'
 import Phone from '@/components/Phone'
 import { config } from '@/lib/config'
+import { STOCK } from '@/lib/stock-images'
 import { loadContent, readFrontmatter } from '@/lib/content'
 import { breadcrumbList, faqPage } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
@@ -56,6 +58,8 @@ export default async function ReferralProgramPage() {
         intro="You are already in the houses where this work turns up. Send it our way and get paid for it."
         crumbs={CRUMBS}
       />
+
+      <PageBanner image={STOCK.ctaBand} label="Contractor Referral Program" />
 
       <div className="mx-auto max-w-page px-4 pt-12 sm:px-6">
         <div className="grid gap-px border border-line bg-line md:grid-cols-2">
