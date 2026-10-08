@@ -42,15 +42,6 @@
       1920
     ]
   },
-  "ejc-logo.png": {
-    "width": 222,
-    "height": 215,
-    "alt": "EJC Demo Junk & Haul logo: a dump truck above the letters EJC on a black circular badge",
-    "base": "ejc-logo",
-    "sizes": [
-      222
-    ]
-  },
   "emptied-hall-with-stacked-chairs.jpg": {
     "width": 2400,
     "height": 1600,
@@ -60,6 +51,26 @@
       640,
       1024,
       1920
+    ]
+  },
+  "houston-waste-removal-logo-white.png": {
+    "width": 1228,
+    "height": 1237,
+    "alt": "Houston Waste Removal logo, white version for dark backgrounds",
+    "base": "houston-waste-removal-logo-white",
+    "sizes": [
+      640,
+      1024
+    ]
+  },
+  "houston-waste-removal-logo.png": {
+    "width": 1222,
+    "height": 1237,
+    "alt": "Houston Waste Removal logo",
+    "base": "houston-waste-removal-logo",
+    "sizes": [
+      640,
+      1024
     ]
   },
   "moving-boxes-in-empty-room.jpg": {

@@ -25,10 +25,30 @@ const MOBILE_NAV = NAV.filter((i) => i.mobile !== false)
 
 export default function Header() {
   const logoName = config.images.logo
-  // The supplied logo is a 225px screenshot, so it is NEVER rendered above its
-  // native size. 40px tall in the bar is roughly a fifth of what the file can
-  // carry even at 2x, which is why it stays crisp. A vector file would lift
-  // this cap; see CLIENT-TODO item 15.
+  /*
+   * The supplied lockup, whole and unaltered.
+   *
+   * It already contains the words HOUSTON WASTE REMOVAL, so the separate
+   * wordmark text that used to sit beside it is gone, and so is the "by EJC
+   * Demo Junk & Haul" line. EJC has not left the site: it is in the footer
+   * attribution, on the about page, in the "same company" FAQ, in llms.txt and
+   * as schema.org alternateName.
+   *
+   * HEIGHT IS SET BY LEGIBILITY, and it was measured rather than guessed.
+   *
+   * The lockup is all but square, 1222x1237, and stacks a skyline and a truck
+   * above the name, so "WASTE REMOVAL" is only about 5% of the artwork's
+   * height. Rendering the logo at 60px put that line at roughly 3px and it was
+   * not readable at all. The same file was rendered at 60, 80, 100, 120 and
+   * 140px and looked at: 100px is the first size where both words resolve.
+   *
+   * So 100px it is, and the header is taller than it was. That is the trade
+   * the brief allows, and it is the honest one: a logo nobody can read is not
+   * a logo. The tagline inside the artwork stays illegible at every size and
+   * is not meant to be read.
+   *
+   * Even at 112px on a 3x screen this draws from 336px of a 1222px source.
+   */
   const logo = logoName && hasImage(logoName) ? getImage(logoName) : null
 
   return (
@@ -40,43 +60,40 @@ export default function Header() {
      */
     <header
       data-site-header
-      className="sticky top-0 z-40 border-b-2 border-primary-dark bg-surface transition-[background-color,border-color] duration-150 motion-reduce:transition-none"
+      /*
+        STICKY ON DESKTOP ONLY.
+        
+        The lockup has to be 100px tall before its wordmark reads, which makes
+        the mobile header 161px. Sticky, with the 61px call bar at the bottom,
+        that is 30% of a 740px phone permanently occupied by chrome before a
+        word of content. The old 118px header was 24% and already generous.
+        
+        Nothing is lost by releasing it: MobileCallBar is fixed to the bottom
+        of every page except /contact and already carries both the phone
+        number and the quote link, which is the whole reason a header is kept
+        on screen. The nav scrolls away like the rest of the page, which is
+        ordinary behaviour on a phone.
+      */
+      className="z-40 border-b-2 border-primary-dark bg-surface transition-[background-color,border-color] duration-150 motion-reduce:transition-none lg:sticky lg:top-0"
     >
-      <div className="mx-auto flex max-w-page items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6">
-        {/*
-          The lockup: the EJC badge exactly as supplied, the brand wordmark, and
-          the operating company underneath.
-
-          THE WORDMARK NEVER TRUNCATES, at any width. `min-w-0` and `truncate`
-          are deliberately absent from it. If something has to give on a narrow
-          screen it is the "by EJC Demo Junk & Haul" line, which is hidden under
-          380px, because the badge already says EJC and the attribution is
-          repeated in the footer, on the about page, in a homepage FAQ and in
-          the schema.
-        */}
-        <Link href="/" className="flex shrink-0 items-center gap-2.5 sm:gap-3">
-          {logo && (
+      <div className="mx-auto flex max-w-page items-center justify-between gap-3 px-4 py-1.5 sm:gap-4 sm:px-6">
+        <Link href="/" className="flex shrink-0 items-center" aria-label={`${config.displayName} home`}>
+          {logo ? (
             <img
               src={logo.src}
               srcSet={logo.srcSet}
-              sizes="40px"
+              sizes="(min-width: 1024px) 112px, 100px"
               width={logo.width}
               height={logo.height}
               alt={logo.alt}
-              className="h-9 w-auto shrink-0 sm:h-10"
+              className="h-[100px] w-auto lg:h-[112px]"
               decoding="async"
             />
-          )}
-          <span className="flex flex-col leading-none">
-            <span className="whitespace-nowrap font-heading text-[15px] font-bold uppercase tracking-tight text-primary-dark min-[380px]:text-lg sm:text-xl">
+          ) : (
+            <span className="whitespace-nowrap font-heading text-lg font-bold uppercase tracking-tight text-primary-dark">
               {config.displayName}
             </span>
-            {config.alternateName && (
-              <span className="mt-1 hidden whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.08em] text-muted min-[380px]:block sm:text-[11px]">
-                by {config.alternateName}
-              </span>
-            )}
-          </span>
+          )}
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-6 lg:flex">
@@ -125,7 +142,7 @@ export default function Header() {
       <nav
         aria-label="Main mobile"
         data-safe-center
-        className="flex gap-x-2 overflow-x-auto border-t border-line px-3 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex gap-x-1.5 overflow-x-auto border-t border-line px-2.5 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {MOBILE_NAV.map((item) => (
           /*

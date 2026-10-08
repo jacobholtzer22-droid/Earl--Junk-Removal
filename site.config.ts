@@ -1,5 +1,5 @@
 import type { SiteConfigInput } from './lib/config-schema'
-import { LOGO, STOCK } from './lib/stock-images'
+import { LOGO, LOGO_ON_DARK, STOCK } from './lib/stock-images'
 
 /**
  * Every business fact for Houston Waste Removal, operated by EJC Demo Junk &
@@ -745,9 +745,10 @@ const siteConfig = {
     // licensed stock would imply these are EJC's own jobs. The Gallery section
     // does not render while this is empty.
     gallery: [],
-    // The real logo. Keeps stock photography out of schema.org `logo` and the
-    // social card. See lib/schema.ts logoUrl().
+    // The client's brand mark. Keeps stock photography out of schema.org
+    // `logo` and the social card. See lib/schema.ts logoUrl().
     logo: LOGO,
+    logoOnDark: LOGO_ON_DARK,
   },
 
   // No contactForm block: the baseline four fields only. Every extra field is

@@ -24,7 +24,7 @@ export default function OffersBand() {
         <div className="mt-12 grid gap-px bg-on-primary/20 md:grid-cols-3">
           {OFFERS.map((offer) => (
             <div key={offer.headline} className="bg-primary pb-8 md:px-8 md:pt-8">
-              <p className="font-heading text-2xl font-bold uppercase tracking-tight text-accent md:text-3xl">
+              <p className="font-heading text-2xl font-bold uppercase tracking-tight text-accent-on-dark md:text-3xl">
                 {offer.headline}
               </p>
               <p className="mt-3 text-base leading-relaxed opacity-90">{offer.body}</p>
@@ -38,14 +38,14 @@ export default function OffersBand() {
               Plumbers, electricians, roofers: get paid for the junk you walk past
             </h3>
             <p className="mt-3 text-base leading-relaxed opacity-90">
-              {config.displayName} pays <span className="font-semibold text-accent">$20</span> for a verified lead that
-              requests a quote and <span className="font-semibold text-accent">$75</span> for a lead that books and has
+              {config.displayName} pays <span className="font-semibold text-accent-on-dark">$20</span> for a verified lead that
+              requests a quote and <span className="font-semibold text-accent-on-dark">$75</span> for a lead that books and has
               the job completed.
             </p>
           </div>
           <Link
             href="/referral-program"
-            className="mt-6 inline-block shrink-0 bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-on-accent transition-colors duration-100 hover:bg-accent-dark active:translate-y-px motion-reduce:transition-none md:mt-0"
+            className="mt-6 inline-block shrink-0 bg-accent-on-dark px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-primary-dark transition-colors duration-100 hover:bg-accent hover:text-on-accent active:translate-y-px motion-reduce:transition-none md:mt-0"
           >
             How the referral program works
           </Link>

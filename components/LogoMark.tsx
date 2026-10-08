@@ -15,7 +15,16 @@ import { getImage, hasImage } from '@/lib/images'
  * would lift the cap; see CLIENT-TODO item 15.
  */
 export default function LogoMark({ className = '' }: { className?: string }) {
-  const name = config.images.logo
+  /*
+   * THE KNOCKOUT VERSION, because this panel is dark.
+   *
+   * It used the default logo and the default logo has black HOUSTON
+   * lettering, so on the bg-primary panel the name disappeared completely and
+   * only the truck and the green arc survived. A lockup is artwork: it cannot
+   * be inverted with CSS, which is why the brand ships two files and why
+   * picking the wrong one fails silently rather than looking wrong in code.
+   */
+  const name = config.images.logoOnDark ?? config.images.logo
   const logo = name && hasImage(name) ? getImage(name) : null
   if (!logo) return null
   return (

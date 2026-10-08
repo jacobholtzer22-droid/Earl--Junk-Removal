@@ -78,7 +78,7 @@ export default async function ReferralProgramPage() {
         <div className="mx-auto max-w-page px-4 sm:px-6">
           <h2 className="font-heading text-3xl font-bold uppercase tracking-tight md:text-4xl">Start referring</h2>
           <p className="mt-4 max-w-2xl text-lg opacity-90">
-            Call <Phone className="text-accent" /> and tell {config.displayName} you want in. Agree how you will send work
+            Call <Phone className="text-accent-on-dark" /> and tell {config.displayName} you want in. Agree how you will send work
             over and how you want to be paid before you refer anyone, so there is nothing to argue about later.
           </p>
         </div>

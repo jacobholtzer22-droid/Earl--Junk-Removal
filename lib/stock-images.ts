@@ -30,7 +30,17 @@
  */
 
 /** The business's own logo. Not stock. Masked from the supplied artwork. */
-export const LOGO = 'ejc-logo.png'
+/**
+ * The client's brand mark, supplied October 2026. Two files, because the
+ * lockup is artwork rather than type and cannot be recoloured: the dark one
+ * has black HOUSTON lettering and needs a light ground, the white one is the
+ * knockout and needs a dark ground. Pick by the surface, never by recolouring.
+ *
+ * Both are the supplied PNGs with their transparent padding trimmed and
+ * nothing else done to them. Originals in client-assets/brand-2026-10.
+ */
+export const LOGO = 'houston-waste-removal-logo.png'
+export const LOGO_ON_DARK = 'houston-waste-removal-logo-white.png'
 
 export const STOCK = {
   /** Homepage hero. Reused on the yard waste page; it is the same photograph. */

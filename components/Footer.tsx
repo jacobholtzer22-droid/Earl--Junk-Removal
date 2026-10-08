@@ -108,7 +108,7 @@ export default function Footer() {
           <p>
             {config.alternateName ? (
               <>
-                {config.displayName} is operated by {config.alternateName} ({config.legalName}).{' '}
+                {config.legalName}, doing business as {config.displayName}, operated by {config.alternateName}.{' '}
               </>
             ) : null}
             &copy; {year} {config.legalName}. All rights reserved.

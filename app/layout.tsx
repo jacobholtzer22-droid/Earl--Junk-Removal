@@ -30,6 +30,22 @@ const cssVars = {
   '--c-primary-soft': theme.palette.primarySoft,
   '--c-accent': theme.palette.accent,
   '--c-accent-dark': theme.palette.accentDark,
+  '--c-accent-on-dark': theme.palette.accentOnDark,
+  /*
+   * The same darkest token as space-separated RGB channels, so a gradient can
+   * put alpha on it. A CSS custom property holding "#050D07" cannot be given
+   * an alpha channel; one holding "5 13 7" can, via rgb(var(--x) / 0.3).
+   *
+   * This exists because the hero scrim was three hardcoded rgb(10 11 13 / ...)
+   * stops living in the component. They were the OLD cool near-black, so when
+   * the palette went green the scrim quietly stayed the previous brand's
+   * colour and nothing failed to tell anyone.
+   */
+  '--c-primary-dark-rgb': theme.palette.primaryDark
+    .replace('#', '')
+    .match(/.{2}/g)!
+    .map((h) => parseInt(h, 16))
+    .join(' '),
   '--c-bg': theme.palette.bg,
   '--c-surface': theme.palette.surface,
   '--c-ink': theme.palette.ink,

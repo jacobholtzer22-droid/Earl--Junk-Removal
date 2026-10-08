@@ -1,21 +1,41 @@
 /**
- * Visual theme for EJC Demo Junk & Haul.
+ * Visual theme for Houston Waste Removal, operated by EJC Demo Junk & Haul.
  *
- * Direction: HEAVY IRON (AGENT.md Phase 2b lists junk removal and demolition
- * under it by name). The logo is already speaking this language: a hard black
- * circular badge, a dump truck, and distressed condensed white lettering that
- * breaks the badge edge.
+ * The client supplied a new identity in October 2026 and it replaced the one
+ * this file used to describe. The old direction was HEAVY IRON: a black badge,
+ * a dump truck, distressed condensed lettering, and an additive hazard amber
+ * chosen because the logo was monochrome and contributed no hue at all.
  *
- * The logo is monochrome, so it contributes no hue at all and the accent is an
- * additive decision rather than a derived one. It is hazard AMBER, not orange,
- * deliberately: the nearest Houston competitor is orange, the national
- * franchise is green and orange, and the whole category is saturated with
- * orange. Amber reads as caution stripe, matches the dump truck, and is
- * distinguishable at thumbnail size on a search results page.
+ * NONE OF THAT IS TRUE ANY MORE. The new mark is a green rear-loader truck
+ * under a Houston skyline, inside a green arc, with a leaf in place of the O.
+ * It carries its own colour, so the palette is now DERIVED rather than
+ * invented: every green below was sampled from the supplied artwork, and the
+ * neutrals were tuned around them. There is no guidelines document, so the
+ * sampled values in client-assets/brand-2026-10 are the only source there is.
  *
- * Every photograph on this site is licensed stock, so the layout is built to
- * hold on type, rule weight and color alone. A rejected photo degrades to a
- * flat charcoal field and the page still looks finished.
+ * The artwork's mid green #008020 is sampled and deliberately UNUSED. Two
+ * greens a step apart in the same role read as a mistake rather than as a
+ * system, so the palette keeps the deep green and the lime, which are far
+ * enough apart to be doing different jobs.
+ *
+ * THE SYSTEM, taken from how the artwork itself uses the colours:
+ *
+ *   DARK GROUNDS CARRY THE LIME. LIGHT GROUNDS CARRY THE DEEP GREEN.
+ *
+ * Every marketing piece follows it: lime brush lettering on black, deep green
+ * wordmark on white. It is also what the contrast maths requires, which is the
+ * useful part. The mid green reads 3.52:1 on the dark panel and fails AA as
+ * text there; the lime reads 11.42:1. On the light ground it is the other way
+ * round, lime at 1.44:1 against deep green at 6.22:1. So the rule is not a
+ * style preference, it is the only arrangement where both work, and
+ * `accentOnDark` exists to make it impossible to get backwards.
+ *
+ * Lime is NEVER text on a light ground.
+ *
+ * The neutrals carry a slight green cast so the page does not look like a
+ * grey template with a green logo dropped on it. Slight is the operative word:
+ * bg is #F4F6F4, which is 2 points of green off neutral and still reads as
+ * white rather than mint.
  */
 export type HeroVariant = 'full-bleed' | 'split'
 
@@ -27,7 +47,14 @@ export interface Theme {
     primarySoft: string
     /** The single accent. Buttons, the call bar, small marks. Under 5% of any page. */
     accent: string
+    /** The accent darkened for TEXT ON A LIGHT GROUND. Also the focus ring. */
     accentDark: string
+    /**
+     * The accent for use ON A DARK GROUND, which is a different colour, not a
+     * shade of the same one. The brand's lime. Never text on a light ground:
+     * it reads 1.44:1 there and is invisible.
+     */
+    accentOnDark: string
     /** The off-white page ground. */
     bg: string
     surface: string
@@ -52,30 +79,44 @@ export interface Theme {
 
 const theme: Theme = {
   palette: {
-    // Cool near-black. Not #000: pure black on a screen reads as a hole rather
-    // than as material, and it kills the distressed texture in the logo.
-    primary: '#15171A',
-    primaryDark: '#0B0D0F',
-    // Light cool gray for interior page headers. Cool, because the logo and
-    // every photograph here are neutral; a warm tint would fight both.
-    primarySoft: '#E5E8EB',
-    // Hazard amber. Dark text sits on it; white on amber fails AA and is used
-    // nowhere. See scripts/proof/contrast.mjs.
-    accent: '#F5A524',
-    // Darkened enough to carry small text on the off-white ground, which is
-    // what the form's validation messages need.
-    accentDark: '#8A5A00',
-    bg: '#F3F4F6',
-    surface: '#FCFCFD',
-    ink: '#16191D',
-    muted: '#53585F',
+    // Near-black with a green cast, not #000. Pure black on a screen reads as
+    // a hole rather than as material, and the logo's own dark ground is a very
+    // dark green in the gradients rather than true black.
+    primary: '#0A1A0F',
+    primaryDark: '#050D07',
+    // The page ground with more green in it, for interior page headers.
+    primarySoft: '#E8F0E9',
+    // SAMPLED, unchanged: the deep green of the WASTE REMOVAL wordmark.
+    //
+    // This is the PRIMARY BUTTON FILL on light sections and the brand colour
+    // for text on light. White sits on it at 6.82:1. It is deliberately the
+    // `accent` token rather than `accentDark`, because components/ContactForm
+    // is sealed and cannot be edited: it fills its submit button with
+    // `bg-accent text-on-accent`, so making those two tokens the deep green
+    // and white is what gives the sealed form the correct button without
+    // touching it.
+    accent: '#016A1C',
+    // ADJUSTED, one step darker: the hover state for that fill, and the
+    // colour for small text that wants more than 6:1. White on it is 9.46:1,
+    // and as text on the page ground it is 8.71:1.
+    accentDark: '#015215',
+    // SAMPLED, unchanged: the lime of the brush lettering. DARK GROUNDS ONLY,
+    // as fill or as text, 11.42:1 on primary. Never on a light ground, where
+    // it reads 1.44:1 and vanishes.
+    accentOnDark: '#A4E048',
+    bg: '#F4F6F4',
+    surface: '#FCFDFC',
+    ink: '#141915',
+    muted: '#4E5A52',
     // Dark enough to clear 3:1 against the surface, because this token is the
     // BORDER ON EVERY FORM INPUT and WCAG 1.4.11 treats that as a UI component
-    // boundary. A prettier hairline would make the fields invisible to anyone
-    // with low vision. Heavier rules suit this direction anyway.
-    line: '#848B94',
-    onPrimary: '#F3F4F6',
-    onAccent: '#14161A',
+    // boundary. Unchanged in intent from the previous identity, retinted.
+    line: '#7E8C83',
+    onPrimary: '#F4F6F4',
+    // White, for the deep green button fill. Near-black is used on the LIME
+    // fill instead, which is a different pair and is spelled out at each of
+    // the two dark-section buttons.
+    onAccent: '#FFFFFF',
   },
   // The hero photo is a curbside pile: the customer's problem, shot wide, with
   // enough dead sky to carry a scrim and lower-third type.

@@ -234,3 +234,49 @@ save him a phone call?
 ### 20. No prices anywhere
 Not even a "starting at". If Earl ever wants a floor price published, it goes
 in `priceFrom` per service and renders itself.
+
+---
+
+## FROM THE OCTOBER 2026 BRAND HANDOVER
+
+### 21. A vector logo file, and a simple icon mark
+The supplied brand is twelve PNGs. **There is no vector file and no written
+guideline**, so every colour on this site was sampled out of the artwork
+(`client-assets/brand-2026-10`, palette recorded in `theme.ts`).
+
+Two things are needed from whoever made the logo:
+
+- **A vector file.** SVG, EPS or AI. A raster lockup caps how large the mark
+  can ever be drawn, it cannot be used for vehicle livery or signage, and it
+  rules out a crisp monochrome version. The current PNG is 1222x1237, which
+  is enough for this website and not much else.
+- **A simple icon mark.** The full lockup stacks a skyline, a truck, the name
+  and a two-line tagline. It needs to be 100px tall before the words read,
+  which is why the header is taller than it was. Something that works in a
+  32px square, a map pin and an app tile, probably the leaf or the truck
+  alone, would fix that everywhere at once. The favicon today is the circular
+  badge, masked to a circle, and the words in it are decorative at that size.
+
+### 22. Open questions from the marketing pieces, NOT used on the site
+The business cards and door hangers carry several things the website does not
+say. **None of them has been added**, because none is confirmed and the brief
+for that round was explicit that copy does not change. Each needs a yes or no:
+
+| Found on | What it says | Why it is not on the site |
+|---|---|---|
+| Business card | Owner is **Earl Morris** | The site says "Earl". A surname is a fact about a person and wants confirming before it is published |
+| Card, door hanger | **houstonwasteremoval@gmail.com** | The site uses `ejcdjh75@gmail.com`. Two addresses means one of them is going to be missed. Which is live? |
+| Logo, every piece | **"A Cleaner Houston, A Brighter Tomorrow"** | It is inside the logo artwork, which is on every page. It is not repeated as text anywhere |
+| Door hanger, card | **Curbside pickup**, as a named service | Not one of the thirteen services. Is it a real offering, and is it recurring or one-off? |
+| Every piece | **"Eco-friendly", "responsible disposal", "recycling", "donation services"** | These are disposal claims. `scripts/proof/content-audit.mjs` bans the whole family outright, because the site cannot say where material ends up without evidence. Recycling and donation ARE already listed as services; what is banned is the claim about outcomes |
+| Card | **"Reliable, professional, eco-friendly"** and "Clean spaces, stronger communities" | Slogans, unverifiable as written |
+
+### 23. The logo says waste collection, the business sells junk removal
+Worth raising with Earl rather than quietly living with. The mark is a
+municipal-style rear-loader truck with a recycling symbol, and the collateral
+leans on curbside pickup and recycling. The site sells junk removal,
+cleanouts and light demolition, which is a different job a customer searches
+for differently. The brand works; it just points somewhere slightly to the
+side of what he is being paid for. If he wants the site to follow the logo
+rather than the other way round, that is a bigger conversation about what the
+business is selling, not a website change.

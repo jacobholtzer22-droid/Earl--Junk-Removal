@@ -290,6 +290,14 @@ export const siteConfigSchema = z
        * has to be declared here to exist at all.
        */
       logo: z.string().nullable().default(null),
+      /**
+       * The same mark knocked out white, for dark grounds. A logo lockup is
+       * artwork: it cannot be recoloured with CSS the way a wordmark can, so a
+       * brand that works on both grounds needs two files, not one plus a
+       * filter. null means the site has no dark-ground variant and the header
+       * and footer fall back to `logo`.
+       */
+      logoOnDark: z.string().nullable().default(null),
     }),
 
     /**

@@ -39,10 +39,10 @@ export default function TermsPage() {
       <PageHeader title="Terms of Service" crumbs={CRUMBS} />
       <article className="mx-auto max-w-3xl px-4 pb-20 pt-10 text-base leading-relaxed text-ink sm:px-6">
         <p>
-          These terms cover your use of {host}, the website of {config.displayName}. {config.displayName} is operated by{' '}
-          {config.alternateName ?? config.legalName}
-          {config.alternateName ? <> ({config.legalName})</> : null}, which is the contracting party for any work arranged
-          through this site. By using the site or sending a request through it, you agree to these terms.
+          These terms cover your use of {host}, the website of {config.displayName}. {config.legalName}, doing business
+          as {config.displayName}
+          {config.alternateName ? <> and operated by {config.alternateName}</> : null}, is the contracting party for any
+          work arranged through this site. By using the site or sending a request through it, you agree to these terms.
         </p>
 
         <h2 className="mt-10 font-heading text-2xl font-bold uppercase tracking-tight text-primary-dark">

@@ -14,6 +14,7 @@ const config: Config = {
         'primary-soft': 'var(--c-primary-soft)',
         accent: 'var(--c-accent)',
         'accent-dark': 'var(--c-accent-dark)',
+        'accent-on-dark': 'var(--c-accent-on-dark)',
         bg: 'var(--c-bg)',
         surface: 'var(--c-surface)',
         ink: 'var(--c-ink)',
@@ -23,7 +24,7 @@ const config: Config = {
         'on-accent': 'var(--c-on-accent)',
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'Oswald', 'Arial Narrow', 'sans-serif'],
+        heading: ['var(--font-heading)', 'Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
         body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       borderRadius: {

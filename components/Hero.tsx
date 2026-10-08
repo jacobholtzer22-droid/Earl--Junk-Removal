@@ -28,7 +28,13 @@ export default function Hero() {
       {/* Mobile: call is first in the DOM and visually primary. */}
       <a
         href={`tel:${config.phone}`}
-        className="bg-accent px-7 py-4 text-center font-heading text-lg font-bold uppercase tracking-wide text-on-accent transition-colors duration-100 hover:bg-accent-dark active:translate-y-px motion-reduce:transition-none sm:order-2 sm:px-6 sm:py-3.5 sm:text-base"
+        /*
+          LIME fill with near-black text, because this button sits on the dark
+          hero. 12.50:1. The deep green fill used in light sections reads
+          2.17:1 here, so the brightest thing in a dark section has to be the
+          lime or the call to action stops being the loudest element in it.
+        */
+        className="bg-accent-on-dark px-7 py-4 text-center font-heading text-lg font-bold uppercase tracking-wide text-primary-dark transition-colors duration-100 hover:bg-accent active:translate-y-px hover:text-on-accent motion-reduce:transition-none sm:order-2 sm:px-6 sm:py-3.5 sm:text-base"
       >
         Call {config.phoneDisplay}
       </a>
@@ -67,16 +73,9 @@ export default function Hero() {
           sit. At 0.55 across the top the picture read as a flat black field,
           which wasted the one image on the page that explains the service.
         */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 z-[1]"
-          style={{
-            background:
-              'linear-gradient(180deg, rgb(10 11 13 / 0.30) 0%, rgb(10 11 13 / 0.52) 45%, rgb(10 11 13 / 0.90) 100%)',
-          }}
-        />
+        <div aria-hidden="true" className="hero-scrim absolute inset-0 z-[1]" />
         <div className="relative z-10 mx-auto w-full max-w-page px-4 pb-14 pt-36 sm:px-6 md:pb-20">
-          <p className="font-heading text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.22em] text-accent-on-dark">
             {config.displayName}
           </p>
           <h1 className="mt-5 max-w-4xl font-heading text-hero font-bold uppercase">{h1}</h1>
@@ -94,7 +93,7 @@ export default function Hero() {
     <section className="bg-primary-dark text-on-primary">
       <div className="mx-auto grid max-w-page items-center gap-12 px-4 py-20 sm:px-6 md:grid-cols-5 md:py-28">
         <div className="md:col-span-3">
-          <p className="font-heading text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.22em] text-accent-on-dark">
             {config.displayName}
           </p>
           <h1 className="mt-5 font-heading text-hero font-bold uppercase">{h1}</h1>

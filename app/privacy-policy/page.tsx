@@ -61,10 +61,10 @@ export default async function PrivacyPolicyPage() {
 
         <h2 className="mt-10 font-heading text-2xl font-bold text-primary-dark">Who we are</h2>
         <p className="mt-4">
-          This website, {host}, is the website of {config.displayName}, a brand operated by{' '}
-          {config.alternateName ?? config.legalName}
-          {config.alternateName ? <> ({config.legalName})</> : null}. That company is the legal entity behind this site and
-          is who the information below is shared with. This policy explains what the site collects and how it is used.
+          This website, {host}, is the website of {config.displayName}. {config.legalName} is the legal entity behind
+          it, doing business as {config.displayName}
+          {config.alternateName ? <> and operated by {config.alternateName}</> : null}. That company is who the
+          information below is shared with. This policy explains what the site collects and how it is used.
         </p>
 
         <h2 className="mt-10 font-heading text-2xl font-bold text-primary-dark">Information you send us</h2>

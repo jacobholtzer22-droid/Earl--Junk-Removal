@@ -20,9 +20,20 @@
   h4 {
     @apply font-heading;
   }
+  /*
+   * TWO-TONE focus ring, because no single brand colour works on both grounds.
+   *
+   * The lime reads 11.42:1 on the dark panel and 1.44:1 on the page ground.
+   * The deep green is the other way round. A one-colour ring would therefore
+   * be invisible on half the site. So the inner ring is the lime and the outer
+   * is the near-black: on a light ground the outer ring carries it at about
+   * 17:1, on a dark ground the inner ring carries it at 11.42:1, and there is
+   * no surface on this site where both fail.
+   */
   :focus-visible {
-    outline: 2px solid var(--c-accent);
-    outline-offset: 2px;
+    outline: 2px solid var(--c-accent-on-dark);
+    outline-offset: 1px;
+    box-shadow: 0 0 0 5px var(--c-primary-dark);
   }
   summary::-webkit-details-marker {
     display: none;
@@ -138,4 +149,64 @@ details[open] > p {
  */
 [data-safe-center] {
   justify-content: safe center;
+}
+
+/*
+ * The display face's WIDTH AXIS, used to fix line breaks with type instead of
+ * with copy.
+ *
+ * Archivo replaced Oswald, and Oswald is a condensed face while Archivo is
+ * not, so every headline on the site got wider overnight and several started
+ * breaking in the wrong place. "Junk Removal in Houston, TX" fell as
+ * JUNK / REMOVAL IN / HOUSTON, TX on a 360px screen, which orphans the first
+ * word and reads as three ideas.
+ *
+ * Rewriting headlines to fit would be a copy change, and copy is out of scope
+ * this round. Archivo's wdth axis runs 62 to 125, so the narrowing happens in
+ * the font instead. 88% is as far as it goes: past about 85% the face starts
+ * reading as a different, more condensed typeface and stops matching the
+ * wordmark in the logo, which is the whole reason it was chosen.
+ *
+ * Phones only. There is room at every larger size.
+ */
+@media (max-width: 520px) {
+  h1 {
+    font-stretch: 88%;
+  }
+}
+
+/*
+ * Evens out the line lengths of a wrapped headline so the last line is not a
+ * single orphaned word. "Service Areas Around Houston, TX" was breaking with
+ * "TX" alone on a third line at 16% of the width of the line above it.
+ *
+ * This is the other half of fixing line breaks without touching copy: the
+ * width axis above makes the words narrower, this decides where they break.
+ * Browsers without text-wrap: balance ignore it and wrap as before, so it
+ * cannot make anything worse.
+ */
+h1 {
+  text-wrap: balance;
+}
+
+/*
+ * The hero scrim, which has to be dark enough that the headline clears AA
+ * against the BRIGHTEST part of the photograph rather than its average.
+ *
+ * Light at the top so the picture is still readable, heavy from 45% down
+ * where the headline, body copy and chips sit. At a flat 0.55 across the top
+ * the photograph read as a black field, which wasted the one image on the
+ * page that explains the service.
+ *
+ * Built from --c-primary-dark-rgb rather than a literal, so it follows the
+ * palette. It previously did not: three hardcoded rgb(10 11 13) stops sat in
+ * Hero.tsx and stayed the old brand's cool near-black through the rebrand.
+ */
+.hero-scrim {
+  background: linear-gradient(
+    180deg,
+    rgb(var(--c-primary-dark-rgb) / 0.3) 0%,
+    rgb(var(--c-primary-dark-rgb) / 0.52) 45%,
+    rgb(var(--c-primary-dark-rgb) / 0.9) 100%
+  );
 }

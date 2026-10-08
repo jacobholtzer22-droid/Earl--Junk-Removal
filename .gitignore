@@ -27,3 +27,7 @@ next-env.d.ts
 
 # local tooling
 .claude/
+
+# Fonts fetched by scripts/og-card.mjs for rasterising the social card.
+# Not source: re-fetched on demand, and the site itself loads them via next/font.
+.cache/

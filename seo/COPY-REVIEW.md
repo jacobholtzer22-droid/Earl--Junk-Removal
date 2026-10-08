@@ -644,7 +644,7 @@ AI answer engines read. Every value in it comes from `site.config.ts`.
   "telephone": "+17132919440",
   "email": "ejcdjh75@gmail.com",
   "image": "https://www.houstonwasteremoval.com/images/processed/uprooted-tree-on-lawn-1024.webp",
-  "logo": "https://www.houstonwasteremoval.com/images/processed/ejc-logo-222.webp",
+  "logo": "https://www.houstonwasteremoval.com/images/processed/houston-waste-removal-logo-1024.webp",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
