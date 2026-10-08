@@ -97,18 +97,35 @@ export default function Motion() {
         if (wrap) window.setTimeout(() => delete wrap.dataset.forceClosed, 0)
       }
     }
-    /** A mouse user who presses Escape and hovers back expects it to open. */
-    const clearOnHover = () => {
+    /*
+     * ANY pointer movement over the menu clears the marker, so a mouse user
+     * can never be left with a dropdown that will not open.
+     *
+     * This listens to pointerOVER on the document, not pointerEnter on the
+     * wrapper, and the difference is the whole bug. pointerenter fires once
+     * when the pointer crosses into the element and never again while it is
+     * inside. So pressing Escape with the pointer ALREADY over Services, then
+     * moving the mouse within that item, left the menu shut: there was no
+     * re-entry to fire on. Confirmed before the fix, and the leave-and-return
+     * case passed even then, which is why it was easy to miss.
+     *
+     * pointerover bubbles and fires again on every element the pointer moves
+     * onto, including children, so any movement at all over the menu clears
+     * it. Keyboard users are unaffected: Escape still closes, and Tab still
+     * clears.
+     */
+    const clearOnPointer = (e: Event) => {
+      const target = e.target as HTMLElement | null
+      if (!target?.closest?.('[data-services-menu]')) return
       const wrap = document.querySelector<HTMLElement>('[data-services-menu][data-force-closed]')
       if (wrap) delete wrap.dataset.forceClosed
     }
     document.addEventListener('keydown', onMenuKey)
-    const menus = Array.from(document.querySelectorAll('[data-services-menu]'))
-    for (const el of menus) el.addEventListener('pointerenter', clearOnHover)
+    document.addEventListener('pointerover', clearOnPointer)
 
     return () => {
       document.removeEventListener('keydown', onMenuKey)
-      for (const el of menus) el.removeEventListener('pointerenter', clearOnHover)
+      document.removeEventListener('pointerover', clearOnPointer)
       window.removeEventListener('scroll', onScroll)
       if (frame) window.cancelAnimationFrame(frame)
       observer?.disconnect()
