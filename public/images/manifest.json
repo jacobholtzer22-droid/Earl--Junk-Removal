@@ -11,6 +11,16 @@
       1920
     ]
   },
+  "bare-mattress-in-stripped-bedroom.jpg": {
+    "width": 1000,
+    "height": 667,
+    "alt": "A bare mattress on a bed frame in an otherwise stripped bedroom",
+    "base": "bare-mattress-in-stripped-bedroom",
+    "sizes": [
+      320,
+      640
+    ]
+  },
   "basement-with-old-furniture.jpg": {
     "width": 1880,
     "height": 1602,
@@ -20,6 +30,16 @@
       320,
       640,
       1024
+    ]
+  },
+  "boxes-of-household-items-set-out.jpg": {
+    "width": 1000,
+    "height": 521,
+    "alt": "Cardboard boxes and a wooden crate of household items set out on a path, labelled by hand",
+    "base": "boxes-of-household-items-set-out",
+    "sizes": [
+      320,
+      640
     ]
   },
   "broken-concrete-and-brick-pile.jpg": {
@@ -80,6 +100,16 @@
       1024
     ]
   },
+  "labelled-storage-bins-stacked.jpg": {
+    "width": 1000,
+    "height": 1500,
+    "alt": "Plastic storage bins and wooden crates stacked several deep, each hand-labelled with its contents",
+    "base": "labelled-storage-bins-stacked",
+    "sizes": [
+      320,
+      640
+    ]
+  },
   "moving-boxes-in-empty-room.jpg": {
     "width": 2400,
     "height": 3600,
@@ -125,6 +155,26 @@
       640,
       1024,
       1920
+    ]
+  },
+  "weathered-garden-shed.jpg": {
+    "width": 1000,
+    "height": 800,
+    "alt": "A weathered wooden garden shed with a broken window, standing beside a fence in a back garden",
+    "base": "weathered-garden-shed",
+    "sizes": [
+      320,
+      640
+    ]
+  },
+  "weathered-hot-tub-on-patio.jpg": {
+    "width": 890,
+    "height": 1505,
+    "alt": "An old wooden hot tub with a closed lid and timber steps, standing on a back garden patio",
+    "base": "weathered-hot-tub-on-patio",
+    "sizes": [
+      320,
+      640
     ]
   }
 }

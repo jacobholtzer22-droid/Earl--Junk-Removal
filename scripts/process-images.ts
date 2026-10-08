@@ -33,6 +33,26 @@ const MANIFEST = path.join(ROOT, 'public/images/manifest.json')
  */
 const WIDTHS = [320, 640, 1024, 1920]
 const QUALITY = 82
+
+/**
+ * ONE TREATMENT FOR THE WHOLE PHOTO LIBRARY.
+ *
+ * The photographs come from two stock sites and a dozen different
+ * photographers, so out of the box they disagree about white balance,
+ * saturation and contrast, and a grid of them reads as a pile of downloads
+ * rather than as one company's pictures.
+ *
+ * The grade is deliberately slight: saturation pulled back a tenth, then a
+ * 7% wash of the brand green laid over in soft-light, which tints the shadows
+ * without touching the highlights. Enough to make a row of cards agree,
+ * nowhere near enough to look like a filter.
+ *
+ * LOGOS ARE EXEMPT. A brand mark is artwork with its own colours, and tinting
+ * it would be recolouring the client's logo. Anything whose filename contains
+ * "logo" skips the grade entirely.
+ */
+const GRADE = { tint: { r: 1, g: 106, b: 28 }, opacity: 0.07, saturation: 0.9 }
+const isLogo = (file: string) => /logo/i.test(file)
 const EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.tif', '.tiff', '.avif', '.gif'])
 
 interface Entry {
@@ -96,7 +116,32 @@ async function main() {
 
     for (const w of targets) {
       const out = path.join(PROCESSED, `${base}-${w}.webp`)
-      await image.clone().resize({ width: w, withoutEnlargement: true }).webp({ quality: QUALITY }).toFile(out)
+      // Resize to a buffer first, then read its REAL dimensions. withoutEnlargement
+      // can return something smaller than the requested width, and a composite
+      // overlay even one pixel larger than its base makes sharp throw.
+      const resized = await image.clone().resize({ width: w, withoutEnlargement: true }).toBuffer()
+      if (isLogo(file)) {
+        await sharp(resized).webp({ quality: QUALITY }).toFile(out)
+        continue
+      }
+      const graded = sharp(resized).modulate({ saturation: GRADE.saturation })
+      const m = await sharp(resized).metadata()
+      await graded
+        .composite([
+          {
+            input: {
+              create: {
+                width: m.width ?? w,
+                height: m.height ?? w,
+                channels: 4,
+                background: { ...GRADE.tint, alpha: GRADE.opacity },
+              },
+            },
+            blend: 'soft-light',
+          },
+        ])
+        .webp({ quality: QUALITY })
+        .toFile(out)
     }
 
     const prior = existing[file]

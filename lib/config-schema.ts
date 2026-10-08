@@ -239,6 +239,19 @@ export const siteConfigSchema = z
       })
       .partial(),
 
+    /**
+     * Whether the business accepts text messages on its published number.
+     *
+     * FALSE BY DEFAULT and false here, pending the client's answer. When it is
+     * true a Text Us button appears beside Call Now in the header, pointing at
+     * an sms: link on the same number.
+     *
+     * It is a flag rather than an assumption because an sms: link on a number
+     * that cannot receive texts is worse than no button: the message is sent,
+     * it goes nowhere, and the customer believes they have made contact.
+     */
+    acceptsTexts: z.boolean().default(false),
+
     /** Homepage FAQs. FAQPage schema on the homepage renders only when non-empty. */
     faqs: z.array(faq).default([]),
 

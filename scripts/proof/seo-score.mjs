@@ -244,9 +244,27 @@ function scorePage(p) {
     if (imgs.length === 0) { s.alt = 10 }
     else {
       const alts = imgs.map((i) => decode(attr(i, /alt="([^"]*)"/) ?? ''))
+      /*
+       * Uniqueness is per IMAGE FILE, not per occurrence, which is the same
+       * rule verify.ts check 11 applies.
+       *
+       * The same photograph can legitimately appear twice on a page: the
+       * homepage hero and the yard waste card are one file, because an
+       * uprooted tree is the best storm-debris picture in the library and
+       * buying a second one to satisfy a counter would be theatre. Two
+       * occurrences of one file SHOULD share an alt. The defect is two
+       * DIFFERENT files sharing one, which is what this now measures.
+       */
+      const fileOf = (i) => (attr(i, /src="([^"]*)"/) ?? '').replace(/-\d+\.webp$/, '').split('/').pop()
+      const byAlt = new Map()
+      imgs.forEach((i, n) => {
+        const a = alts[n]
+        if (!byAlt.has(a)) byAlt.set(a, new Set())
+        byAlt.get(a).add(fileOf(i))
+      })
       let v = 0
       if (alts.every((a) => a.trim().length >= 15)) v += 5
-      if (new Set(alts).size === alts.length) v += 3
+      if ([...byAlt.values()].every((set) => set.size === 1)) v += 3
       if (!alts.some((a) => /^(image|picture|photo) of/i.test(a))) v += 2
       s.alt = Math.min(10, v)
       if (s.alt < 10) notes.alt = `${imgs.length} described imgs, ${decorative.length} decorative`

@@ -606,6 +606,11 @@ const siteConfig = {
     yelp: null,
   },
 
+  // UNCONFIRMED: the client has not said whether this number receives texts.
+  // See the client question list, item 22. An sms: link on a number that
+  // cannot receive them loses the message silently, so it stays off.
+  acceptsTexts: false,
+
   faqs: [
     {
       q: 'Is Houston Waste Removal the same company as EJC Demo Junk & Haul?',

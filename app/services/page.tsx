@@ -3,7 +3,7 @@ import CtaBand from '@/components/CtaBand'
 import FaqProse from '@/components/FaqProse'
 import JsonLd from '@/components/JsonLd'
 import PageHeader from '@/components/PageHeader'
-import ServiceGrid from '@/components/ServiceGrid'
+import ServiceCards from '@/components/ServiceCards'
 import { config } from '@/lib/config'
 import { loadContent, readFrontmatter } from '@/lib/content'
 import { breadcrumbList, faqPage } from '@/lib/schema'
@@ -49,7 +49,7 @@ export default async function ServicesIndexPage() {
         {content}
         <FaqProse faqs={config.pageFaqs.services} />
       </article>
-      <ServiceGrid heading="Everything we offer" />
+      <ServiceCards heading="Everything we offer" />
       <CtaBand />
     </>
   )

@@ -43,19 +43,24 @@ export const LOGO = 'houston-waste-removal-logo.png'
 export const LOGO_ON_DARK = 'houston-waste-removal-logo-white.png'
 
 export const STOCK = {
-  /** Homepage hero. Reused on the yard waste page; it is the same photograph. */
+  /**
+   * Homepage hero, and the yard waste page, which is the same photograph on
+   * purpose. A wide uprooted tree with sky to carry the headline is the best
+   * storm-debris image in the library, and a search for a better hero (a
+   * kerbside pile, a cluttered garage) turned up nothing that passed: the best
+   * kerbside frame was a second-hand furniture market with three identifiable
+   * people in it, and the best garage was a storage unit carrying two readable
+   * brand marks in the middle of the frame.
+   */
   hero: 'uprooted-tree-on-lawn.jpg',
   /**
    * NULL ON PURPOSE, and it must stay null while the photography is stock.
    *
-   * The About page and the homepage's "Run by Earl" teaser are the two places
-   * on this site that are explicitly about Earl and his company. A photograph
-   * there does not illustrate a service, it illustrates HIM, so a stock image
-   * in that slot is read by every visitor as his premises, his work or his
-   * crew. That is a claim, and it is not one we can make.
-   *
-   * Both sections run on the logo and type instead. When Earl supplies a real
-   * photograph of his own operation, this is the line to fill in.
+   * The About page and the homepage's about band are the two places on this
+   * site that are explicitly about Earl and his company. A photograph there
+   * does not illustrate a service, it illustrates HIM, so a stock image in
+   * that slot is read by every visitor as his premises, his work or his crew.
+   * That is a claim, and it is not one we can make.
    */
   about: null,
 
@@ -68,33 +73,34 @@ export const STOCK = {
   propertyCleanouts: 'moving-boxes-in-empty-room.jpg',
   yardWasteRemoval: 'uprooted-tree-on-lawn.jpg',
 
-  // ---- Deliberately null. Each one was searched for and rejected. ----
+  // ---- Added October 2026, when the client asked for more photography. ----
+
+  /** A bare mattress on a frame in a stripped room. Not urban decay. */
+  mattressDisposal: 'bare-mattress-in-stripped-bedroom.jpg',
+  /**
+   * Hand-labelled storage bins, NOT a hoarded home. The rule against
+   * photographing hoarding stands; this is the neutral image that replaces it.
+   */
+  hoarderCleanouts: 'labelled-storage-bins-stacked.jpg',
+  /** A weathered garden shed, which is the commonest light demolition job. */
+  lightDemolition: 'weathered-garden-shed.jpg',
+  /** CROPPED: left 11% removed, which carried a readable safety notice. */
+  hotTubRemoval: 'weathered-hot-tub-on-patio.jpg',
+  /** CROPPED: top 22% removed, which carried a readable PetSafe brand mark. */
+  ctaBand: 'boxes-of-household-items-set-out.jpg',
 
   /**
-   * Every "old appliance" result on Pexels is either a styled vintage prop or a
-   * decayed unit carrying a readable manufacturer badge. One candidate was
-   * rejected at full size for exactly that.
+   * STILL NULL, and now on the record as needing a real photograph.
+   *
+   * Three searches, the limit agreed for this round: Pexels "old washing
+   * machine", Pexels "old refrigerator kitchen", Unsplash "old-refrigerator".
+   * Every result was one of three things: a working kitchen, a styled studio
+   * product shot, or an old unit with its manufacturer's badge on the door.
+   * The badge is the killer, because it sits on the subject itself and cannot
+   * be cropped out without losing the appliance.
+   *
+   * The appliance removal page and card fall back to a brand-green block.
+   * See CLIENT-TODO item 24.
    */
   applianceRemoval: null,
-  /**
-   * Every discarded-mattress photograph available is shot as urban decay:
-   * squats, graffiti, abandonment. Fine as editorial, wrong beside a service
-   * a person is deciding whether to trust with their house.
-   */
-  mattressDisposal: null,
-  /**
-   * NEVER fill this one. A photograph of a hoarded home published next to a
-   * hoarder cleanout page is somebody's house and somebody's circumstances
-   * used as advertising. The page runs on type and copy, and the copy does the
-   * work instead.
-   */
-  hoarderCleanouts: null,
-  /**
-   * No photograph exists of a deck or shed mid-dismantling without machinery
-   * or a crew in frame. The results are all abandonment and ruin, which says
-   * something different from "we take it apart and haul it away".
-   */
-  lightDemolition: null,
-  /** No hot tub photograph that is not a lifestyle spa shoot. */
-  hotTubRemoval: null,
 } as const
