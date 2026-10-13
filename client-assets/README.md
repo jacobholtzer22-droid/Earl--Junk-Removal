@@ -31,3 +31,28 @@ depiction of his work; the rule stands for everything else here.
 
 The previous identity, retired from the site on 2026-10-07 and kept so the
 change is reversible.
+
+## brand-2026-10/print-proofs
+
+Added 2026-10-12. Five phone screenshots from the print shop's site
+(tdayflyers / NextDayFlyers) plus a t-shirt mockup.
+
+**None of these is a new logo and none is a new colour.** They are print
+proofs of the collateral already in the folder above: the same door hanger,
+the same business card, the same lockup. The greens in them were sampled and
+sit at hue 131 to 140, which is the palette already in theme.ts (accent and
+accentDark are both hue 135). The lime on the door hanger back is #9CC636
+against the site's #A4E048, the same colour doing the same job.
+
+**None of them can go on the site**, and not because of the marketing-piece
+rule alone:
+
+- two still have the phone's status bar and the browser address bar in frame
+- all four print proofs carry the printer's TRIM LINE, SAFE ZONE and
+  FRONT/BACK overlay marks drawn across the artwork
+- the t-shirt mockup has a NextDayFlyers watermark on it
+
+They are kept here because they are the record of what the client is actually
+printing, and because the business card is where "Earl Morris", the second
+Gmail address and the curbside-pickup and recycling claims come from. All of
+those are open questions on the client list, items 22 and 28.
