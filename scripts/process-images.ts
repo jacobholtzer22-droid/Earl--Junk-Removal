@@ -30,8 +30,14 @@ const MANIFEST = path.join(ROOT, 'public/images/manifest.json')
  *
  * Every photo gets a 320 too. They are a few kB each and a narrow phone is
  * better served by one.
+ *
+ * 1536 is here for the images that sit BETWEEN the 1024 and 1920 rungs. The
+ * ladder only emits widths no larger than the original, so a 1880px-wide
+ * photo used as a full-bleed hero stopped at 1024 and was upscaled 1.4x on a
+ * 1440 screen. The hero is the first thing anyone sees; it should not be the
+ * softest image on the page.
  */
-const WIDTHS = [320, 640, 1024, 1920]
+const WIDTHS = [320, 640, 1024, 1536, 1920]
 const QUALITY = 82
 
 /**

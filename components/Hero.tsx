@@ -60,7 +60,21 @@ export default function Hero() {
           name={hero}
           priority
           sizes="100vw"
-          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_28%]"
+          /*
+            65%, not 28%.
+            
+            28% was tuned for the uprooted tree, whose interest was in the
+            upper third under a bright sky. The hero photograph is now a
+            basement, and the top 40% of it is a plain ceiling and a blank
+            wall, so the same crop filled the widest part of the page with
+            nothing. That is the "big white space": not a layout hole, a
+            photograph cropped to its emptiest part.
+            
+            Rendered at 28, 50, 65 and 80 and compared. 65 clears the ceiling
+            and keeps the dresser, the cabinet and the lamp in frame while
+            leaving enough wall behind the headline.
+          */
+          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_65%]"
         />
         {/*
           Heavy scrim. The headline has to clear AA against the brightest part

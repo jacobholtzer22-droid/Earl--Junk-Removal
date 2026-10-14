@@ -97,3 +97,29 @@ Applies to real client photos as much as to stock.
 6. Download into `public/images/originals/`, run `npm run images`, write the alt
    in `public/images/manifest.json`, update `lib/stock-images.ts`, and add a row
    to this file.
+
+## Resolution, and why every source is pulled at 2400px (2026-10-14)
+
+Six photographs were re-downloaded at 2400px and reprocessed, because they had
+been fetched at `w=1000` during the layout round. The width ladder only emits
+renditions no larger than the original, so those six stopped at **640w** and
+were upscaled wherever they rendered wide.
+
+Two of them were visible to the client:
+
+- **the referral page banner** (`boxes-of-household-items-set-out`) is
+  full-bleed at `sizes="100vw"`, so a 640w file was stretched across 1425px,
+  an upscale of **2.2x**. It is now 1920w and renders at **0.99x**.
+- **the homepage hero** (`basement-with-old-furniture`) topped out at 1024w
+  because its documented 520px left crop takes a 2400px source down to 1880px,
+  which is under the 1920 rung. A **1536** rung was added for exactly this
+  gap; the hero now renders at 0.99x instead of being upscaled.
+
+**Pull every source at 2400px.** The crops that remove brand marks are applied
+afterwards and they cost width: 520px off the basement, 22% off the top of the
+boxes, 11% off the left of the hot tub. A 1000px source does not survive that
+and still fill a hero.
+
+Both brand-mark crops were re-verified against the new sources rather than
+assumed: the basement's shelf of readable cartons and the PetSafe panel above
+the boxes are both still outside the frame.
