@@ -2,6 +2,43 @@ import type { SiteConfigInput } from './lib/config-schema'
 import { LOGO, LOGO_ON_DARK, STOCK } from './lib/stock-images'
 
 /**
+ * EARL'S OWN JOB PHOTOGRAPHS, filed through the Ops intake in November 2026
+ * (ASSETS.json). These are real jobs, so unlike the stock in
+ * lib/stock-images.ts they may go in the gallery. Every service without one of
+ * these still runs on the stock image it had, or on none.
+ *
+ * The truck photo is CROPPED: the bottom 36% carried a readable licence plate
+ * and dealer frame. Nothing else was done to any of these files.
+ */
+const PHOTO = {
+  // IMG_5733: open living area mid-cleanout. Named as the hero by the client.
+  hero: 'open-living-area-with-a-granite-kitchen-island-holding-clean.jpg',
+  // Junk removal / hauling
+  truckLoad: 'pickup-truck-bed-loaded-with-scrap-lumber-trim-a-black-panel.jpeg', // 1000029522
+  couchAndBags: 'covered-side-entry-with-a-couch-black-trash-bags-and-scatter.jpg', // IMG_5745
+  sidePassageTrash: 'side-passage-between-houses-filled-with-trash-a-smoker-yello.jpg', // IMG_5746
+  sideWalkwayTrash: 'side-walkway-strewn-with-garbage-cardboard-a-walker-and-lean.jpg', // IMG_5747
+  // Demo / cleanout
+  kitchenClutter: 'open-kitchen-with-granite-island-cluttered-with-cleaning-sup.jpg', // IMG_5741
+  kitchenDishwasher: 'kitchen-with-open-dishwasher-stainless-fridge-and-stove-and-.jpg', // IMG_5742
+  livingAreaBag: 'empty-living-area-with-dirty-plank-floor-white-walls-a-trash.jpg', // IMG_5743
+  kitchenLiving: 'open-kitchen-and-living-area-with-dark-vinyl-plank-flooring-.jpg', // IMG_1293
+  garageLumber: 'garage-corner-with-lumber-trim-boards-black-trash-bags.jpeg', // 6410906674204622022
+  garageBay: 'single-bay-garage-with-a-miter-saw-firewood-soil-bags-cooler.jpeg', // 1000029521
+  // Finished side yards (the site has no before/after block, so these are
+  // shown as finished work)
+  sideYardAc: 'narrow-side-yard-between-two-houses-with-gray-gravel-an-air-.jpg', // IMG_5736
+  sidePassageClear: 'narrow-side-passage-with-a-concrete-walkway-gravel-beds-a-gr.jpg', // IMG_5737
+  sideYardMeters: 'side-yard-of-gravel-between-siding-walls-with-an-air-conditi.jpg', // IMG_5738
+  longPassageClear: 'long-side-passage-between-two-houses-with-a-concrete-walkway.jpg', // IMG_5739
+  // Before shots and interiors
+  sideYardDebris: 'narrow-side-yard-of-gravel-between-houses-littered-with-debr.jpg', // IMG_5744
+  sideEntrySlab: 'covered-concrete-entry-beside-a-side-door-with-dirty-stained.jpg', // IMG_5740
+  kitchenIsland: 'kitchen-island-with-granite-counter-sink-and-cleaning-produc.jpg', // IMG_5734
+  emptyRoom: 'empty-room-with-white-walls-entry-door-and-dark-plank-floori.jpg', // IMG_5735
+} as const
+
+/**
  * Every business fact for Houston Waste Removal, operated by EJC Demo Junk &
  * Haul, lives here and nowhere else.
  *
@@ -247,7 +284,7 @@ const siteConfig = {
         'Household junk hauled away: boxes, bags, old furniture, electronics, and whatever else has stacked up.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate',
-      image: STOCK.junkRemoval,
+      image: PHOTO.couchAndBags,
       titleOverride: null,
       faqs: [
         {
@@ -347,7 +384,7 @@ const siteConfig = {
         'Garages, attics, basements, and storage units cleared from front to back, including the things stacked behind everything else.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate',
-      image: STOCK.garageCleanouts,
+      image: PHOTO.garageLumber,
       titleOverride: null,
       faqs: [
         {
@@ -427,7 +464,7 @@ const siteConfig = {
         'Lumber, drywall, roofing tear-off, concrete, brick, and scrap metal cleared off the site so the next trade can get to work.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate',
-      image: STOCK.constructionDebris,
+      image: PHOTO.truckLoad,
       titleOverride: 'Construction Debris Removal Houston',
       faqs: [
         {
@@ -523,7 +560,7 @@ const siteConfig = {
         'Evictions, foreclosures, move-outs, and listing preparation cleared on a turnover schedule so the unit is ready to show.',
       priceFrom: null,
       priceNote: 'set by a free virtual estimate',
-      image: STOCK.propertyCleanouts,
+      image: PHOTO.kitchenClutter,
       titleOverride: 'Property Cleanouts in Houston, TX',
       faqs: [
         {
@@ -756,12 +793,26 @@ const siteConfig = {
   },
 
   images: {
-    hero: STOCK.hero,
+    hero: PHOTO.hero,
     about: STOCK.about,
-    // Empty on purpose. There are no client photographs yet, and a gallery of
-    // licensed stock would imply these are EJC's own jobs. The Gallery section
-    // does not render while this is empty.
-    gallery: [],
+    // Earl's own photographs only, never stock. Finished side yards first,
+    // then the before shots. Service images are not repeated here.
+    gallery: [
+      PHOTO.sideYardAc,
+      PHOTO.sidePassageClear,
+      PHOTO.sideYardMeters,
+      PHOTO.longPassageClear,
+      PHOTO.sidePassageTrash,
+      PHOTO.sideWalkwayTrash,
+      PHOTO.sideYardDebris,
+      PHOTO.sideEntrySlab,
+      PHOTO.kitchenDishwasher,
+      PHOTO.livingAreaBag,
+      PHOTO.kitchenLiving,
+      PHOTO.garageBay,
+      PHOTO.kitchenIsland,
+      PHOTO.emptyRoom,
+    ],
     // The client's brand mark. Keeps stock photography out of schema.org
     // `logo` and the social card. See lib/schema.ts logoUrl().
     logo: LOGO,

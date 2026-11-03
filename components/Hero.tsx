@@ -61,20 +61,23 @@ export default function Hero() {
           priority
           sizes="100vw"
           /*
-            65%, not 28%.
-            
-            28% was tuned for the uprooted tree, whose interest was in the
-            upper third under a bright sky. The hero photograph is now a
-            basement, and the top 40% of it is a plain ceiling and a blank
-            wall, so the same crop filled the widest part of the page with
-            nothing. That is the "big white space": not a layout hole, a
-            photograph cropped to its emptiest part.
-            
-            Rendered at 28, 50, 65 and 80 and compared. 65 clears the ceiling
-            and keeps the dresser, the cabinet and the lamp in frame while
-            leaving enough wall behind the headline.
+            45%, for Earl's own hero photograph (November 2026).
+
+            The hero is now a tall phone shot of an open living area mid
+            cleanout. At 1440 the 1.9:1 box shows under a third of its height,
+            and the 65% that suited the old basement stock showed nothing but
+            bare plank floor. Rendered at 65 and 45 and compared: 45 puts the
+            granite island and the cleaning supplies in frame, which is what
+            says "a job in progress". At 390 the crop barely moves.
+
+            Measured with the scrim, white text against the brightest point
+            from 35% of the box down: 5.72:1 at 1440, 4.80:1 at 390. Before
+            this the floor-only crop measured 5.43 and 5.13.
+
+            Earlier history: 28% was tuned for an uprooted tree, 65% for a
+            basement whose top 40% was blank ceiling.
           */
-          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_65%]"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_45%]"
         />
         {/*
           Heavy scrim. The headline has to clear AA against the brightest part

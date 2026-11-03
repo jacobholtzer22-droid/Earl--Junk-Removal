@@ -1,5 +1,10 @@
 /**
- * EVERY PHOTOGRAPH ON THIS SITE, IN ONE PLACE.
+ * EVERY STOCK PHOTOGRAPH ON THIS SITE, IN ONE PLACE.
+ *
+ * November 2026: Earl's own job photos arrived. They live in the PHOTO block
+ * at the top of site.config.ts and have replaced the stock hero and the stock
+ * images for junk removal, garage cleanouts, construction debris and property
+ * cleanouts. What is left here is for services no client photo shows.
  *
  * All of them are licensed stock from Pexels. None of them shows EJC Demo Junk
  * & Haul, its truck, its crew or one of its jobs, and no alt text, caption or
@@ -44,31 +49,6 @@ export const LOGO_ON_DARK = 'houston-waste-removal-logo-white.png'
 
 export const STOCK = {
   /**
-   * Homepage hero: old furniture in a basement. The same photograph as the
-   * junk removal page, which is the point. The hero should show JUNK, and a
-   * dresser, a curio cabinet and stacked boxes are exactly what this business
-   * is called to take away.
-   *
-   * It replaced an uprooted tree, which showed storm damage: true of one of
-   * the thirteen services and misleading about the other twelve. The tree now
-   * belongs to yard waste alone.
-   *
-   * Three candidates were measured at 390 and 1440 rather than eyeballed, for
-   * two things: whether the white headline still clears AA against the
-   * brightest point behind it, and how much of the picture survives the scrim.
-   *
-   *   image      headline      visible variation, 390 / 1440
-   *   tree       10.22:1       0.141 / 0.129
-   *   basement    7.11:1       0.081 / 0.087, and the highest mean of the three
-   *   garage      7.63:1       0.064 / 0.062, the flattest and darkest
-   *
-   * All three hold the headline comfortably; AA large text needs 3.0. The
-   * garage is out because it reads as a dark field at both widths. The
-   * basement carries less variation than the tree but more light, and it
-   * shows the right thing.
-   */
-  hero: 'basement-with-old-furniture.jpg',
-  /**
    * NULL ON PURPOSE, and it must stay null while the photography is stock.
    *
    * The About page and the homepage's about band are the two places on this
@@ -79,13 +59,9 @@ export const STOCK = {
    */
   about: null,
 
-  junkRemoval: 'basement-with-old-furniture.jpg',
   furnitureRemoval: 'discarded-sofa-at-kerb.jpg',
-  garageCleanouts: 'residential-garage-with-shelving.jpg',
   estateCleanouts: 'attic-with-stored-paintings-and-furniture.jpg',
-  constructionDebris: 'broken-concrete-and-brick-pile.jpg',
   commercialCleanouts: 'emptied-hall-with-stacked-chairs.jpg',
-  propertyCleanouts: 'moving-boxes-in-empty-room.jpg',
   yardWasteRemoval: 'uprooted-tree-on-lawn.jpg',
 
   // ---- Added October 2026, when the client asked for more photography. ----

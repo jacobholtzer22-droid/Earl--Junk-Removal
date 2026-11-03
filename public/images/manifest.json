@@ -25,18 +25,6 @@
       1920
     ]
   },
-  "basement-with-old-furniture.jpg": {
-    "width": 1880,
-    "height": 1602,
-    "alt": "A finished basement holding a dated wooden dresser, a curio cabinet, a side table and shelved storage bins",
-    "base": "basement-with-old-furniture",
-    "sizes": [
-      320,
-      640,
-      1024,
-      1536
-    ]
-  },
   "boxes-of-household-items-set-out.jpg": {
     "width": 2400,
     "height": 1248,
@@ -50,17 +38,27 @@
       1920
     ]
   },
-  "broken-concrete-and-brick-pile.jpg": {
-    "width": 2400,
-    "height": 1600,
-    "alt": "A large pile of broken paving bricks, concrete and rubble heaped against a corrugated steel wall",
-    "base": "broken-concrete-and-brick-pile",
+  "covered-concrete-entry-beside-a-side-door-with-dirty-stained.jpg": {
+    "width": 1800,
+    "height": 2400,
+    "alt": "Covered concrete entry beside a side door with a dirty stained slab, siding and a dark gravel bed",
+    "base": "covered-concrete-entry-beside-a-side-door-with-dirty-stained",
     "sizes": [
       320,
       640,
       1024,
-      1536,
-      1920
+      1536
+    ]
+  },
+  "covered-side-entry-with-a-couch-black-trash-bags-and-scatter.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Covered side entry with an old couch piled with black trash bags and garbage scattered across concrete and gravel",
+    "base": "covered-side-entry-with-a-couch-black-trash-bags-and-scatter",
+    "sizes": [
+      320,
+      640,
+      1024
     ]
   },
   "discarded-sofa-at-kerb.jpg": {
@@ -89,6 +87,40 @@
       1920
     ]
   },
+  "empty-living-area-with-dirty-plank-floor-white-walls-a-trash.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Emptied living area with a dirty plank floor, white walls, a trash bag and mop bucket by the island",
+    "base": "empty-living-area-with-dirty-plank-floor-white-walls-a-trash",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "empty-room-with-white-walls-entry-door-and-dark-plank-floori.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Empty room with white walls, an entry door and dark plank flooring, a granite countertop edge in front",
+    "base": "empty-room-with-white-walls-entry-door-and-dark-plank-floori",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "garage-corner-with-lumber-trim-boards-black-trash-bags.jpeg": {
+    "width": 1536,
+    "height": 2048,
+    "alt": "Garage corner stacked with leftover lumber, trim boards, black trash bags and a boxed miter saw awaiting removal",
+    "base": "garage-corner-with-lumber-trim-boards-black-trash-bags",
+    "sizes": [
+      320,
+      640,
+      1024,
+      1536
+    ]
+  },
   "houston-waste-removal-logo-white.png": {
     "width": 1228,
     "height": 1237,
@@ -111,6 +143,28 @@
       1024
     ]
   },
+  "kitchen-island-with-granite-counter-sink-and-cleaning-produc.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Kitchen island with a granite counter, sink and cleaning products, with crumbs and stains on the plank floor",
+    "base": "kitchen-island-with-granite-counter-sink-and-cleaning-produc",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "kitchen-with-open-dishwasher-stainless-fridge-and-stove-and-.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Kitchen with an open dishwasher, stainless fridge and stove, and supplies and clutter left on counter and floor",
+    "base": "kitchen-with-open-dishwasher-stainless-fridge-and-stove-and",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
   "labelled-storage-bins-stacked.jpg": {
     "width": 2400,
     "height": 3600,
@@ -124,24 +178,11 @@
       1920
     ]
   },
-  "moving-boxes-in-empty-room.jpg": {
-    "width": 2400,
-    "height": 3600,
-    "alt": "Open and sealed cardboard moving boxes grouped on the bare concrete floor of an otherwise empty white room",
-    "base": "moving-boxes-in-empty-room",
-    "sizes": [
-      320,
-      640,
-      1024,
-      1536,
-      1920
-    ]
-  },
-  "residential-garage-with-shelving.jpg": {
-    "width": 1750,
-    "height": 1600,
-    "alt": "An attached residential garage with timber storage shelving, a step ladder, cabinets and a concrete floor",
-    "base": "residential-garage-with-shelving",
+  "long-side-passage-between-two-houses-with-a-concrete-walkway.jpg": {
+    "width": 1800,
+    "height": 2400,
+    "alt": "Long cleared side passage between two houses with a concrete walkway, gravel beds, downspouts and a wooden gate",
+    "base": "long-side-passage-between-two-houses-with-a-concrete-walkway",
     "sizes": [
       320,
       640,
@@ -149,17 +190,128 @@
       1536
     ]
   },
-  "stacked-cardboard-boxes.jpg": {
-    "width": 2333,
-    "height": 3500,
-    "alt": "Cardboard packing boxes of several sizes stacked in front of a panelled white interior door",
-    "base": "stacked-cardboard-boxes",
+  "narrow-side-passage-with-a-concrete-walkway-gravel-beds-a-gr.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Cleared side passage with a concrete walkway, gravel beds, a green bin and wooden gate after junk removal",
+    "base": "narrow-side-passage-with-a-concrete-walkway-gravel-beds-a-gr",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "narrow-side-yard-between-two-houses-with-gray-gravel-an-air-.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Cleared narrow side yard between two houses, gray gravel raked clean around an air conditioning unit and fence",
+    "base": "narrow-side-yard-between-two-houses-with-gray-gravel-an-air",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "narrow-side-yard-of-gravel-between-houses-littered-with-debr.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Narrow gravel side yard between houses littered with debris, a smoker grill and a mop bucket before cleanup",
+    "base": "narrow-side-yard-of-gravel-between-houses-littered-with-debr",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "open-kitchen-and-living-area-with-dark-vinyl-plank-flooring-.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Open kitchen and living area with dark vinyl plank flooring and a cluttered island covered in cleaning supplies",
+    "base": "open-kitchen-and-living-area-with-dark-vinyl-plank-flooring",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "open-kitchen-with-granite-island-cluttered-with-cleaning-sup.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Open kitchen with a granite island cluttered with cleaning supplies, trash bags and a mop on dark plank flooring",
+    "base": "open-kitchen-with-granite-island-cluttered-with-cleaning-sup",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "open-living-area-with-a-granite-kitchen-island-holding-clean.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Open living area mid-cleanout, with cleaning supplies on a granite kitchen island and a dusty plank floor",
+    "base": "open-living-area-with-a-granite-kitchen-island-holding-clean",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "pickup-truck-bed-loaded-with-scrap-lumber-trim-a-black-panel.jpeg": {
+    "width": 1536,
+    "height": 1311,
+    "alt": "Pickup truck bed loaded with scrap lumber, trim boards, a black panel and paint buckets ready to haul away",
+    "base": "pickup-truck-bed-loaded-with-scrap-lumber-trim-a-black-panel",
     "sizes": [
       320,
       640,
       1024,
-      1536,
-      1920
+      1536
+    ]
+  },
+  "side-passage-between-houses-filled-with-trash-a-smoker-yello.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Side passage between houses filled with trash, a smoker grill, a yellow mop bucket and leaning boards",
+    "base": "side-passage-between-houses-filled-with-trash-a-smoker-yello",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "side-walkway-strewn-with-garbage-cardboard-a-walker-and-lean.jpg": {
+    "width": 1350,
+    "height": 2400,
+    "alt": "Side walkway strewn with garbage and cardboard, a walker and leaning plywood boards before the junk was hauled",
+    "base": "side-walkway-strewn-with-garbage-cardboard-a-walker-and-lean",
+    "sizes": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "side-yard-of-gravel-between-siding-walls-with-an-air-conditi.jpg": {
+    "width": 1800,
+    "height": 2400,
+    "alt": "Cleared gravel side yard between siding walls with an air conditioner, utility meters and open irrigation valve boxes",
+    "base": "side-yard-of-gravel-between-siding-walls-with-an-air-conditi",
+    "sizes": [
+      320,
+      640,
+      1024,
+      1536
+    ]
+  },
+  "single-bay-garage-with-a-miter-saw-firewood-soil-bags-cooler.jpeg": {
+    "width": 1536,
+    "height": 2048,
+    "alt": "Single-bay garage with a miter saw, firewood, soil bags, coolers and shelves of supplies along the wall",
+    "base": "single-bay-garage-with-a-miter-saw-firewood-soil-bags-cooler",
+    "sizes": [
+      320,
+      640,
+      1024,
+      1536
     ]
   },
   "uprooted-tree-on-lawn.jpg": {
