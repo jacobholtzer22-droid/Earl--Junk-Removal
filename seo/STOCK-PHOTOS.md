@@ -1,5 +1,15 @@
 # STOCK-PHOTOS: every photograph on this site
 
+> **November 2026: no longer true of the whole site.** Earl's own job photos
+> (19, from the Ops intake) now carry the homepage hero, the gallery, and the
+> Junk Removal, Garage Cleanouts, Construction Debris Removal and Property
+> Cleanouts pages. They are listed in the `PHOTO` block of `site.config.ts`.
+> These stock files were deleted because nothing references them any more:
+> `basement-with-old-furniture.jpg`, `residential-garage-with-shelving.jpg`,
+> `broken-concrete-and-brick-pile.jpg`, `moving-boxes-in-empty-room.jpg` and
+> `stacked-cardboard-boxes.jpg`. Their rows below are history. Everything
+> below this note describes the stock that is still in use.
+
 **Every photograph on this site is licensed stock. Not one of them shows EJC
 Demo Junk & Haul, its truck, its crew, or any job it has done.** No alt text,
 caption or surrounding copy says or implies otherwise, and the site has no

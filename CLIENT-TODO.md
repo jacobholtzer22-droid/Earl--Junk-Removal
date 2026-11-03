@@ -1,3 +1,48 @@
+## Questions for Jacob
+
+- Can you resend the three job videos (IMG_5748.mov, IMG_5749.mov, IMG_5750.mov)? None reached the site: this repo has no video transcode step or video component yet (template sync pending).
+- Do you have a photo of a fridge, washer, dryer or water heater waiting to go, with no brand badge showing? Appliance removal still has no photo.
+- Do you have job photos for furniture removal, mattress disposal, estate, hoarder or commercial cleanouts, hot tub removal, light demolition or yard waste? Those pages still show licensed stock.
+- Do you have before and after photos of the same space taken from the same spot? The site has no before/after block yet, so the pairs you sent show in the gallery.
+- May we show the photos from that job publicly, and did the customer agree to it?
+- Is every one of the eight service areas (Katy, Sugar Land, Pearland, Cypress, Spring, The Woodlands, Pasadena, Humble) a place you will actually drive to?
+- Do you carry general liability insurance, or any license or bond we can mention?
+- How do virtual estimates work: do customers text photos, send a video, or do a live call?
+- Does (713) 291-9440 accept text messages?
+- What exactly is the after-hours emergency charge, and when does it start?
+- Are there any terms on the $50 off first service offer (minimum job, expiry, new customers only)?
+- How and when are referral payments made, and what makes a lead "verified"?
+- What items will you not take?
+- Is pricing by truck volume, by item, by the hour or by the job?
+- Does anyone on the crew speak Spanish?
+- Does Earl want a short owner story on the about page, and what is he comfortable sharing?
+
+---
+
+## NOVEMBER 2026 PHOTO SWAP: what still has no real photo
+
+Earl's 19 job photos are on the site (hero, gallery and four service pages).
+Pages still on stock or with no photo:
+
+| Page | Now shows |
+|---|---|
+| Appliance Removal | no photo (brand-green block) |
+| Furniture Removal | stock |
+| Mattress Disposal | stock |
+| Estate Cleanouts | stock |
+| Hoarder Cleanouts | stock |
+| Light Demolition | stock |
+| Hot Tub Removal | stock |
+| Commercial Cleanouts | stock |
+| Yard Waste and Storm Debris Removal | stock |
+| Contact and Referral Program banners | stock |
+| About | no photo, on purpose |
+
+Videos owed: IMG_5748.mov, IMG_5749.mov, IMG_5750.mov (not transcoded; see the
+questions above).
+
+---
+
 # CLIENT-TODO: EJC Demo Junk & Haul
 
 Open questions for Earl, and the launch steps that depend on them. Ordered by
@@ -169,6 +214,11 @@ What is he comfortable sharing?
 ## ASSETS
 
 ### 14. Real photographs, the single biggest quality win available
+**PARTLY DONE, November 2026.** Earl's 19 job photos replaced the stock hero
+and the stock images on Junk Removal, Garage Cleanouts, Construction Debris
+Removal and Property Cleanouts, and fill the gallery. See the table at the top
+of this file for what is still stock. The original note follows.
+
 Every photograph on this site is **licensed stock** from Unsplash and Pexels.
 Full inventory in `seo/STOCK-PHOTOS.md`.
 
@@ -314,6 +364,9 @@ A fabricated review is both a lie to the customer and, in Google's eyes, a
 manual-action risk against the business.
 
 ### 26. The work gallery is built and switched off
+**DONE, November 2026.** The gallery is on and holds 14 of Earl's own photos.
+Before/after pairs are still wanted; see the questions at the top.
+
 `components/Gallery.tsx` renders nothing while `config.images.gallery` is
 empty. The reference site's equivalent, "Our Best Work", carries 22 photographs
 of actual jobs, and it is the single strongest thing on their page.
