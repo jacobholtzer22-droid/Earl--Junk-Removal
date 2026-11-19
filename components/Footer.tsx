@@ -117,6 +117,9 @@ export default function Footer() {
             <Link href="/privacy-policy" className="hover:underline">
               Privacy Policy
             </Link>
+            <a href="#" data-aa-cookie-settings hidden className="hover:underline">
+              Cookie settings
+            </a>
             <Link href="/terms" className="hover:underline">
               Terms
             </Link>
