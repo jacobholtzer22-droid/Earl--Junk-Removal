@@ -1,10 +1,1 @@
-Tracking install. Write this tracking block into site.config.ts as the `tracking` key, exactly as given, and change nothing else (AGENT.md, CI mode, Tracking installs):
-
-```ts
-tracking: {
-  googleAdsId: 'AW-18497989799',
-  conversions: { form: 'AW-18497989799/vJe1CJTfiZUdEKfZw_RE', call: 'AW-18497989799/rioOCJffiZUdEKfZw_RE' },
-},
-```
-
-Then run the gate: check 22 must pass.
+Tracking install in this repo's own schema. In site.config.ts set tracking.conversionLabels.contact to 'vJe1CJTfiZUdEKfZw_RE' and tracking.conversionLabels.call to 'rioOCJffiZUdEKfZw_RE'. Keep tracking.googleAdsId 'AW-18497989799' as is; do not add a second Google tag. The repo's verify script has checks 1 to 17 only; ignore any reference to check 22. The labels are exact values from the Google Ads account: do not alter them. Change nothing else.

@@ -1,8 +1,8 @@
-# BUILD-REPORT: site_update (tracking install), houston-waste-removal-1791303748120
+# BUILD-REPORT: houston-waste-removal-1791303748120 (site_update: tracking labels)
 
-**Result: STOPPED again. Nothing was applied, and `site.config.ts` is unchanged.** This is the same tracking block as the previous run, and the repo's config schema still does not accept it. AGENT.md (CI mode, Tracking installs) says: "If a value in the block does not match the schema, stop and say so under item 8; never guess or reformat an id or a label." Since the last run, the only new commit is `2c25f89` ("Add site tracking + cookie banner"). It changed only `app/layout.tsx`, `app/privacy-policy/page.tsx` and `components/Footer.tsx`. It did not touch `lib/config-schema.ts`, the tag components or `scripts/verify.ts`.
+Run kind: `site_update`, a tracking install. `INSTRUCTIONS.md` asked for two values in `site.config.ts` using this repo's own schema (`tracking.conversionLabels`). That is the whole diff.
 
-## 1. `npm run verify` (unchanged tree, after `npm run build` passed)
+## 1. `npm run verify` output
 
 ```
 #   check                                                                   result  detail
@@ -29,40 +29,41 @@
 All checks passed.
 ```
 
-**Check 22, which INSTRUCTIONS.md requires, does not exist in this repo.** `scripts/verify.ts` here has only checks 1 to 17.
+## 2. `site.config.ts` change (the only edit)
 
-## 2. `site.config.ts`
-
-Unchanged. The current tracking block is:
-
-```ts
-tracking: {
-  googleAdsId: 'AW-18497989799',
-  conversionLabels: {
-    contact: '',
-    call: '',
-  },
-},
+```diff
+   tracking: {
+     googleAdsId: 'AW-18497989799',
+     conversionLabels: {
+-      // EMPTY ON PURPOSE. ... (comment removed; it said the labels did not exist yet)
+-      contact: '',
+-      call: '',
++      contact: 'vJe1CJTfiZUdEKfZw_RE',
++      call: 'rioOCJffiZUdEKfZw_RE',
+     },
+   },
 ```
 
-## 3 to 5. Alt spot checks, design direction, templated-look fixes
+I left `googleAdsId` alone and added no second tag. Both labels are byte-for-byte what `INSTRUCTIONS.md` gave. The comment above them was removed because it now described a state that is no longer true. The rest of the config is unchanged and is not reprinted here.
 
-Not applicable. This is a tracking-install run, so no images, design or content were touched.
+How I checked it: `npx tsc --noEmit` is clean. After `npm run build`, both labels appear in the client bundle that `lib/conversions.ts` builds `send_to: AW-18497989799/<label>` from. `out/index.html` still has only the one AW- tag.
+
+## 3. Alt-text spot checks
+None for this run: no images were added, removed or re-described.
+
+## 4. Design direction
+No change, since this is a tracking-only update.
+
+## 5. Templated-looking things
+None for this run: there was no design or content work.
 
 ## 6. UNRESOLVED
-
-Nothing new. The form and call conversion events still do not fire, because both labels are empty. The base Ads tag `AW-18497989799` is live and unchanged.
+No new gaps. Nothing in this run changed any null field.
 
 ## 7. INVENTED
+Nothing. This list is empty.
 
-Nothing was invented. I was tempted to reshape the block to fit this repo's schema, as `conversionLabels: { contact: 'vJe1CJTfiZUdEKfZw_RE', call: 'rioOCJffiZUdEKfZw_RE' }`, and I did not. That would rename `form` to `contact` and strip the `AW-.../` prefix, which is the reformatting AGENT.md forbids.
-
-## 8. Problems with the template / this run
-
-1. **Schema mismatch, which is why I stopped (second run in a row).** I applied the block as given in a scratch test, then reverted it:
-   `site.config.ts(653,5): error TS2353: Object literal may only specify known properties, and 'conversions' does not exist in type '{ googleAdsId?: ...; conversionLabels?: { contact?: ...; call?: ... } }'.`
-   `lib/config-schema.ts` expects `tracking.conversionLabels: { contact, call }` as bare labels, and `lib/conversions.ts` adds the `AW-.../` prefix itself. Re-dispatching the same block will fail the same way.
-2. **This repo is behind AA-Template.** It has `components/GoogleAdsTag.tsx` and `components/ConversionTracking.tsx`, but not the `components/GoogleTag.tsx` that AGENT.md describes. It also has no check 22. `lib/config-schema.ts` and `scripts/verify.ts` are on the CI forbidden list, so I did not change them.
-   **Fix (the human decides):** either (a) sync this repo's schema, tag component and `verify.ts` from the current AA-Template, then re-dispatch the same block; or (b) re-dispatch in this repo's shape, `conversionLabels: { contact: 'vJe1CJTfiZUdEKfZw_RE', call: 'rioOCJffiZUdEKfZw_RE' }`, if Jacob confirms that `form` maps to `contact`.
-3. **`launch.indexable` is `true`** (`site.config.ts:830`). The previous report flagged this too. This run did not touch it.
-4. **A hand-added third-party script.** Commit `2c25f89` added `<script src="https://www.alignandacquire.com/t/s/houston-waste-removal-1791303748120.js">` straight into `<head>` in `app/layout.tsx`, outside config. The `tracking` schema comment says "Nothing else: no Tag Manager, no GA4, no third tag." It also added a hidden "Cookie settings" link in `components/Footer.tsx`. This is probably intentional on the platform side. I note it only because it sidesteps the config-is-the-control-surface rule, and the template should own it. I did not change it.
+## 8. Template / run notes
+- The working tree arrived with an unrelated change I did not make: `public/images/originals/pickup-truck-bed-loaded-with-scrap-lumber-trim-a-black-panel.jpeg` was modified (455 KB to 837 KB). The instructions said to change nothing else, so I did not commit it. A human should decide whether that re-download was meant to happen.
+- The template's CI tracking-install section expects a `tracking.conversions.{form,call}` block and a verify check 22. This repo uses `tracking.conversionLabels.{contact,call}` and has checks 1 to 17 only. I followed `INSTRUCTIONS.md`, which said so explicitly. The template's AGENT.md and this repo's schema have drifted apart.
+- Known issue, already documented in `components/ConversionTracking.tsx` and not touched here: the sealed `ContactForm.tsx` shows a success message on an HTTP 500. The tracking works around it by firing the contact conversion only after a 2xx response.
