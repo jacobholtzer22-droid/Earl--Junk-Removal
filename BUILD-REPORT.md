@@ -1,8 +1,8 @@
 # BUILD-REPORT: site_update (tracking install), houston-waste-removal-1791303748120
 
-**Result: STOPPED, nothing applied. `site.config.ts` is unchanged.** The tracking block in INSTRUCTIONS.md does not match this repo's config schema. AGENT.md (CI mode, Tracking installs) says: "If a value in the block does not match the schema, stop and say so under item 8; never guess or reformat an id or a label."
+**Result: STOPPED again. Nothing was applied, and `site.config.ts` is unchanged.** This is the same tracking block as the previous run, and the repo's config schema still does not accept it. AGENT.md (CI mode, Tracking installs) says: "If a value in the block does not match the schema, stop and say so under item 8; never guess or reformat an id or a label." Since the last run, the only new commit is `2c25f89` ("Add site tracking + cookie banner"). It changed only `app/layout.tsx`, `app/privacy-policy/page.tsx` and `components/Footer.tsx`. It did not touch `lib/config-schema.ts`, the tag components or `scripts/verify.ts`.
 
-## 1. `npm run verify` (unchanged tree)
+## 1. `npm run verify` (unchanged tree, after `npm run build` passed)
 
 ```
 #   check                                                                   result  detail
@@ -26,9 +26,10 @@
 17  every internal link resolves to a built route                           PASS
 
 17/17 checks passed across 29 pages.
+All checks passed.
 ```
 
-**Check 22 does not exist in this repo.** INSTRUCTIONS.md says "check 22 must pass". This repo's `scripts/verify.ts` has only checks 1 to 17.
+**Check 22, which INSTRUCTIONS.md requires, does not exist in this repo.** `scripts/verify.ts` here has only checks 1 to 17.
 
 ## 2. `site.config.ts`
 
@@ -50,23 +51,18 @@ Not applicable. This is a tracking-install run, so no images, design or content 
 
 ## 6. UNRESOLVED
 
-Nothing new. The two conversion events stay off, because `conversionLabels.contact` and `conversionLabels.call` are empty. The base Ads tag (`AW-18497989799`) was already live before this run and still is.
+Nothing new. The form and call conversion events still do not fire, because both labels are empty. The base Ads tag `AW-18497989799` is live and unchanged.
 
 ## 7. INVENTED
 
-Nothing. I was tempted to convert the block to this repo's shape, as shown below, and I did not:
-
-```ts
-conversionLabels: { contact: 'vJe1CJTfiZUdEKfZw_RE', call: 'rioOCJffiZUdEKfZw_RE' }
-```
-
-That would rename `form` to `contact` and strip the `AW-.../` prefix from each value. AGENT.md forbids exactly that kind of reformatting.
+Nothing was invented. I was tempted to reshape the block to fit this repo's schema, as `conversionLabels: { contact: 'vJe1CJTfiZUdEKfZw_RE', call: 'rioOCJffiZUdEKfZw_RE' }`, and I did not. That would rename `form` to `contact` and strip the `AW-.../` prefix, which is the reformatting AGENT.md forbids.
 
 ## 8. Problems with the template / this run
 
-1. **Schema mismatch, which is why I stopped.** INSTRUCTIONS.md supplies `tracking.conversions: { form, call }` with full `send_to` values (`AW-18497989799/<label>`). This repo's `lib/config-schema.ts` defines `tracking.conversionLabels: { contact, call }` with bare labels. `lib/conversions.ts` adds the `AW-.../` prefix itself. The block was applied as given in a scratch test, then reverted. The test result was:
+1. **Schema mismatch, which is why I stopped (second run in a row).** I applied the block as given in a scratch test, then reverted it:
    `site.config.ts(653,5): error TS2353: Object literal may only specify known properties, and 'conversions' does not exist in type '{ googleAdsId?: ...; conversionLabels?: { contact?: ...; call?: ... } }'.`
-   Even if it type-checked, zod would drop the unknown key and no conversion would fire, and the gate would still be green.
-2. **The repo is behind the template.** This repo has `components/GoogleAdsTag.tsx` plus `components/ConversionTracking.tsx`. AGENT.md refers to `components/GoogleTag.tsx`, which does not exist here. AGENT.md also refers to check 22, which is missing from `scripts/verify.ts`. The CI section of AGENT.md was updated, but the schema, components and verify script were not. `lib/config-schema.ts` and `scripts/verify.ts` are on the CI forbidden list, so I did not change them.
-   **Fix (human decides):** either (a) sync this repo with the current AA-Template (schema, `GoogleTag.tsx`, check 22), then re-dispatch the same block, or (b) re-dispatch with the block in this repo's shape, `conversionLabels: { contact: 'vJe1CJTfiZUdEKfZw_RE', call: 'rioOCJffiZUdEKfZw_RE' }`, if Jacob confirms that `form` maps to `contact`.
-3. **`launch.indexable` is already `true`.** The comment above it says the domain "is not purchased yet". This run did not touch it. Please confirm that the go-live was intended.
+   `lib/config-schema.ts` expects `tracking.conversionLabels: { contact, call }` as bare labels, and `lib/conversions.ts` adds the `AW-.../` prefix itself. Re-dispatching the same block will fail the same way.
+2. **This repo is behind AA-Template.** It has `components/GoogleAdsTag.tsx` and `components/ConversionTracking.tsx`, but not the `components/GoogleTag.tsx` that AGENT.md describes. It also has no check 22. `lib/config-schema.ts` and `scripts/verify.ts` are on the CI forbidden list, so I did not change them.
+   **Fix (the human decides):** either (a) sync this repo's schema, tag component and `verify.ts` from the current AA-Template, then re-dispatch the same block; or (b) re-dispatch in this repo's shape, `conversionLabels: { contact: 'vJe1CJTfiZUdEKfZw_RE', call: 'rioOCJffiZUdEKfZw_RE' }`, if Jacob confirms that `form` maps to `contact`.
+3. **`launch.indexable` is `true`** (`site.config.ts:830`). The previous report flagged this too. This run did not touch it.
+4. **A hand-added third-party script.** Commit `2c25f89` added `<script src="https://www.alignandacquire.com/t/s/houston-waste-removal-1791303748120.js">` straight into `<head>` in `app/layout.tsx`, outside config. The `tracking` schema comment says "Nothing else: no Tag Manager, no GA4, no third tag." It also added a hidden "Cookie settings" link in `components/Footer.tsx`. This is probably intentional on the platform side. I note it only because it sidesteps the config-is-the-control-surface rule, and the template should own it. I did not change it.
